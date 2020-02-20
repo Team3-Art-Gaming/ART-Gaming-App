@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -785,13 +786,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 705387836}
         m_MethodName: SetSelectors
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: -1
           m_FloatArgument: 0
-          m_StringArgument: _Cat
+          m_StringArgument: -1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1227748842
@@ -843,8 +844,6 @@ GameObject:
   - component: {fileID: 1615732786}
   - component: {fileID: 1615732785}
   - component: {fileID: 1615732784}
-  - component: {fileID: 1615732788}
-  - component: {fileID: 1615732789}
   m_Layer: 5
   m_Name: Grid
   m_TagString: Untagged
@@ -945,32 +944,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615732782}
   m_CullTransparentMesh: 0
---- !u!114 &1615732788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615732782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59373a50f9d7f1d47872338002a38535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1615732789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615732782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b98fa835106f674a96ab6a800cf6298, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapBTNPrefab: {fileID: 7481202021932585828, guid: e58cd2c935244234b8aa077011f8d4cd,
-    type: 3}
 --- !u!1 &1631435363
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,8 +969,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631435363}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10

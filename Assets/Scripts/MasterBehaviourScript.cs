@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class MasterBehaviourScript : MonoBehaviour
 {
@@ -15,84 +16,120 @@ public class MasterBehaviourScript : MonoBehaviour
     [SerializeField]
     private Image mapGrid;
 
-    private string curCategory;
-    private string curSelection;
+    private const int mapSize = 100;
+
+
+    private List<Button> mapButtons;
+    private List<Button> selectorButtons;
+
+    private int curCategory;
+    private int curSelection;
+    private Sprite[] sprites;
+
+    private class mapmarker
+    {
+        mapmarker(int c, int s, Sprite sp, int r = 0)
+        {
+            cat = c;
+            sel = s;
+            sprite = sp;
+            rot = r;
+        }
+        int cat;
+        int sel;
+        Sprite sprite;
+        int rot;
+    }
 
 
     // Start is called before the first frame update
     void Awake()
     {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
-        curCategory = "";
-        curSelection = "";
-        CreateSelectors("_Cat");
+        curCategory = -1;
+        curSelection = -1;
+        CreateMapButtons();
+        CreateSelectorButtons(curCategory);
+
     }
 
-    // Update is called once per frame
-    /*
-    void Update()
-    {
-        
-    }
-    */
 
-    private void CreateSelectors(string dir)
+    private void CreateMapButtons()
     {
-        Debug.Log("DIR: " + dir);
-        Sprite[] sprites = Resources.LoadAll<Sprite>("Sets/"+dir);
+        mapButtons = new List<Button>();
+        GridLayoutGroup layout = mapGrid.GetComponent<GridLayoutGroup>();
+        layout.constraintCount = mapSize;
+        for (int i = 0; i < mapSize; ++i)
+        {
+            for (int j = 0; j < mapSize; ++j)
+            {
+                Button b = Instantiate(mapBTNTemplate);
+                mapButtons.Add(b);
+                b.transform.SetParent(mapGrid.transform);
+                b.name = (i * mapSize + j).ToString();
+            }
+        }
+        layout.transform.position = Vector3.zero;
+    }
+
+    private void CreateSelectorButtons(int cat)
+    {
+        selectorButtons = new List<Button>();
+        string dir = "_Cat";
+        if (cat >= 0) dir = sprites[cat].name;
+        sprites = Resources.LoadAll<Sprite>("Sets/" + dir);
         int counter = 0;
         foreach (Sprite sprite in sprites)
         {
             //Debug.Log(sprite.name);
             Button b = Instantiate(selectorTemplate);
-            //Sprite s = Sprite.Create(i, new Rect(0.0f, 0.0f, 128, 128), new Vector2(0.5f, 0.5f), 100.0f);
+            selectorButtons.Add(b);
             b.image.sprite = sprite;
-            b.name = sprite.name;
+            b.name = (counter++).ToString();
             b.transform.SetParent(selectorGrid.transform);
         }
         selectorGrid.transform.localPosition = Vector3.zero;
     }
 
-    private void DestroySelectors()
+    private void DestroySelectorButtons()
     {
         foreach(Button child in selectorGrid.GetComponentsInChildren<Button>())
         {
             Destroy(child.gameObject);
         }
+        selectorButtons.Clear();
     }
 
-    public void SetSelectors(string name)
+    public void SetSelectors(int caller)
     {
         //Debug.Log("NAME: " + name);
-        if(name=="_Cat")//View directory of categories
+        if(caller == -1)//View directory of categories
         {
-            curCategory = ""; //No category currently selected
-            curSelection = ""; //No item currently selected
-            DestroySelectors();
-            CreateSelectors(name);
+            curCategory = -1; //No category currently selected
+            curSelection = -1; //No item currently selected
+            DestroySelectorButtons();
+            CreateSelectorButtons(curCategory);
         }
-        else if(name[0] == '_') //View items in category
+        else if(curCategory == -1) //View items in category
         {
-            curCategory = name.Substring(1);
-            DestroySelectors();
-            CreateSelectors(name.Substring(1));
+            curCategory = caller;
+            DestroySelectorButtons();
+            CreateSelectorButtons(caller);
         }
         else//Select item in category
         {
-            curSelection = name;
-            BroadcastMessage("SelectionChanged", name);
-            //Debug.Log("Cat: " + curCategory + " Sel: " + curSelection);
+            if (curSelection > -1) selectorButtons[curSelection].SendMessage("SelectionChanged", false);
+            curSelection = caller;
+            selectorButtons[curSelection].SendMessage("SelectionChanged", true);
         }
     }
 
-    public void MapClicked(string caller)
+    public void MapClicked(int caller)
     {
         //Debug.Log("Heard from " + caller);
-        if(curCategory != "" && curSelection != "")
+        if(curCategory > -1 && curSelection > -1)
         {
-            string[] param = new string[] {caller, curCategory, curSelection};
-            BroadcastMessage("SetActive", param);
+            mapButtons[caller].SendMessage("SetSprite", sprites[curSelection]);   
         }
-        
     }
 }

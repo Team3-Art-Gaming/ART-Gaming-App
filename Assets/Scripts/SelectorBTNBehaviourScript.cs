@@ -22,13 +22,12 @@ public class SelectorBTNBehaviourScript : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("CLICKED");
-        master.SetSelectors(this.name);
+        master.SetSelectors(int.Parse(name));
     }
 
-    public void SelectionChanged(string selected)
+    public void SelectionChanged(bool active)
     {
-        if(selected == this.name)
+        if(active)
         {
             this.GetComponent<Image>().color = Color.red;
         }
