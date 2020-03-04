@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
-using Firebase;
-using Firebase.Auth;
-using Firebase.Database;
-using UnityEngine.SceneManagement;
 
 public class testRegHandler : MonoBehaviour
 {
@@ -15,37 +11,16 @@ public class testRegHandler : MonoBehaviour
     public InputField password0;
     public InputField password1;
 
+    private requestHandler registerReq;
+
     public void registerHandler()
     {
         if (checkInputs())
         {
-            authReg();
-            Debug.Log("check thread here");
+            //Debug.Log("check thread here");
+            registerReq = new requestHandler(username.text, email.text, password0.text);
             
         }
-    }
-
-    async Task authReg()
-    {
-        //Debug.Log("Firebase Auth here");
-        Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.GetAuth(Firebase.FirebaseApp.DefaultInstance);
-        await auth.CreateUserWithEmailAndPasswordAsync(email.text, password0.text).ContinueWith(task =>
-        {
-            if (task.IsCanceled)
-            {
-                Debug.LogError("CreateUserWithEmailAndPassword cancelled.");
-                return;
-            }
-            if (task.IsFaulted)
-            {
-                Debug.LogError("CreateUserWithEmailAndPassword error: " + task.Exception);
-                return;
-            }
-
-            Firebase.Auth.FirebaseUser newUser = task.Result;
-            Debug.LogFormat("User registered successfully: {0} ({1})", newUser.DisplayName, newUser.UserId);
-            sceneLoader(0);
-        });
     }
 
     private bool checkInputs()
@@ -59,11 +34,6 @@ public class testRegHandler : MonoBehaviour
         {
             return false;
         }
-    }
-
-    private void sceneLoader(int sceneIndex)
-    {
-        SceneManager.LoadScene(sceneIndex);
     }
 
     private bool checkEmail()
