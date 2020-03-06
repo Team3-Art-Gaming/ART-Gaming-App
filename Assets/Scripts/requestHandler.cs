@@ -10,10 +10,16 @@ using UnityEngine.SceneManagement;
 public class requestHandler : MonoBehaviour
 {
     private User registerThisUser;
+
     public requestHandler() { }
-    public requestHandler(string name, string email, string pass)
+    public void authRegister(string name, string email, string pass)
     {
         authenticateRegistration(name, email, pass);
+    }
+
+    public void authLogin(string email, string pass)
+    {
+        authenticateLogin(email, pass);
     }
 
     private void authenticateRegistration(string name, string email, string pass)
@@ -35,22 +41,77 @@ public class requestHandler : MonoBehaviour
 
             Firebase.Auth.FirebaseUser newUser = task.Result;
             Debug.LogFormat("User registered successfully: {0} ({1})", name, newUser.UserId);
-            registerThisUser = new User(name, newUser.UserId, email, pass);
-            createNewUserProfile(newUser, name);
+            sendEmailVerification(newUser);
         });
     }
 
-    private void createNewUserProfile(Firebase.Auth.FirebaseUser user, string name)
+    private void sendEmailVerification(Firebase.Auth.FirebaseUser user)
+    { 
+        user.SendEmailVerificationAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCanceled)
+            {
+                Debug.LogError("SendEmailVerification cancelled.");
+                return;
+            }
+            if (task.IsFaulted)
+            {
+                Debug.LogError("SendEmailVerification error: " + task.Exception);
+                return;
+            }
+
+            Debug.Log("SendEmailVerification to: " + user.Email);
+            SceneManager.LoadScene(0);
+        });
+    }
+
+    private void authenticateLogin(string email, string pass)
     {
+        Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.GetAuth(Firebase.FirebaseApp.DefaultInstance);
+        auth.SignInWithEmailAndPasswordAsync(email, pass).ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCanceled)
+            {
+                Debug.LogError("SignInWithEmailAndPasswordAsync canceled");
+                return;
+            }
+            if (task.IsFaulted)
+            {
+                Debug.LogError("SignInWithEmailAndPasswordAsync error: " + task.Exception);
+                return;
+            }
+
+            Firebase.Auth.FirebaseUser currentUser = task.Result;
+            if (currentUser.IsEmailVerified)
+            {
+                Debug.Log("Email is verified");
+                registerThisUser = new User(currentUser.DisplayName, currentUser.UserId, currentUser.Email, pass);
+                updateUserProfile(currentUser, "https://i.ya-webdesign.com/images/blue-slime-png-8.png");
+                SceneManager.LoadScene(3);
+            }
+            else
+            {
+                Debug.Log("Email not verified");
+            }
+
+        });
+    }
+
+    public void updateUserProfile(Firebase.Auth.FirebaseUser user, string photoUrl)
+    {
+        if (!photoUrl.Contains("http"))
+        {
+            Debug.Log("Profile Picture is not an http(s) link");
+            return;
+        }
         if (user != null)
         {
             Firebase.Auth.UserProfile profile = new Firebase.Auth.UserProfile
             {
-                DisplayName = name,
-                PhotoUrl = new System.Uri("https://i.ya-webdesign.com/images/blue-slime-png-8.png"),
+                DisplayName = user.DisplayName,
+                PhotoUrl = new System.Uri(photoUrl),
             };
-            user.UpdateUserProfileAsync(profile).ContinueWith(task =>
-            {
+            user.UpdateUserProfileAsync(profile).ContinueWith(task => {
                 if (task.IsCanceled)
                 {
                     Debug.LogError("UpdateUserProfileAsync was canceled.");
@@ -62,14 +123,11 @@ public class requestHandler : MonoBehaviour
                     return;
                 }
 
-                Debug.LogFormat("User profile updated successfully: {0} ({1})", user.DisplayName, user.UserId);
-                registerThisUser.setUsername(user.DisplayName);
-                SceneManager.LoadScene(0);
+                Debug.Log("User profile updated successfully.");
             });
         }
-        else
-        {
-            Debug.Log("Registration failed and no user profile can be created. ");
-        }
+
     }
+
+    
 }

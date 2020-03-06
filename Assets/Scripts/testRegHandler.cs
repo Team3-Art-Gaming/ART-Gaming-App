@@ -18,7 +18,8 @@ public class testRegHandler : MonoBehaviour
         if (checkInputs())
         {
             //Debug.Log("check thread here");
-            registerReq = new requestHandler(username.text, email.text, password0.text);
+            registerReq = new requestHandler();
+            registerReq.authRegister(username.text, email.text, password0.text);
             
         }
     }
@@ -27,7 +28,7 @@ public class testRegHandler : MonoBehaviour
     {
         if (checkEmail() && checkUsername() && checkPasswords())
         {
-            Debug.Log("Registration Successful part0 init");
+            //Debug.Log("Registration Successful part0 init");
             return true;
         }
         else
@@ -44,7 +45,7 @@ public class testRegHandler : MonoBehaviour
         }
         else
         {
-            Debug.Log("email field is empty!");
+            Debug.Log("Register: email field is empty!");
             return false;
         }
     }
@@ -57,7 +58,7 @@ public class testRegHandler : MonoBehaviour
         }
         else
         {
-            Debug.Log("username field is empty!");
+            Debug.Log("Register: username field is empty!");
             return false;
         }
     }
@@ -72,13 +73,13 @@ public class testRegHandler : MonoBehaviour
             }
             else
             {
-                Debug.Log("passwords do not match or empty field");
+                Debug.Log("Register: passwords do not match or empty field!");
                 return false;
             }
         }
         else
         {
-            Debug.Log("password field is empty!");
+            Debug.Log("Register: password field is empty!");
             return false;
         }
     }
