@@ -29,5 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LaunchScene.unity
     guid: 9753b5c5b4f154d40b99f063e87c6264
-  - enabled: 1
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

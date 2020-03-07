@@ -411,9 +411,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 285226056}
-          m_MethodName: sceneLoader
-          m_Mode: 3
+        - m_Target: {fileID: 285226058}
+          m_MethodName: loginHandler
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -432,6 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 285226057}
   - component: {fileID: 285226056}
+  - component: {fileID: 285226058}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -465,6 +466,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &285226058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285226055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ff435687b82e14a97f8d2c202e29ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  email: {fileID: 628765931}
+  password: {fileID: 1071026361}
 --- !u!1 &335450674
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +631,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: username
+  m_Text: email
 --- !u!222 &521416498
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -638,7 +653,7 @@ GameObject:
   - component: {fileID: 628765932}
   - component: {fileID: 628765931}
   m_Layer: 5
-  m_Name: enterUsername
+  m_Name: nterEmail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
