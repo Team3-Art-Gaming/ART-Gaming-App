@@ -1,0 +1,16 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl JdzLs
+Ka 0.000000 0.000000 0.000000
+Kd 0.423529 0.431373 0.513725
+Ks 0.330000 0.330000 0.330000
+map_Kd floor.jpg
+
+newmtl c8c64b071a57ec768c320ea7279b9b15
+Ka 0.000000 0.000000 0.000000
+Kd 0.407843 0.380392 0.396078
+Ks 0.330000 0.330000 0.330000
+map_Kd wall.jpg
+

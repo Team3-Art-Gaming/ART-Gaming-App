@@ -12,14 +12,6 @@ public class SelectorBTNBehaviourScript : MonoBehaviour
         master = GetComponentInParent<MasterBehaviourScript>();
     }
 
-    /*
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    */
-
     public void OnClick()
     {
         master.SetSelectors(int.Parse(name));
