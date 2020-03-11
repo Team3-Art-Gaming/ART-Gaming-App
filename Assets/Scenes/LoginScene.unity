@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 628765932}
   - component: {fileID: 628765931}
   m_Layer: 5
-  m_Name: nterEmail
+  m_Name: enterEmail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

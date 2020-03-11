@@ -131,5 +131,25 @@ public class requestHandler : MonoBehaviour
 
     }
 
+    public void getUserProfile()
+    {
+        FirebaseDatabase.DefaultInstance.GetReference("users").GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                Debug.Log("fauled");
+            }
+            if (task.IsCanceled)
+            {
+                Debug.Log("canceled");
+            }
+
+            DataSnapshot snapshot = task.Result;
+            //Debug.Log(snapshot.Child("user"));
+            string data = snapshot.GetRawJsonValue().ToString();
+            Debug.Log(data.email);
+
+        });
+    }
+
     
 }
