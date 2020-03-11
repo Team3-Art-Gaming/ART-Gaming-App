@@ -5,23 +5,36 @@ using UnityEngine.UI;
 
 public class Pop_Up_Screen : MonoBehaviour
 {
-    [serializedfield]
+    [SerializeField]
     Text textbox;
     
-    [serializedfield]
+    [SerializeField]
     Button ok_Button;
     
-    [serializedfield]
+    [SerializeField]
     Button cancel_Button;
+
+    private GameObject caller;
     
-    public activatePopUp(string s)
+    public void activatePopUp(string s, GameObject caller)
     {
+        this.caller = caller;
         transform.position = new Vector3(0,0,0);
         textbox.text = s;
     }
 
-    public deactivatePopUp()
+    public void deactivatePopUp()
     {
-            transform.position = new Vector(-10000, -10000, 0);
+            transform.position = new Vector3(-10000, -10000, 0);
+    }
+
+    public void okay_Click()
+    {
+        caller.SendMessage("POP_UP_RESPONSE", "OK");
+    }
+
+    public void cancel_Click()
+    {
+        caller.SendMessage("POP_UP_RESPONSE", "Cancel");
     }
 }

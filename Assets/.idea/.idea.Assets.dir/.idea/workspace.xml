@@ -1,10 +1,18 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2da0ff29-8ad5-4029-a598-4825fffc6f57" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Assets.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Assets.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pop_Up_Screen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pop_Up_Screen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/FriendsListScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/FriendsListScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/HomePortal.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/HomePortal.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/LaunchScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/LaunchScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/LoginScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/LoginScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/MapsScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/MapsScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/ProfileScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/ProfileScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/RegisterScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/RegisterScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/verifyUserScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/verifyUserScene.unity.meta" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,10 +23,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Pop_Up_Screen.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Pop_Up_Screen.cs" />
+        <option value="$PROJECT_DIR$/Test.cs" />
       </list>
     </option>
   </component>
@@ -27,9 +39,16 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -54,20 +73,23 @@
       <option name="presentableId" value="Default" />
       <updated>1583456799665</updated>
       <workItem from="1583456845037" duration="659000" />
+      <workItem from="1583861300512" duration="4113000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
