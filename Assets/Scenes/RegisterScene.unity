@@ -642,6 +642,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1801355056}
+          m_MethodName: pushUser
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &777640381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1805,6 +1816,7 @@ GameObject:
   - component: {fileID: 1801355054}
   - component: {fileID: 1801355053}
   - component: {fileID: 1801355055}
+  - component: {fileID: 1801355056}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -1854,6 +1866,25 @@ MonoBehaviour:
   username: {fileID: 921778263}
   password0: {fileID: 29302803}
   password1: {fileID: 2124677324}
+--- !u!114 &1801355056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801355052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8259dc9437d9f4464964b1db5be732bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enterEmail: {fileID: 777640383}
+  enterUsername: {fileID: 29302803}
+  enterPass: {fileID: 921778263}
+  reEnterPass: {fileID: 2124677324}
+  OnFirebaseInitialized:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1862252398
 GameObject:
   m_ObjectHideFlags: 0
