@@ -43,6 +43,7 @@ public class CreateUserFB : MonoBehaviour
         string PlayerPass = enterPass.text;
 
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.GetReference("1Test");
 
 
 
