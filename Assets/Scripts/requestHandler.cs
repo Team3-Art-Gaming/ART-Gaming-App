@@ -89,7 +89,7 @@ public class requestHandler : MonoBehaviour
                 registerThisUser = new User(currentUser.DisplayName, currentUser.UserId, currentUser.Email, pass);
                 CreateUserFB userToDB = new CreateUserFB();
                 userToDB.pushUserJson(registerThisUser);
-                SceneManager.LoadScene(3);
+                SceneManager.LoadScene(2);
             }
             else
             {
@@ -146,7 +146,7 @@ public class requestHandler : MonoBehaviour
             DataSnapshot snapshot = task.Result;
             //Debug.Log(snapshot.Child("user"));
             string data = snapshot.GetRawJsonValue().ToString();
-            Debug.Log(data.email);
+            Debug.Log(data);
 
         });
     }

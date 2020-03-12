@@ -165,7 +165,7 @@ PlayerSettings:
     Android: com.google.firebase.ARTGaming
   buildNumber: {}
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 28
+  AndroidMinSdkVersion: 21
   AndroidTargetSdkVersion: 28
   AndroidPreferredInstallLocation: 1
   aotOptions: 
