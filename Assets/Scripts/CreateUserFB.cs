@@ -42,12 +42,13 @@ public class CreateUserFB : MonoBehaviour
         string PlayerUsername = enterUsername.text;
         string PlayerPass = enterPass.text;
 
-
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
-        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
 
 
 
+        DBreference.Child("/1Test/0/email").SetValueAsync(PlayerEmail);
+        DBreference.Child("/1Test/0/name").SetValueAsync(PlayerUsername);
+        DBreference.Child("/1Test/0/password").SetValueAsync(PlayerPass);
         GetData();
         /*
         FirebaseDatabase.DefaultInstance.GetReference("/usersTest/0/name").GetValueAsync().ContinueWith(task =>
