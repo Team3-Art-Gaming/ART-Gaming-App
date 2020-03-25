@@ -23,6 +23,7 @@ public class Friend_List : MonoBehaviour
     Image Grid;
     
     public List<Friends> friends;
+    public List<Image> entries;
     void Start()
     {
         friends = new List<Friends>();
@@ -48,17 +49,32 @@ public class Friend_List : MonoBehaviour
         friends.Add(F);
         F = new Friends("Ashley", "Pending");
         friends.Add(F);
+    }
 
+    public void Set_Category(string Cat)
+    {
+        Destroy_Entries();
+        
         foreach(Friends friend in friends)
         {
-            Image I = Instantiate(FriendPrefab, Grid.transform);
-            I.SendMessage("SetName", friend.Name);
+            if (Cat == friend.Status)
+            {
+                Image I = Instantiate(FriendPrefab, Grid.transform); 
+                I.SendMessage("SetName", friend.Name);
+                entries.Add(I);
+            }
+
+            
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Destroy_Entries()
     {
-        
+        foreach(Image entry in entries)
+        {
+            Destroy(entry.gameObject);
+        }
+
+        entries.Clear();
     }
 }

@@ -11,16 +11,34 @@ public class Friend_Entry : MonoBehaviour
     Image Friend_Icon;
     [SerializeField] 
     Button Send_Button;
-    
-    // Start is called before the first frame update
-    void Start()
+
+    public void SetName(string N)
+    {
+        Friend_Name.text = N;
+    }
+
+    public string GetName()
+    {
+        return Friend_Name.text;
+    }
+
+    public void SetIcon()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public Image GetIcon()
+    {
+        return Friend_Icon;
+    }
+
+    public void SetButton()
     {
         
+    }
+
+    public Button GetButton()
+    {
+        return Send_Button;
     }
 }
