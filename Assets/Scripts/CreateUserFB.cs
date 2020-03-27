@@ -38,54 +38,91 @@ public class CreateUserFB : MonoBehaviour
 
     public void pushUser()
 	{
-        string PlayerEmail = enterEmail.text;
-        string PlayerUsername = enterUsername.text;
-        string PlayerPass = enterPass.text;
 
-        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
-        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.GetReference("1Test");
+        string playerName = userName.text;
 
+        string path = "/1Test/";
+        string path1 = string.Concat(path, playerName);
+        string path2 = string.Concat(path1, "/password");
+        string path3 = string.Concat(path1, "/email");
+        string path4 = string.Concat(path1, "/RecievedFriendRequests");
+        string path5 = string.Concat(path1, "/SentFriendRequests");
 
+        PushData(path1, playerName);
+        PushData(path2, "pass");
+        PushData(path3, "g@mail.com");
+        PushData(path4, "RecievedFriendRequests");
+        PushData(path5, "SentFriendRequests");
+        //DBreference.Child("/users/0").SetValueAsync(playerName);
+        //DBreference.GetReference("MAPS").GetValueAsync;
 
-        DBreference.Child("/1Test/0/email").SetValueAsync(PlayerEmail);
-        DBreference.Child("/1Test/0/name").SetValueAsync(PlayerUsername);
-        DBreference.Child("/1Test/0/password").SetValueAsync(PlayerPass);
-        GetData();
-        /*
-        FirebaseDatabase.DefaultInstance.GetReference("/usersTest/0/name").GetValueAsync().ContinueWith(task =>
-        {
-            DataSnapshot snapshot = task.Result;
-            string ss = snapshot.Child("/usersTest/0/name").Value.ToString();
-            print(ss);
-            print("data retrieved");
-            DBreference.Child("/usersTest/0/email").SetValueAsync("UserNumber");
-        });
-        */
+        SendFriendRequests(playerName, "david");
+
     }
-    public void GetData()
-	{
+
+    public void PushData(string path, string data)
+    {
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
 
-        FirebaseDatabase.DefaultInstance.GetReference("1Test").GetValueAsync().ContinueWith(task => {
+        DBreference.Child(path).SetValueAsync(data);
+    }
+
+    public void SendFriendRequests(string MyName, string FriendName)
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        string SendPath = string.Concat("/1Test/", FriendName);
+        string SentPath = string.Concat("/1Test/7767alex/SentFriendRequests/", FriendName);
+        PushData(SentPath, "pending");
+
+        string SendRequestPath = string.Concat(SendPath, "/RecievedFriendRequests/");
+        SendRequestPath = string.Concat(SendRequestPath, MyName);
+        PushData(SendRequestPath, "pending");
+
+        /*
+        if (GetData(SendPath) == null)
+		{
+            return;
+		}
+        else
+        {
+            PushData(SendPath, "pending");
+            string SendRequestPath = string.Concat(SendPath, "/RecievedFriendRequests");
+        }
+        */
+    }
+    public string GetData(string path)
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        string GetPath = string.Concat("1Test/", path);
+
+
+        FirebaseDatabase.DefaultInstance.GetReference(GetPath).GetValueAsync().ContinueWith(task => {
             if (task.IsFaulted)
             {
                 Debug.Log("BLARG");
+                return null;
             }
             else if (task.IsCompleted)
             {
 
                 DataSnapshot snapshot = task.Result;
                 string data = snapshot.GetRawJsonValue().ToString();
-                DBreference.Child("/1Test/0/test").SetValueAsync(data);
+                DBreference.Child("/Test/0").SetValueAsync(data);
+                return data;
             }
             else
             {
                 Debug.Log("ELSE");
+                return null;
             }
         });
+        return null;
     }
-
 
     // Start is called before the first frame update
     void Start()
