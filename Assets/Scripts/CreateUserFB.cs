@@ -21,16 +21,16 @@ public class CreateUserFB : MonoBehaviour
     public UnityEvent OnFirebaseInitialized = new UnityEvent();
 
     //Added a public function that pushes the class User as a Json into database.
-    public CreateUserFB() { }
 
     public void pushUserJson(User currentUser)
     {
+        Debug.Log("Writing User info to database");
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
 
         string json = JsonUtility.ToJson(currentUser);
-        DBreference.Child("users").Child(currentUser.getUserid()).SetRawJsonValueAsync(json);
-        Debug.Log("Writing User info to database");
+        DBreference.Child("users").Child(currentUser.getUsername()).SetRawJsonValueAsync(json);
+        return;
     }
     //Rest of Alex's code remains intact
 
@@ -44,6 +44,24 @@ public class CreateUserFB : MonoBehaviour
 
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.GetReference("1Test");
+        FirebaseDatabase.DefaultInstance.GetReference("1Test").GetValueAsync().ContinueWith(task => 
+        {
+            if (task.IsFaulted)
+            {
+                Debug.Log("BLARG");
+            }
+            else if (task.IsCompleted)
+            {
+
+                DataSnapshot snapshot = task.Result;
+                string data = snapshot.GetRawJsonValue().ToString();
+                DBreference.Child("/1Test/0/test").SetValueAsync(data);
+            }
+            else
+            {
+                Debug.Log("ELSE");
+            }
+        });
 
 
 

@@ -11,16 +11,28 @@ public class testRegHandler : MonoBehaviour
     public InputField password0;
     public InputField password1;
 
+    public GameObject popupprefab;
+    public GameObject popUp;
+    public GameObject parent;
+
     private requestHandler registerReq;
+
+    
+    void Start()
+    {
+        popUp = Instantiate(popupprefab, new Vector3(540,960,0), Quaternion.identity, parent.transform);
+        popUp.SendMessage("deactivatePopUp");
+        popUp.SendMessage("setPrefab", popUp);
+    }
 
     public void registerHandler()
     {
+        
         if (checkInputs())
         {
             //Debug.Log("check thread here");
             registerReq = new requestHandler();
             registerReq.authRegister(username.text, email.text, password0.text);
-            
         }
     }
 
@@ -46,6 +58,7 @@ public class testRegHandler : MonoBehaviour
         else
         {
             Debug.Log("Register: email field is empty!");
+            popUp.SendMessage("activatePopUp", "Email field is empty!");
             return false;
         }
     }
@@ -59,6 +72,7 @@ public class testRegHandler : MonoBehaviour
         else
         {
             Debug.Log("Register: username field is empty!");
+            popUp.SendMessage("activatePopUp", "Username field is empty!");
             return false;
         }
     }
@@ -74,12 +88,14 @@ public class testRegHandler : MonoBehaviour
             else
             {
                 Debug.Log("Register: passwords do not match");
+                popUp.SendMessage("activatePopUp", "Passwords DO NOT Match!");
                 return false;
             }
         }
         else
         {
             Debug.Log("Register: a password field is empty!");
+            popUp.SendMessage("activatePopUp", "Password field is empty!");
             return false;
         }
     }

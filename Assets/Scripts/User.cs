@@ -2,26 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class User : MonoBehaviour
-{
-    public string username;
-    public string userid;
+public class User : ScriptableObject
+{ 
     public string email;
-    public string password;
-    public List<string> friendslist = new List<string>();
-    public List<string> friendrequests = new List<string>();
-    public List<string> createdmaps = new List<string>();
+    public string userid;
+    public string username;
+    public List<string> ReceivedFriendRequests = new List<string>();
+    public List<string> SentFriendRequests = new List<string>();
+    public List<string> CurrentFriends = new List<string>();
+    public List<string> CreatedMaps = new List<string>();
 
-    public User() { }
-    public User(string name, string id, string email, string pass)
+    public void init(string name, string email, string userid)
     {
-        this.username = name;
-        this.userid = id;
         this.email = email;
-        this.password = pass;
-        this.friendslist.Add("placeholder");
-        this.friendrequests.Add("placeholder");
-        this.createdmaps.Add("placeholder");
+        this.userid = userid;
+        this.username = name;
+        ReceivedFriendRequests.Add("placeholder");
+        SentFriendRequests.Add("placeholder");
+        CurrentFriends.Add("placeholder");
+        CreatedMaps.Add("{date : name }");
     }
 
     public string getUsername()
@@ -39,13 +38,18 @@ public class User : MonoBehaviour
         return this.email;
     }
 
-    public string getPassword()
-    {
-        return this.password;
-    }
-
     public void setUsername(string name)
     {
         this.username = name;
+    }
+
+    public void setEmail(string email)
+    {
+        this.email = email;
+    }
+
+    public void setUserId(string userid)
+    {
+        this.userid = userid;
     }
 }
