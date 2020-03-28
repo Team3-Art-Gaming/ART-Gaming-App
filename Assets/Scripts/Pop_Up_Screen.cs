@@ -24,6 +24,7 @@ public class Pop_Up_Screen : MonoBehaviour
     {
         this.caller = caller;
         transform.position = new Vector3(540, 960, 0);
+
         textbox.text = s;
     }
 
