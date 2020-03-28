@@ -39,25 +39,26 @@ public class CreateUserFB : MonoBehaviour
     public void pushUser()
 	{
 
-        string playerName = userName.text;
+        string playerName = enterUsername.text;
+        string playerEmail = enterEmail.text;
+        string playerPass = enterPass.text;
 
         string path = "/1Test/";
-        string path1 = string.Concat(path, playerName);
-        string path2 = string.Concat(path1, "/password");
-        string path3 = string.Concat(path1, "/email");
-        string path4 = string.Concat(path1, "/RecievedFriendRequests");
-        string path5 = string.Concat(path1, "/SentFriendRequests");
+        string NamePath = string.Concat(path, playerName);
+        PushData(NamePath, playerName);
 
-        PushData(path1, playerName);
-        PushData(path2, "pass");
-        PushData(path3, "g@mail.com");
-        PushData(path4, "RecievedFriendRequests");
-        PushData(path5, "SentFriendRequests");
-        //DBreference.Child("/users/0").SetValueAsync(playerName);
-        //DBreference.GetReference("MAPS").GetValueAsync;
+        string EmailPath = string.Concat(NamePath, "/email/");
+        PushData(EmailPath, playerEmail);
 
-        SendFriendRequests(playerName, "david");
+        string PassPath = string.Concat(NamePath, "/password/");
+        PushData(PassPath, playerPass);
 
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
+        //string UserListUpdate = string.Concat(path, "0UserList/");
+        //PushData(UserListUpdate, playerName);
     }
 
     public void PushData(string path, string data)

@@ -2027,8 +2027,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enterEmail: {fileID: 777640383}
-  enterUsername: {fileID: 29302803}
-  enterPass: {fileID: 921778263}
+  enterUsername: {fileID: 921778263}
+  enterPass: {fileID: 29302803}
   reEnterPass: {fileID: 2124677324}
   OnFirebaseInitialized:
     m_PersistentCalls:
