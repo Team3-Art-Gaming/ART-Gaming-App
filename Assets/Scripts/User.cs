@@ -7,9 +7,7 @@ public class User : ScriptableObject
     public string email;
     public string userid;
     public string username;
-    public List<string> ReceivedFriendRequests = new List<string>();
-    public List<string> SentFriendRequests = new List<string>();
-    public List<string> CurrentFriends = new List<string>();
+    public List<Friends> FriendsList = new List<Friends>();
     public List<string> CreatedMaps = new List<string>();
 
     public void init(string name, string email, string userid)
@@ -17,9 +15,29 @@ public class User : ScriptableObject
         this.email = email;
         this.userid = userid;
         this.username = name;
-        ReceivedFriendRequests.Add("placeholder");
-        SentFriendRequests.Add("placeholder");
-        CurrentFriends.Add("placeholder");
+
+        Friends F = new Friends("John", "Pending");
+        FriendsList.Add(F);
+        F = new Friends("Alice", "Requesting");
+        FriendsList.Add(F);
+        F = new Friends("Mike", "Pending");
+        FriendsList.Add(F);
+        F = new Friends("Oscar", "Requesting");
+        FriendsList.Add(F);
+        F = new Friends("Diana", "Friend");
+        FriendsList.Add(F);
+        F = new Friends("Max", "Friend");
+        FriendsList.Add(F);
+        F = new Friends("George", "Friend");
+        FriendsList.Add(F);
+        F = new Friends("James", "Requesting");
+        FriendsList.Add(F);
+        F = new Friends("Hector", "Pending");
+        FriendsList.Add(F);
+        F = new Friends("Jessie", "Requesting");
+        FriendsList.Add(F);
+        F = new Friends("Ashley", "Pending");
+        FriendsList.Add(F);
         CreatedMaps.Add("{date : name }");
     }
 

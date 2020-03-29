@@ -185,7 +185,11 @@ public class requestHandler : MonoBehaviour
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
 
         string jsonDataBlock = JsonUtility.ToJson(user);
+        Debug.Log("user: "+user.FriendsList);
+        //string jsonFriendsList = JsonUtility.ToJson(user.FriendsList);
+        //Debug.Log("json: "+jsonFriendsList);
         DBreference.Child("users").Child(user.getUsername()).SetRawJsonValueAsync(jsonDataBlock);
+        //DBreference.Child("FriendsList").SetRawJsonValueAsync(jsonFriendsList);
     }
 
     public void updateUserProfile(Firebase.Auth.FirebaseUser user, string name, string photoUrl)

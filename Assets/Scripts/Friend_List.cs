@@ -3,16 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Friends
-{
-    public string Name;
-    public string Status; 
-    public Friends(string name, string status)
-    {
-        Name = name;
-        Status = status; 
-    }
-}
 
 public class Friend_List : MonoBehaviour
 {
@@ -49,6 +39,7 @@ public class Friend_List : MonoBehaviour
         friends.Add(F);
         F = new Friends("Ashley", "Pending");
         friends.Add(F);
+
     }
 
     public void Set_Category(string Cat)
