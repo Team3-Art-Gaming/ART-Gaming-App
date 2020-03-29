@@ -134,6 +134,8 @@ public class requestHandler : MonoBehaviour
             if (currentUser.IsEmailVerified)
             {
                 Debug.Log("Email is verified");
+                PlayerPrefs.SetString("Username", registerThisUser.getUsername());
+                PlayerPrefs.Save();
                 SceneManager.LoadScene(2);
             }
             else

@@ -27,8 +27,8 @@ EditorBuildSettings:
     path: Assets/Scenes/LaunchScene.unity
     guid: 9753b5c5b4f154d40b99f063e87c6264
   - enabled: 1
-    path: Assets/Scenes/Playground.unity
-    guid: bb86d3b653aae0d4ca1019f42e28bce3
+    path: Assets/Scenes/MapMaker.unity
+    guid: 33997327dec7ffa4989d784862dc245d
   - enabled: 1
     path: Assets/Scenes/AR-DM.unity
     guid: a7faa0cf40a678d40abffe60534936e0
