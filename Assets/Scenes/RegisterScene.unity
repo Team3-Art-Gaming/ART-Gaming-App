@@ -715,8 +715,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1801355056}
-          m_MethodName: pushUser
+        - m_Target: {fileID: 11500000, guid: 8259dc9437d9f4464964b1db5be732bb, type: 3}
+          m_MethodName: 
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1357,10 +1357,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1964,7 +1964,6 @@ GameObject:
   - component: {fileID: 1801355054}
   - component: {fileID: 1801355053}
   - component: {fileID: 1801355055}
-  - component: {fileID: 1801355056}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -1992,7 +1991,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801355052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 553.6586, y: 252.60094, z: 865.73254}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2014,25 +2013,10 @@ MonoBehaviour:
   username: {fileID: 921778263}
   password0: {fileID: 29302803}
   password1: {fileID: 2124677324}
---- !u!114 &1801355056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801355052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8259dc9437d9f4464964b1db5be732bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enterEmail: {fileID: 777640383}
-  enterUsername: {fileID: 29302803}
-  enterPass: {fileID: 921778263}
-  reEnterPass: {fileID: 2124677324}
-  OnFirebaseInitialized:
-    m_PersistentCalls:
-      m_Calls: []
+  popupprefab: {fileID: 5758526377020779405, guid: be96b61c409b6f84f9157e32ef271c04,
+    type: 3}
+  popUp: {fileID: 0}
+  parent: {fileID: 1020623798}
 --- !u!1 &1862252398
 GameObject:
   m_ObjectHideFlags: 0
