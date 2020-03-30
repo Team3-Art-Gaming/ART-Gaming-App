@@ -113,7 +113,7 @@ public class requestHandler : MonoBehaviour
         });
     }
 
-    private void authenticateLogin(string email, string pass)
+    private void authenticateLogin(string name, string email, string pass)
     {
         Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.GetAuth(Firebase.FirebaseApp.DefaultInstance);
         auth.SignInWithEmailAndPasswordAsync(email, pass).ContinueWithOnMainThread(task =>
@@ -133,9 +133,12 @@ public class requestHandler : MonoBehaviour
             Firebase.Auth.FirebaseUser currentUser = task.Result;
             if (currentUser.IsEmailVerified)
             {
-                Debug.Log("Email is verified");
-                PlayerPrefs.SetString("Username", registerThisUser.getUsername());
+                Debug.Log("Email is verified!!");
+
+                if (registerThisUser) Debug.Log("Valid");
+                PlayerPrefs.SetString("Username", name);
                 PlayerPrefs.Save();
+                Debug.Log("Saved " + name + " to PlayerPrefs");
                 SceneManager.LoadScene(2);
             }
             else
@@ -169,7 +172,7 @@ public class requestHandler : MonoBehaviour
                 }
                 else
                 {
-                    authenticateLogin(snapshot.Child(name).Child("email").Value.ToString(), password);
+                    authenticateLogin(name, snapshot.Child(name).Child("email").Value.ToString(), password);
                 }
             }
             else
