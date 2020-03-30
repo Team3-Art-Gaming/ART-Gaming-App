@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class testLoginHandler : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class testLoginHandler : MonoBehaviour
 
     void Start()
     {
+        if (PlayerPrefs.HasKey("Username") && PlayerPrefs.GetString("Username") != "") SceneManager.LoadScene(2); 
         popUp = Instantiate(popupprefab, new Vector3(540, 960, 0), Quaternion.identity, parent.transform);
         popUp.SendMessage("deactivatePopUp");
         popUp.SendMessage("setPrefab", popUp);
