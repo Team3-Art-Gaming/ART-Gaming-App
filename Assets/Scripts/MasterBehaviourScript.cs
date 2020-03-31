@@ -52,20 +52,28 @@ public class MasterBehaviourScript : MonoBehaviour
         BuildSelectorStructure();
         BuildSelectors(-1);
         BuildMap();
+        if (PlayerPrefs.HasKey("Username"))
+        {
+            Debug.Log(PlayerPrefs.GetString("Username"));
+        }
+        else
+        {
+            Debug.Log("Nope");
+        }
     }
 
     private void BuildSelectorStructure()
     {
         categories = new List<LE_Category>();
         Sprite[] packages = Resources.LoadAll<Sprite>("Sets/_Cat");
-        Debug.Log("Found " + packages.Length + " packages");
+        //Debug.Log("Found " + packages.Length + " packages");
         for(int i = 0; i < packages.Length; ++i)
         {
             Sprite package = packages[i];
-            Debug.Log(package.name);
+            //Debug.Log(package.name);
             LE_Category tempCat = new LE_Category(i, package.name, Convert.ToString(i, 16).PadLeft(3,'0'), package);
             Sprite[] selectors = Resources.LoadAll<Sprite>("Sets/" + package.name);
-            Debug.Log("Found " + selectors.Length + " selectors");
+            //Debug.Log("Found " + selectors.Length + " selectors");
             for(int j = 0; j < selectors.Length; ++j)
             {
                 Sprite selector = selectors[j];

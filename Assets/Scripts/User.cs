@@ -2,26 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class User : MonoBehaviour
-{
-    public string username;
-    public string userid;
+public class User : ScriptableObject
+{ 
     public string email;
-    public string password;
-    public List<string> friendslist = new List<string>();
-    public List<string> friendrequests = new List<string>();
-    public List<string> createdmaps = new List<string>();
+    public string userid;
+    public string username;
+    public List<Friends> FriendsList = new List<Friends>();
+    public List<string> CreatedMaps = new List<string>();
 
-    public User() { }
-    public User(string name, string id, string email, string pass)
+    public void init(string name, string email, string userid)
     {
-        this.username = name;
-        this.userid = id;
         this.email = email;
-        this.password = pass;
-        this.friendslist.Add("placeholder");
-        this.friendrequests.Add("placeholder");
-        this.createdmaps.Add("placeholder");
+        this.userid = userid;
+        this.username = name;
+
+        Friends F = new Friends("John", "Pending");
+        FriendsList.Add(F);
+        F = new Friends("Alice", "Requesting");
+        FriendsList.Add(F);
+        F = new Friends("Mike", "Pending");
+        FriendsList.Add(F);
+        F = new Friends("Oscar", "Requesting");
+        FriendsList.Add(F);
+        F = new Friends("Diana", "Friend");
+        FriendsList.Add(F);
+        F = new Friends("Max", "Friend");
+        FriendsList.Add(F);
+        F = new Friends("George", "Friend");
+        FriendsList.Add(F);
+        F = new Friends("James", "Requesting");
+        FriendsList.Add(F);
+        F = new Friends("Hector", "Pending");
+        FriendsList.Add(F);
+        F = new Friends("Jessie", "Requesting");
+        FriendsList.Add(F);
+        F = new Friends("Ashley", "Pending");
+        FriendsList.Add(F);
+        CreatedMaps.Add("{date : name }");
     }
 
     public string getUsername()
@@ -39,13 +56,18 @@ public class User : MonoBehaviour
         return this.email;
     }
 
-    public string getPassword()
-    {
-        return this.password;
-    }
-
     public void setUsername(string name)
     {
         this.username = name;
+    }
+
+    public void setEmail(string email)
+    {
+        this.email = email;
+    }
+
+    public void setUserId(string userid)
+    {
+        this.userid = userid;
     }
 }
