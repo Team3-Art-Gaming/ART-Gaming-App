@@ -479,8 +479,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ff435687b82e14a97f8d2c202e29ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  email: {fileID: 628765931}
+  username: {fileID: 628765931}
   password: {fileID: 1071026361}
+  popupprefab: {fileID: 5758526377020779405, guid: be96b61c409b6f84f9157e32ef271c04,
+    type: 3}
+  popUp: {fileID: 0}
+  parent: {fileID: 890567110}
 --- !u!1 &335450674
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,7 +709,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: email
+  m_Text: username
 --- !u!222 &521416498
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -993,10 +997,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

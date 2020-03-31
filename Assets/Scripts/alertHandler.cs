@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class alertHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject caller;
+    private GameObject popNotif;
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        this.popNotif = Instantiate(caller, new Vector3(0, 0, 1), Quaternion.identity);
     }
 }

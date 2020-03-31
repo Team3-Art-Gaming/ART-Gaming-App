@@ -3,18 +3,31 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class testLoginHandler : MonoBehaviour
 {
-    public InputField email;
+    public InputField username;
     public InputField password;
+
+    public GameObject popupprefab;
+    public GameObject popUp;
+    public GameObject parent;
+
+    void Start()
+    {
+        if (PlayerPrefs.HasKey("Username") && PlayerPrefs.GetString("Username") != "") SceneManager.LoadScene(2); 
+        popUp = Instantiate(popupprefab, new Vector3(540, 960, 0), Quaternion.identity, parent.transform);
+        popUp.SendMessage("deactivatePopUp");
+        popUp.SendMessage("setPrefab", popUp);
+    }
 
     public void loginHandler()
     {
         if (checkInputFields())
         {
             requestHandler loginReq = new requestHandler();
-            loginReq.authLogin(email.text, password.text);
+            loginReq.authLogin(username.text, password.text);
         }
     }
 
@@ -32,13 +45,14 @@ public class testLoginHandler : MonoBehaviour
 
     private bool checkEmailInput()
     {
-        if (!string.IsNullOrEmpty(email.text))
+        if (!string.IsNullOrEmpty(username.text))
         {
             return true;
         }
         else
         {
             Debug.Log("Login: email field is empty!");
+            popUp.SendMessage("activatePopUp", "Email field is empty!");
             return false;
         }
     }
@@ -52,6 +66,7 @@ public class testLoginHandler : MonoBehaviour
         else
         {
             Debug.Log("Login: password field is empty!");
+            popUp.SendMessage("activatePopUp", "Password field is empty!");
             return false;
         }
     }
