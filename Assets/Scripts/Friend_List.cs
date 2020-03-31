@@ -68,4 +68,5 @@ public class Friend_List : MonoBehaviour
 
         entries.Clear();
     }
+
 }

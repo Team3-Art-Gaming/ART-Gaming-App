@@ -10,6 +10,7 @@ public class Pop_Up_Screen : MonoBehaviour
     private GameObject caller;
     private Button ok_btn, c_btn;
     private int scene = 0;
+    private string thisFriendRequest;
 
     public void setPrefab(GameObject caller)
     {
@@ -38,6 +39,11 @@ public class Pop_Up_Screen : MonoBehaviour
         this.scene = sceneNum;
     }
 
+    public void setFriendRequestName(string name)
+    {
+        this.thisFriendRequest = name;
+    }
+
     public void setOkButton(string s)
     {
         switch (s)
@@ -45,6 +51,10 @@ public class Pop_Up_Screen : MonoBehaviour
             case "ChangeScene":
                 ok_btn.onClick.RemoveListener(okay_Click);
                 ok_btn.onClick.AddListener(okay_Click_Scene);
+                break;
+            case "SendFriendRequest":
+                ok_btn.onClick.RemoveListener(okay_Click);
+                ok_btn.onClick.AddListener(send_Friend_Request_Okay);
                 break;
             default:
                 break;
@@ -66,6 +76,11 @@ public class Pop_Up_Screen : MonoBehaviour
         this.caller.SendMessage("POP_UP_RESPONSE", "ChangeScene");
     }
 
+    public void send_Friend_Request_Okay()
+    {
+        this.caller.SendMessage("POP_UP_RESPONSE", "SendFriendRequest");
+    }
+
     public void POP_UP_RESPONSE(string s)
     {
         switch (s)
@@ -79,6 +94,9 @@ public class Pop_Up_Screen : MonoBehaviour
             case "ChangeScene":
                 deactivatePopUp();
                 SceneManager.LoadScene(0);
+                break;
+            case "SendFriendRequest":
+                this.caller.SendMessage("SendFriendRequests", this.thisFriendRequest);
                 break;
             default:
                 break;

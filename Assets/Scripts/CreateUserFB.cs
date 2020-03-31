@@ -64,7 +64,7 @@ public class CreateUserFB : MonoBehaviour
         //string test = GetData("/1Test/7767alex/email"); returns "{\"RecievedFriendRequests\":\"RecievedFriendRequests\",\"SentFriendRequests\"
         // :{\"david\":\"pending\"},\"email\":\"g@mail.com\",\"password\":\"pass\"}"
 
-        SendFriendRequests("Marc", "kev");
+        //SendFriendRequests("Marc", "kev");
         //SendFriendRequests("alex", "james");
         //AcceptRecievedFriendRequests("james", "alex");
 
@@ -112,12 +112,12 @@ public class CreateUserFB : MonoBehaviour
         //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child("blip").SetValueAsync(data);
     }
 
-    public void SendFriendRequests(string MyName, string FriendName)
+    public void SendFriendRequests(string FriendName)
     {
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
 
-
+        string MyName = PlayerPrefs.GetString("Username");
         string SentPath = string.Concat("/users/", MyName);
         SentPath = string.Concat(SentPath, "/friends/");
         SentPath = string.Concat(SentPath, FriendName);
