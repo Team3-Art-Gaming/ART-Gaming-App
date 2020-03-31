@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 class Room
 {
@@ -26,6 +27,7 @@ public class MasterARScript : MonoBehaviour
     const int numOfIcons = 2;
     const float baseX = 5 * -offset;
     const float baseY = 2 * -offset;
+    Color[] colors = { Color.black, Color.white };
 
     int mapPosX;
     int mapPosY;
@@ -73,9 +75,9 @@ public class MasterARScript : MonoBehaviour
             Debug.Log("A");
             if(selectedIcon == 1)
             {
-                Light light = map[selectedCellX * mapSize + selectedCellY].model.GetComponent<Light>();
-                if (light) Debug.Log("Found Light");
-                light.enabled = !light.enabled;
+                Room r = map[selectedCellX * mapSize + selectedCellY];
+                r.visible = !r.visible;
+                setAllMeshesColor(r.model, Convert.ToInt32(r.visible));
             }
         }
 
@@ -196,16 +198,23 @@ public class MasterARScript : MonoBehaviour
                 {
                     GameObject go = Instantiate(meshes[room.hex], new Vector3(y * offset, 0, x * offset), quats[room.rot], this.transform);
                     go.transform.localScale = new Vector3(scale, scale, scale);
-                    Light light = go.AddComponent<Light>();
-                    light.intensity = 20.0f;
-                    light.range = offset;
-                    light.transform.localPosition += new Vector3(0,offset,0);
+                    setAllMeshesColor(go, Convert.ToInt32(room.visible));
                     room.model = go;
                 }
             }
         }
         transform.localPosition = new Vector3(baseX, -offset, baseY);
         pointer.transform.localPosition = new Vector3(baseX, 0.5f, baseY);
+    }
+
+    private void setAllMeshesColor(GameObject go, int color)
+    {
+        for (int i = 0; i < go.transform.childCount; i++)
+        {
+            Transform g = go.transform.GetChild(i);
+            MeshRenderer mr = g.GetComponent<MeshRenderer>();
+            mr.material.SetColor("_Color", colors[color]);
+        }
     }
 
     private void loadMeshes()
