@@ -17,6 +17,8 @@ public class MasterBehaviourScript : MonoBehaviour
     private Image mapGrid;
     [SerializeField]
     private Sprite defaultSprite;
+    [SerializeField]
+    private InputField mapNameField;
 
     private const int mapSize = 128;
 
@@ -35,9 +37,16 @@ public class MasterBehaviourScript : MonoBehaviour
     private List<LE_MapElements> map;
 
     private void Awake()
-    {
-        readout = GetComponentInChildren<Text>(); //For Debug Purposes Only
+    { 
         Screen.orientation = ScreenOrientation.LandscapeLeft;
+        if (PlayerPrefs.HasKey("MapName"))
+        {
+            mapNameField.text = PlayerPrefs.GetString("MapName");
+        }
+        else
+        {
+            mapNameField.text = "Default Map";
+        }
         curCategory = -1;
         curSelection = -1;
         BuildSelectorStructure();
@@ -219,8 +228,11 @@ public class MasterBehaviourScript : MonoBehaviour
         //Text t = GetComponentInChildren<Text>();
         //readout.text = mapString;
         PlayerPrefs.SetString("TempLevel", mapString);
+        string mapName = mapNameField.text;
+        PlayerPrefs.SetString("MapName", mapName);
         PlayerPrefs.Save();
-        Debug.Log("Saved: " + mapString);
+        Debug.Log("Saved map " + mapName);
+        Debug.Log(mapString);
     }
 
     public void LoadClicked()
