@@ -918,7 +918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1035,7 +1035,7 @@ GameObject:
   - component: {fileID: 820634896}
   - component: {fileID: 820634895}
   m_Layer: 5
-  m_Name: Pending
+  m_Name: PendingBTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1201,7 +1201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1241,7 +1241,7 @@ GameObject:
   - component: {fileID: 899698091}
   - component: {fileID: 899698090}
   m_Layer: 5
-  m_Name: Requesting
+  m_Name: RequestingBTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1370,7 +1370,7 @@ GameObject:
   - component: {fileID: 969416821}
   - component: {fileID: 969416820}
   m_Layer: 5
-  m_Name: Friend List
+  m_Name: FriendBTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1447,7 +1447,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Requesting
+          m_StringArgument: Friend
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &969416821
@@ -1536,7 +1536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2094,6 +2094,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2046796128}
   - component: {fileID: 2046796127}
+  - component: {fileID: 2046796130}
   - component: {fileID: 2046796129}
   m_Layer: 0
   m_Name: SceneManager
@@ -2145,6 +2146,25 @@ MonoBehaviour:
     type: 3}
   popUp: {fileID: 0}
   parent: {fileID: 468007341}
+--- !u!114 &2046796130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046796126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8259dc9437d9f4464964b1db5be732bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enterEmail: {fileID: 0}
+  enterUsername: {fileID: 0}
+  enterPass: {fileID: 0}
+  reEnterPass: {fileID: 0}
+  OnFirebaseInitialized:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2067023755
 GameObject:
   m_ObjectHideFlags: 0

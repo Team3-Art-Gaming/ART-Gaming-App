@@ -20,77 +20,10 @@ public class CreateUserFB : MonoBehaviour
     public InputField reEnterPass;
     public UnityEvent OnFirebaseInitialized = new UnityEvent();
 
+    private Friend_List flScript;
+
     //Added a public function that pushes the class User as a Json into database.
     public CreateUserFB() { }
-
-    public void pushUserJson(User currentUser)
-    {
-        //FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
-        //DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
-
-        //string json = JsonUtility.ToJson(currentUser);
-        //DBreference.Child("users").Child(currentUser.getUserid()).SetRawJsonValueAsync(json);
-        //Debug.Log("Writing User info to database");
-    }
-    //Rest of Alex's code remains intact
-
-
-
-    //public void pushUser()
-    public async void pushUser()
-    {
-
-        string playerName = enterUsername.text;
-        string playerEmail = enterEmail.text;
-        string playerPass = enterPass.text;
-
-        string path = "/1Test/";
-        string NamePath = string.Concat(path, playerName);
-        //PushData(NamePath, playerName);
-
-        string EmailPath = string.Concat(NamePath, "/email/");
-        //PushData(EmailPath, playerEmail);
-
-        string PassPath = string.Concat(NamePath, "/password/");
-        //PushData(PassPath, playerPass);
-
-        string FriendPath = string.Concat(NamePath, "/friends/");
-        //PushData(FriendPath, "friends");
-
-        string CurrentGamesPath = string.Concat(NamePath, "/CurrentGames/");
-        //PushData(CurrentGamesPath, "CurrentGames");
-
-        //AddUser(playerName);
-        //string test = GetData("/1Test/7767alex/email"); returns "{\"RecievedFriendRequests\":\"RecievedFriendRequests\",\"SentFriendRequests\"
-        // :{\"david\":\"pending\"},\"email\":\"g@mail.com\",\"password\":\"pass\"}"
-
-        //SendFriendRequests("Marc", "kev");
-        //SendFriendRequests("alex", "james");
-        //AcceptRecievedFriendRequests("james", "alex");
-
-    }
-
-    public void AddUser(string name)
-    {
-        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
-        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
-
-        FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(name).SetValueAsync("1");
-    }
-
-    public bool DoesUserExist(string name)
-    {
-        int exist = 1;// = GetDataAsync(name);
-        if (exist == 1)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-
-    }
 
     public async Task<string> GetDataAsync(string path)
     {
@@ -112,7 +45,15 @@ public class CreateUserFB : MonoBehaviour
         //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child("blip").SetValueAsync(data);
     }
 
-    public void SendFriendRequests(string FriendName)
+    public void DeleteData(string path)
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        DBreference.Child(path).RemoveValueAsync();
+    }
+
+    public void sendFriendRequests(string FriendName)
     {
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
@@ -129,36 +70,87 @@ public class CreateUserFB : MonoBehaviour
         PushData(SendRequestPath, "Requesting");
     }
 
-    public void AcceptRecievedFriendRequests(string MyName, string FriendName)
+    public void updateFriendsList(List<Friends> friendslist)
     {
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
 
-        string MyPath = "/1Test/";
-        MyPath = string.Concat(MyPath, MyName);
-        MyPath = string.Concat(MyPath, "/RecievedFriendRequests/");
-        MyPath = string.Concat(MyPath, FriendName);
-        PushData(MyPath, "Accepted");
+        foreach (Friends friend in friendslist)
+        {
+            Debug.Log(friend.Name+": "+friend.Status);
+            if (friend.Status == "Friend")
+            {
+                setFriend(friend.Name);
+            }
+            else if (friend.Status == "Delete")
+            {
+                deleteFriend(friend.Name);
+            }
+        }
+    }
 
-        string AcceptPath = "/1Test/";
-        AcceptPath = string.Concat(AcceptPath, MyName);
-        AcceptPath = string.Concat(AcceptPath, "/RecievedFriendRequests/");
-        //AcceptPath = string.Concat(AcceptPath, FriendName);
-        FirebaseDatabase.DefaultInstance.GetReference(AcceptPath).Child(FriendName).RemoveValueAsync();
-        AcceptPath = "/1Test/";
-        AcceptPath = string.Concat(AcceptPath, MyName);
-        AcceptPath = string.Concat(AcceptPath, "/friends/");
-        FirebaseDatabase.DefaultInstance.GetReference(AcceptPath).Child(FriendName).SetValueAsync("1");
+    public void setFriend(string friendName)
+    {
+        string MyName = PlayerPrefs.GetString("Username");
+        string SentPath = string.Concat("/users/", MyName);
+        SentPath = string.Concat(SentPath, "/friends/");
+        SentPath = string.Concat(SentPath, friendName);
+        PushData(SentPath, "Friend");
 
-        string FriendPath = "/1Test/";
-        FriendPath = string.Concat(FriendPath, FriendName);
-        FriendPath = string.Concat(FriendPath, "/SentFriendRequests/");
-        //FriendPath = string.Concat(FriendPath, MyName);
-        FirebaseDatabase.DefaultInstance.GetReference(FriendPath).Child(MyName).RemoveValueAsync();
-        FriendPath = "/1Test/";
-        FriendPath = string.Concat(FriendPath, FriendName);
-        FriendPath = string.Concat(FriendPath, "/friends/");
-        FirebaseDatabase.DefaultInstance.GetReference(FriendPath).Child(MyName).SetValueAsync("1");
+        string SendPath = string.Concat("/users/", friendName);
+        string SendRequestPath = string.Concat(SendPath, "/friends/");
+        SendRequestPath = string.Concat(SendRequestPath, MyName);
+        PushData(SendRequestPath, "Friend");
+    }
+
+    public void deleteFriend(string friendName)
+    {
+        string MyName = PlayerPrefs.GetString("Username");
+        string SentPath = string.Concat("/users/", MyName);
+        SentPath = string.Concat(SentPath, "/friends/");
+        SentPath = string.Concat(SentPath, friendName);
+        DeleteData(SentPath);
+
+        string SendPath = string.Concat("/users/", friendName);
+        string SendRequestPath = string.Concat(SendPath, "/friends/");
+        SendRequestPath = string.Concat(SendRequestPath, MyName);
+        DeleteData(SendRequestPath);
+    }
+
+    public List<Friends> GetFriendsList()
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        string currentUser = PlayerPrefs.GetString("Username");
+        List<Friends> friendslist = new List<Friends>();
+
+        FirebaseDatabase.DefaultInstance.GetReference("users/"+currentUser+"/friends/").GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                Debug.Log("BLARG");
+                return null;
+            }
+            else if (task.IsCompleted)
+            {
+                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
+                DataSnapshot snapshot = task.Result;
+                //string data = snapshot.Children;
+              
+                foreach ( var child in snapshot.Children)
+                { 
+                    //Debug.Log(child.Key + ": " + child.Value);
+                    friendslist.Add(new Friends(child.Key.ToString(), child.Value.ToString()));
+                }
+                return friendslist;
+            }
+            else
+            {
+                Debug.Log("ELSE");
+                return null;
+            }
+        });
+        return friendslist;
     }
 
     public string GetData(string path)
@@ -195,31 +187,4 @@ public class CreateUserFB : MonoBehaviour
         //b.Wait();
         return "error1";
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
-        {
-            if (task.Exception != null)
-            {
-                Debug.LogError($"Failed to initialize {task.Exception}");
-                return;
-            }
-            OnFirebaseInitialized.Invoke();
-            string json = JsonUtility.ToJson(enterUsername.text);
-            FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
-            DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
-            DBreference.Child("/users").SetRawJsonValueAsync(json);
-            //DBreference.GetReference("/test").SetRawJsonValueAsync(JsonUtility.ToJson(example.text));
-        });
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
 }
