@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "80540035179",
+    "firebase_url": "https://art-152.firebaseio.com",
+    "project_id": "art-152",
+    "storage_bucket": "art-152.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80540035179:android:ea40bb191bf16bcfd5292e",
+        "android_client_info": {
+          "package_name": "com.google.firebase.ARTGaming"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80540035179-h0d15q1057oh6b5uln4u3rcusvhjbv5e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyet8f0W87R3z7-3MKZBVMwTLKfWp4-s8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80540035179-h0d15q1057oh6b5uln4u3rcusvhjbv5e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80540035179:android:4d3a6790ffa95899d5292e",
+        "android_client_info": {
+          "package_name": "com.google.firebase.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80540035179-d0grsn4eqgr7i4d3mhr6gpdj0l49v9ak.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.google.firebase.test",
+            "certificate_hash": "af0d6a3febcc24b411abe4d38265c3c025412a44"
+          }
+        },
+        {
+          "client_id": "80540035179-h0d15q1057oh6b5uln4u3rcusvhjbv5e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyet8f0W87R3z7-3MKZBVMwTLKfWp4-s8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80540035179-h0d15q1057oh6b5uln4u3rcusvhjbv5e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

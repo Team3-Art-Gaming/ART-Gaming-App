@@ -4,5 +4,32 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/LoginScene.unity
+    guid: a6b85b387ac22e547bd79e6ad1070f82
+  - enabled: 1
+    path: Assets/Scenes/RegisterScene.unity
+    guid: e5e96c9f464461c45b6db96bb00080e7
+  - enabled: 1
+    path: Assets/Scenes/HomePortal.unity
+    guid: 53acd3b51bf899647970347741bef187
+  - enabled: 1
+    path: Assets/Scenes/FriendsListScene.unity
+    guid: 3689dc1c70be72c4c8a7157995ce3c9d
+  - enabled: 1
+    path: Assets/Scenes/MapsScene.unity
+    guid: 2fe515226adfb6e478d963febd1b73fe
+  - enabled: 1
+    path: Assets/Scenes/ProfileScene.unity
+    guid: 1ff5a5e8a54d50d4da31ad6a764638d9
+  - enabled: 1
+    path: Assets/Scenes/LaunchScene.unity
+    guid: 9753b5c5b4f154d40b99f063e87c6264
+  - enabled: 1
+    path: Assets/Scenes/MapMaker.unity
+    guid: 33997327dec7ffa4989d784862dc245d
+  - enabled: 1
+    path: Assets/Scenes/AR-DM.unity
+    guid: a7faa0cf40a678d40abffe60534936e0
   m_configObjects: {}
