@@ -199,6 +199,7 @@ public class CreateUserFB : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
             if (task.Exception != null)
@@ -213,6 +214,7 @@ public class CreateUserFB : MonoBehaviour
             DBreference.Child("/users").SetRawJsonValueAsync(json);
             //DBreference.GetReference("/test").SetRawJsonValueAsync(JsonUtility.ToJson(example.text));
         });
+        */
     }
 
     // Update is called once per frame
