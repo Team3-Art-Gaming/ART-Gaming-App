@@ -138,6 +138,7 @@ public class requestHandler : MonoBehaviour
                 if (registerThisUser) Debug.Log("Valid");
                 PlayerPrefs.SetString("Username", name);
                 PlayerPrefs.Save();
+                PushData("users/" + name + "/Status/", "Active");
                 Debug.Log("Saved " + name + " to PlayerPrefs");
                 SceneManager.LoadScene(2);
             }
@@ -148,6 +149,15 @@ public class requestHandler : MonoBehaviour
             }
 
         });
+    }
+
+    public void PushData(string path, string data)
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        DBreference.Child(path).SetValueAsync(data);
+        //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child("blip").SetValueAsync(data);
     }
 
     private void preLoginRequest(string name, string password)
