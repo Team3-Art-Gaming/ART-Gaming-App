@@ -14,6 +14,13 @@ public class Friend_List : MonoBehaviour
     Image FriendPrefab;
     [SerializeField]
     Image Grid;
+    [SerializeField] 
+    Button friend;
+    [SerializeField] 
+    Button pending;
+    [SerializeField] 
+    Button requesting;
+    
     
     public List<Friends> friends;
     public List<Image> entries;
@@ -70,6 +77,27 @@ public class Friend_List : MonoBehaviour
         Destroy_Entries();
         PlayerPrefs.SetString("FriendScene", Cat);
         PlayerPrefs.Save();
+
+        if (Cat == "Friend")
+        {
+            friend.GetComponent<Image>().color = Color.white;
+            pending.GetComponent<Image>().color = Color.gray;
+            requesting.GetComponent<Image>().color = Color.gray;
+        }
+        
+        else if (Cat == "Requesting")
+        {
+            friend.GetComponent<Image>().color = Color.gray;
+            pending.GetComponent<Image>().color = Color.gray;
+            requesting.GetComponent<Image>().color = Color.white;
+        }
+        
+        else if (Cat == "Pending")
+        {
+            friend.GetComponent<Image>().color = Color.gray;
+            pending.GetComponent<Image>().color = Color.white;
+            requesting.GetComponent<Image>().color = Color.gray;
+        }
 
         foreach (Friends friend in this.friends)
         {
