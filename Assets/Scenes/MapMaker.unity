@@ -1105,6 +1105,7 @@ MonoBehaviour:
   mapGrid: {fileID: 1568817461}
   defaultSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   mapNameField: {fileID: 30870273}
+  MapName: {fileID: 30870273}
 --- !u!114 &938343661
 MonoBehaviour:
   m_ObjectHideFlags: 0
