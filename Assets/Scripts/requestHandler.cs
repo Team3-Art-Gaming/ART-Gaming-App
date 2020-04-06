@@ -140,6 +140,7 @@ public class requestHandler : MonoBehaviour
                 PlayerPrefs.Save();
                 PushData("users/" + name + "/Status/", "Active");
                 Debug.Log("Saved " + name + " to PlayerPrefs");
+                DownloadMaps();
                 SceneManager.LoadScene(2);
             }
             else
@@ -149,6 +150,86 @@ public class requestHandler : MonoBehaviour
             }
 
         });
+    }
+
+    public void DownloadMaps()
+	{
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        string name = PlayerPrefs.GetString("Username");
+        string MapName;
+        string MapString;
+
+        FirebaseDatabase.DefaultInstance.GetReference("users/" + name + "/CreatedMaps/").GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                Debug.Log("BLARG");
+                return;
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+
+                foreach (var child in snapshot.Children)
+                {
+                    MapName = child.Key.ToString();
+                    MapString = child.Key.ToString();
+
+                    PlayerPrefs.SetString(MapName, MapString);
+                    PlayerPrefs.Save();
+                }
+                return;
+            }
+            else
+            {
+                Debug.Log("ELSE");
+                return;
+            }
+        });
+        int milliseconds = 2000;
+        Thread.Sleep(milliseconds);
+        return;
+
+    }
+
+    public List<Friends> GetFriendsList()
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        string currentUser = PlayerPrefs.GetString("Username");
+        List<Friends> friendslist = new List<Friends>();
+
+        FirebaseDatabase.DefaultInstance.GetReference("users/" + currentUser + "/friends/").GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                Debug.Log("BLARG");
+                return null;
+            }
+            else if (task.IsCompleted)
+            {
+                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
+                DataSnapshot snapshot = task.Result;
+                //string data = snapshot.Children;
+
+                foreach (var child in snapshot.Children)
+                {
+                    //Debug.Log(child.Key + ": " + child.Value);
+
+                    friendslist.Add(new Friends(child.Key.ToString(), child.Value.ToString()));
+                }
+                return friendslist;
+            }
+            else
+            {
+                Debug.Log("ELSE");
+                return null;
+            }
+        });
+        int milliseconds = 2000;
+        Thread.Sleep(milliseconds);
+        return friendslist;
     }
 
     public void PushData(string path, string data)
