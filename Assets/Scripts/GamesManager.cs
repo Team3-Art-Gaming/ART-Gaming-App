@@ -40,8 +40,13 @@ public class GamesManager : MonoBehaviour
         PushData("/1Test/ActiveGames/" + SessionName + "/MapString/", MapString);
 
         List<Friends> FriendsList = new List<Friends>();
-        FriendsList = GetFriendsList();
-        FriendsList.Add(new Friends("kev", "Friend"));
+        FriendsList = this.GetFriendsList();
+        foreach(var child in FriendsList)
+		{
+            Debug.Log(child.Name + ": " + child.Status);
+		}
+
+        //FriendsList.Add(new Friends("kev", "Friend"));
 
         string FriendName;
         for(var i = 0; i < FriendsList.Count;i++)
@@ -112,6 +117,7 @@ public class GamesManager : MonoBehaviour
 
         string currentUser = PlayerPrefs.GetString("Username");
         List<Friends> friendslist = new List<Friends>();
+        Debug.Log("???????" + currentUser);
 
         FirebaseDatabase.DefaultInstance.GetReference("users/" + currentUser + "/friends/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
@@ -124,10 +130,10 @@ public class GamesManager : MonoBehaviour
                 //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
                 DataSnapshot snapshot = task.Result;
                 //string data = snapshot.Children;
-
+                Debug.Log("taskCOmplete");
                 foreach (var child in snapshot.Children)
                 {
-                    //Debug.Log(child.Key + ": " + child.Value);
+                    Debug.Log(child.Key + ": " + child.Value);
                     if (child.Value.ToString() == "Friend")
                     {
                         friendslist.Add(new Friends(child.Key.ToString(), child.Value.ToString()));
