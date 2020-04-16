@@ -10,6 +10,7 @@ using Firebase.Extensions;
 using Firebase.Auth;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using System.Threading;
 
 
 public class CreateUserFB : MonoBehaviour
@@ -140,6 +141,7 @@ public class CreateUserFB : MonoBehaviour
                 foreach ( var child in snapshot.Children)
                 { 
                     //Debug.Log(child.Key + ": " + child.Value);
+                    
                     friendslist.Add(new Friends(child.Key.ToString(), child.Value.ToString()));
                 }
                 return friendslist;
@@ -150,6 +152,8 @@ public class CreateUserFB : MonoBehaviour
                 return null;
             }
         });
+        int milliseconds = 2000;
+        Thread.Sleep(milliseconds);
         return friendslist;
     }
 
