@@ -25,7 +25,7 @@ public class ARController : MonoBehaviour
 
     public void SetIcon(int i)
     {
-        Debug.Log("Heard Set Icon");
+        Debug.Log("Heard Set Icon "+i);
         icons[curIcon].SetActive(false);
         curIcon = i;
         icons[curIcon].SetActive(true);
