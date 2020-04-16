@@ -6,13 +6,18 @@ public class Friends
 {
     public string Name;
     public string Status;
-    public bool isInvited;
+    public bool Invited;
 
-    public Friends(string name, string status, bool invited = false)
+    public Friends(string name, string status)
     {
         this.Name = name;
         this.Status = status;
-        this.isInvited = invited;
+        this.Invited = false;
     }
-
+    public Friends(string name, string status, bool invited)
+    {
+        this.Name = name;
+        this.Status = status;
+        this.Invited = invited;
+    }
 }

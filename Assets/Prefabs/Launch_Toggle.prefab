@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 347033201314142677}
   - component: {fileID: 8089209199928989503}
   - component: {fileID: 2919287648896943698}
+  - component: {fileID: 3093532360777209755}
   m_Layer: 5
   m_Name: Launch_Toggle
   m_TagString: Untagged
@@ -74,6 +75,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3093532360777209755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223563888453098157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 503bedfab86232d4e901533aa8537629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Friend_Name: {fileID: 7150300948169200750}
+  toggleBTN: {fileID: 7821472857339232851}
 --- !u!1 &1846711635749811955
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
