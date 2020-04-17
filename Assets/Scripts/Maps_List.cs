@@ -12,10 +12,40 @@ public class Maps_List : MonoBehaviour
 
     public List<Maps> maps;
     public List<Image> entries;
+
+    private GamesManager mapScript;
+
+    private void Awake()
+    {
+    }
+
     void Start()
     {
-        maps = new List<Maps>();
-        Build_Entries();
+        if (PlayerPrefs.GetString("Username") == "")
+        {
+            PlayerPrefs.SetString("Username", "kev");
+            PlayerPrefs.Save();
+        }
+
+        this.mapScript = GameObject.Find("SceneManager").GetComponent<GamesManager>() as GamesManager;
+        this.maps = new List<Maps>();
+        this.maps = mapScript.GetCreatedMapsList();
+
+        
+        Debug.Log("Youre in Maps_List.cs");
+        foreach(Maps child in this.maps)
+        {
+            Debug.Log(child.mapName + ": " + child.mapString);
+        }
+
+        StartCoroutine(Test());
+    }
+
+    IEnumerator Test()
+    {
+        yield return new WaitForSeconds(1);
+
+        this.Build_Entries();
     }
 
     public void Build_Entries()
@@ -25,12 +55,15 @@ public class Maps_List : MonoBehaviour
         I.SendMessage("SetName", "New Map");
         I.SendMessage("SetData", "NEW");
         entries.Add(I);
-        foreach (Maps m in maps)
+        
+        Debug.Log("Constructing Prefabs");
+        foreach (Maps child in this.maps)
         {
+            Debug.Log(child.mapName + ": " + child.mapString);
             I = Instantiate(MapPrefab, Grid.transform);
-            I.SendMessage("SetName", m.mapName);
-            I.SendMessage("SetData", m.mapString);
-            entries.Add(I);
+            I.SendMessage("SetMap", child);
+            //I.SendMessage("SetData", child.mapString);
+            this.entries.Add(I);
         }
     }
 
@@ -40,7 +73,7 @@ public class Maps_List : MonoBehaviour
         {
             Destroy(entry.gameObject);
         }
-        entries.Clear();
+        this.entries.Clear();
     }
 }
 

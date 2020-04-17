@@ -750,6 +750,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 575848ac290ca42f0afba19e9c8e651a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SessionNameIN: {fileID: 0}
+  MapNameIN: {fileID: 0}
 --- !u!1 &990707299
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,7 +778,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109159710}
+  m_GameObject: {fileID: 990707299}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -796,7 +798,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109159710}
+  m_GameObject: {fileID: 990707299}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
@@ -809,7 +811,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109159710}
+  m_GameObject: {fileID: 990707299}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
@@ -839,7 +841,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109159710}
+  m_GameObject: {fileID: 990707299}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -867,7 +869,7 @@ CanvasRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109159710}
+  m_GameObject: {fileID: 990707299}
   m_CullTransparentMesh: 0
 --- !u!1 &1424510644
 GameObject:
@@ -1367,6 +1369,13 @@ MonoBehaviour:
   Grid: {fileID: 443225010}
   launchBTN: {fileID: 615083479}
   homeBTN: {fileID: 316432749}
+  popupprefab: {fileID: 5758526377020779405, guid: f336b9e76a3277a4b868cb7767784d71,
+    type: 3}
+  popUp: {fileID: 0}
+  sessionNamePrefab: {fileID: 5758526377020779405, guid: be96b61c409b6f84f9157e32ef271c04,
+    type: 3}
+  sessionPrefab: {fileID: 0}
+  parent: {fileID: 1897301895}
   entries: []
 --- !u!1 &2075049491
 GameObject:

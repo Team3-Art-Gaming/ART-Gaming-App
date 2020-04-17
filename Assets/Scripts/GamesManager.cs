@@ -14,61 +14,42 @@ using System.Threading;
 
 public class GamesManager : MonoBehaviour
 {
-    public InputField SessionNameIN;
-    public InputField MapNameIN;
     private Friend_List flScript;
     private Games gScript;
 
-    public void LaunchGame()    ///paramters for this function should be map name and unique session name
+    public void LaunchGame(string SessionName, string MapName, string MapString, List<string> friends)    ///paramters for this function should be map name and unique session name
 	{
 
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
 
-        string SessionName = SessionNameIN.text;
-        string MapName = MapNameIN.text;
-
         string name = PlayerPrefs.GetString("Username");
 
         //PushData("/1Test/ActiveGames/" + SessionName, SessionName);
-        FirebaseDatabase.DefaultInstance.GetReference("/1Test/").Child("ActiveGames").Child(SessionName).SetValueAsync(SessionName);
-        PushData("/1Test/ActiveGames/" + SessionName + "/Players/", "Players");
-        PushData("/1Test/ActiveGames/" + SessionName + "/Players/" + name, "Host");
-        PushData("/1Test/ActiveGames/" + SessionName + "/MapName/", MapName);
+        FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/").Child(SessionName).SetValueAsync(SessionName);
+        PushData("/ActiveGames/" + SessionName + "/Players/", "Players");
+        PushData("/ActiveGames/" + SessionName + "/Players/" + name, "Host");
+        PushData("/ActiveGames/" + SessionName + "/MapName/", MapName);
+        PushData("/ActiveGames/" + SessionName + "/MapString/", MapString);
 
-        string MapString = PlayerPrefs.GetString(MapName);
-        PushData("/1Test/ActiveGames/" + SessionName + "/MapString/", MapString);
+        foreach(string child in friends)
+        {
+            PushData("/ActiveGames/" + SessionName + "/Players/" + child, "Invited");
+        }
+    }
 
-        List<Friends> FriendsList = new List<Friends>();
-        FriendsList = this.GetFriendsList();
-        foreach(var child in FriendsList)
-		{
-            Debug.Log(child.Name + ": " + child.Status);
-		}
+    public void createInvitedSessionUsers(List<string> friends, string SessionName)
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
 
-        //FriendsList.Add(new Friends("kev", "Friend"));
-
-        string FriendName;
-        for(var i = 0; i < FriendsList.Count;i++)
-		{
-            Debug.Log("For LOOP: "+FriendsList[i].Name);
-            FriendName = FriendsList[i].Name;
-            //FirebaseDatabase.DefaultInstance.GetReference("/1Test/ActiveGames/" + SessionName + "Players").Child(FriendName).SetValueAsync("Invited");
-            PushData("/1Test/ActiveGames/" + SessionName + "/Players/" + FriendName, "Invited");
-            FirebaseDatabase.DefaultInstance.GetReference("/users/" + FriendName + "/Games/").Child(SessionName).SetValueAsync("Invited");
-
+        foreach (string child in friends)
+        {
+            FirebaseDatabase.DefaultInstance.GetReference("/users/" + child + "/Games/").Child(SessionName).SetValueAsync("Invited");
         }
 
-        //List<string> data = new List<string>();
-        //string data;
-        //data = GetData("/1Test/users/" + name + "/MapName/");
-        //string map = (data.Count).ToString();
-        //PushData("/1Test/ActiveGames/" + SessionName + "/MapString/", map);
-
-        //data = GetDataString("/1Test/users/alex/email/");
-        //string test = "testDef";//((data[0]).ToString());
-        //string test = data[0];
-        //PushData("/1Test/test/", data);
+        string user = PlayerPrefs.GetString("Username");
+        FirebaseDatabase.DefaultInstance.GetReference("/users/" + user + "/Games/").Child(SessionName).SetValueAsync("Host");
     }
 
     public List<Games> GetGamesList()
@@ -104,10 +85,59 @@ public class GamesManager : MonoBehaviour
                 return null;
             }
         });
+        /*
         int milliseconds = 4000;
-        Thread.Sleep(milliseconds);
+        Thread.Sleep(milliseconds);*/
         return GamesList;
 
+    }
+
+    public List<Maps> GetCreatedMapsList()
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        string currentUser = PlayerPrefs.GetString("Username");
+        List<Maps> cmList = new List<Maps>();
+        //Debug.Log("GetCreatedMapsList From: " + currentUser);
+
+        FirebaseDatabase.DefaultInstance.GetReference("users/" + currentUser + "/CreatedMaps/").GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                Debug.Log("BLARG");
+                return null;
+            }
+            else if (task.IsCompleted)
+            {
+                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
+                DataSnapshot snapshot = task.Result;
+                //string data = snapshot.Children;
+                //Debug.Log("taskCOmplete");
+                foreach (var child in snapshot.Children)
+                {
+                    //Debug.Log(child.Key + ": " + child.Value);
+                    cmList.Add(new Maps(child.Key.ToString(), child.Value.ToString()));
+                    //Debug.Log("Map Name : " + child.Key.ToString());
+                }
+
+                /*
+                foreach (Maps child in cmList)
+                {
+                    Debug.Log(child.mapName + ": " + child.mapString);
+                }*/
+
+                return cmList;
+            }
+            else
+            {
+                Debug.Log("ELSE");
+                return null;
+            }
+        });
+        /*
+        int milliseconds = 4000;
+        Thread.Sleep(milliseconds);*/
+        return cmList;
     }
 
     public List<Friends> GetFriendsList()
@@ -117,7 +147,7 @@ public class GamesManager : MonoBehaviour
 
         string currentUser = PlayerPrefs.GetString("Username");
         List<Friends> friendslist = new List<Friends>();
-        Debug.Log("???????" + currentUser);
+        //Debug.Log("???????" + currentUser);
 
         FirebaseDatabase.DefaultInstance.GetReference("users/" + currentUser + "/friends/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
@@ -130,14 +160,14 @@ public class GamesManager : MonoBehaviour
                 //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
                 DataSnapshot snapshot = task.Result;
                 //string data = snapshot.Children;
-                Debug.Log("taskCOmplete");
+                //Debug.Log("taskCOmplete");
                 foreach (var child in snapshot.Children)
                 {
-                    Debug.Log(child.Key + ": " + child.Value);
+                    //Debug.Log(child.Key + ": " + child.Value);
                     if (child.Value.ToString() == "Friend")
                     {
                         friendslist.Add(new Friends(child.Key.ToString(), child.Value.ToString()));
-                        Debug.Log("Friend Name : " + child.Key.ToString());
+                        //Debug.Log("Friend Name : " + child.Key.ToString());
                     }
                 }
                 return friendslist;
@@ -148,8 +178,9 @@ public class GamesManager : MonoBehaviour
                 return null;
             }
         });
-        int milliseconds = 4000;
-        Thread.Sleep(milliseconds);
+        /*
+        int milliseconds = 2000;
+        Thread.Sleep(milliseconds);*/
         return friendslist;
     }
 
@@ -218,7 +249,6 @@ public class GamesManager : MonoBehaviour
         });
         return data;
     }
-
 
     public async Task GetAndPushMap(string SessionName, string MapName)
 	{
