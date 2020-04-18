@@ -74,8 +74,13 @@ public class GamesManager : MonoBehaviour
 
                 foreach (var child in snapshot.Children)
                 {
-                    //Debug.Log(child.Key + ": " + child.Value);
-                    GamesList.Add(new Games(child.Key.ToString(), child.Value.ToString()));
+                    string hostName = getHostName(child.Key.ToString());
+                    if(child.Value.ToString() == "Invited")
+                    {
+                        //Debug.Log(child.Key + ": " + child.Value);
+                        GamesList.Add(new Games(child.Key.ToString(), child.Value.ToString(), hostName));
+                    }
+                    
                 }
                 return GamesList;
             }
@@ -90,6 +95,42 @@ public class GamesManager : MonoBehaviour
         Thread.Sleep(milliseconds);*/
         return GamesList;
 
+    }
+
+    public string getHostName(string SessionName)
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+        FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + SessionName + "/Players/").GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                Debug.Log("BLARG");
+                return "NA";
+            }
+            else if (task.IsCompleted)
+            {
+                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
+                DataSnapshot snapshot = task.Result;
+                //string data = snapshot.Children;
+
+                foreach (var child in snapshot.Children)
+                {
+                    if (child.Value.ToString() == "Host")
+                    {
+                        //Debug.Log(child.Key + ": " + child.Value);
+                        return child.Value.ToString();
+                    }
+
+                }
+                return "NA";
+            }
+            else
+            {
+                Debug.Log("ELSE");
+                return "NA";
+            }
+        });
+        return "NA";
     }
 
     public List<Maps> GetCreatedMapsList()

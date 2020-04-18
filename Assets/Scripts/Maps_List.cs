@@ -21,22 +21,16 @@ public class Maps_List : MonoBehaviour
 
     void Start()
     {
-        if (PlayerPrefs.GetString("Username") == "")
-        {
-            PlayerPrefs.SetString("Username", "kev");
-            PlayerPrefs.Save();
-        }
-
         this.mapScript = GameObject.Find("SceneManager").GetComponent<GamesManager>() as GamesManager;
         this.maps = new List<Maps>();
         this.maps = mapScript.GetCreatedMapsList();
 
         
-        Debug.Log("Youre in Maps_List.cs");
+        /*Debug.Log("Youre in Maps_List.cs");
         foreach(Maps child in this.maps)
         {
             Debug.Log(child.mapName + ": " + child.mapString);
-        }
+        }*/
 
         StartCoroutine(Test());
     }
