@@ -152,8 +152,9 @@ public class CreateUserFB : MonoBehaviour
                 return null;
             }
         });
+        /*
         int milliseconds = 2000;
-        Thread.Sleep(milliseconds);
+        Thread.Sleep(milliseconds);*/
         return friendslist;
     }
 

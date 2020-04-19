@@ -15,17 +15,41 @@ public class LaunchScreen : MonoBehaviour
     [SerializeField]
     Button homeBTN;
 
+    public GameObject popupprefab;
+    public GameObject popUp;
+    public GameObject sessionNamePrefab;
+    public GameObject sessionPopUp;
+
+    public GameObject parent;
+
     public List<Friends> friends;
     public List<Image> entries;
+
+    private GamesManager gamesScript;
 
 
     void Start()
     {
+        popUp = Instantiate(popupprefab, new Vector3(540, 960, 0), Quaternion.identity, parent.transform);
+        popUp.SendMessage("deactivatePopUp");
+        popUp.SendMessage("setPrefab", popUp);
+
+        sessionPopUp = Instantiate(sessionNamePrefab, new Vector3(540, 960, 0), Quaternion.identity, parent.transform);
+        sessionPopUp.SendMessage("deactivatePopUp");
+        sessionPopUp.SendMessage("setPrefab", sessionPopUp);
+
+        this.gamesScript = GameObject.Find("SceneManager").GetComponent<GamesManager>() as GamesManager;
         this.friends = new List<Friends>();
-        this.friends.Add(new Friends("friend1","Friend"));
-        this.friends.Add(new Friends("friend2", "Friend"));
-        this.friends.Add(new Friends("friend3", "Friend"));
-        ShowFriends();
+        this.friends = gamesScript.GetFriendsList();
+
+        StartCoroutine(Test());
+    }
+
+    IEnumerator Test()
+    {
+        yield return new WaitForSeconds(1);
+
+        this.ShowFriends();
     }
 
     // Update is called once per frame
@@ -53,9 +77,21 @@ public class LaunchScreen : MonoBehaviour
             Toggle tog = entry.GetComponentInChildren<Toggle>() as Toggle;
             if (tog.isOn) invitedFriends.Add(entry.name);
         }
-        foreach(string s in invitedFriends)
+        //Maximum size of game lobby is 6 players excluding Host
+        if(invitedFriends.Count > 6)
         {
-            Debug.Log(s);
+            Debug.Log("Exceeded maximum number of players! Maximum number of players is SIX.");
+            popUp.SendMessage("activatePopUp", "Exceeded maximum number of players! Maximum number of players is SIX.");
+        }
+        else if(invitedFriends.Count < 1)
+        {
+            Debug.Log("You have no friends invited to this session!");
+            popUp.SendMessage("activatePopUp", "You have no friends invited to this session!");
+        }
+        else
+        {
+            sessionPopUp.SendMessage("saveInvitedFriends", invitedFriends);
+            sessionPopUp.SendMessage("activatePopUp", "Inviting: ");
         }
     }
 }

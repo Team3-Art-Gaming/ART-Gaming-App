@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5116704380928859727}
   - component: {fileID: 6921793734711867817}
   - component: {fileID: 2931306728455824844}
+  - component: {fileID: 2887667160856032552}
   m_Layer: 5
   m_Name: LIVE_Arena
   m_TagString: Untagged
@@ -74,6 +75,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2887667160856032552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3032608679052833878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd63e07d00b15584882a5d5a5dc55e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  la_OK: {fileID: 6065851781609009181}
+  la_Cancel: {fileID: 3083345747909206820}
 --- !u!1 &3082788824138485674
 GameObject:
   m_ObjectHideFlags: 0
