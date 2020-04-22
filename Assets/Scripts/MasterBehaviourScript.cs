@@ -251,6 +251,7 @@ public class MasterBehaviourScript : MonoBehaviour
         PlayerPrefs.SetString(ppMapDataKey, mapString);
         string mapName = mapNameField.text;
         PlayerPrefs.SetString(ppMapNameKey, mapName);
+        //PlayerPrefs.SetString("TempLevel", mapString);
         PlayerPrefs.Save();
         Debug.Log("Saved map " + mapName);
         Debug.Log(mapString);
