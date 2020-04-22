@@ -750,8 +750,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 575848ac290ca42f0afba19e9c8e651a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SessionNameIN: {fileID: 0}
-  MapNameIN: {fileID: 0}
 --- !u!1 &990707299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,9 +1370,9 @@ MonoBehaviour:
   popupprefab: {fileID: 5758526377020779405, guid: f336b9e76a3277a4b868cb7767784d71,
     type: 3}
   popUp: {fileID: 0}
-  sessionNamePrefab: {fileID: 5758526377020779405, guid: be96b61c409b6f84f9157e32ef271c04,
+  sessionNamePrefab: {fileID: 5758526377020779405, guid: 93b7042b4695ae24aa8685dbb21f8758,
     type: 3}
-  sessionPrefab: {fileID: 0}
+  sessionPopUp: {fileID: 0}
   parent: {fileID: 1897301895}
   entries: []
 --- !u!1 &2075049491
