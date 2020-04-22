@@ -867,6 +867,9 @@ MonoBehaviour:
   FriendPrefab: {fileID: 3662964081704436095, guid: d5e636c4f0eab9041aa580126913cc6e,
     type: 3}
   Grid: {fileID: 36596785}
+  friend: {fileID: 969416820}
+  pending: {fileID: 820634895}
+  requesting: {fileID: 899698090}
   entries: []
 --- !u!1 &551940783
 GameObject:

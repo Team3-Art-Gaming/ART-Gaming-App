@@ -14,6 +14,13 @@ public class Friend_List : MonoBehaviour
     Image FriendPrefab;
     [SerializeField]
     Image Grid;
+    [SerializeField] 
+    Button friend;
+    [SerializeField] 
+    Button pending;
+    [SerializeField] 
+    Button requesting;
+    
     
     public List<Friends> friends;
     public List<Image> entries;
@@ -21,8 +28,11 @@ public class Friend_List : MonoBehaviour
     private CreateUserFB frScript;
     private string sceneStatus;
 
-    void Start()
+    private void Awake()
     {
+    }
+    void Start()
+    {   
         if (PlayerPrefs.HasKey("FriendScene"))
         {
             this.sceneStatus = PlayerPrefs.GetString("FriendScene");
@@ -39,6 +49,8 @@ public class Friend_List : MonoBehaviour
 
         this.friends = frScript.GetFriendsList();
         
+        StartCoroutine(Test());
+
         /*this.friends.Add(new Friends("friend1","Friend"));
         this.friends.Add(new Friends("friend2", "Friend"));
         this.friends.Add(new Friends("friend3", "Friend"));
@@ -49,6 +61,14 @@ public class Friend_List : MonoBehaviour
         this.friends.Add(new Friends("friend8", "Pending"));
         this.friends.Add(new Friends("friend9", "Pending"));*/
 
+        //Set_Category(this.sceneStatus);
+
+    }
+
+    IEnumerator Test()
+    {
+        yield return new WaitForSeconds(1);
+
         Set_Category(this.sceneStatus);
     }
 
@@ -57,6 +77,27 @@ public class Friend_List : MonoBehaviour
         Destroy_Entries();
         PlayerPrefs.SetString("FriendScene", Cat);
         PlayerPrefs.Save();
+
+        if (Cat == "Friend")
+        {
+            friend.GetComponent<Image>().color = Color.white;
+            pending.GetComponent<Image>().color = Color.gray;
+            requesting.GetComponent<Image>().color = Color.gray;
+        }
+        
+        else if (Cat == "Requesting")
+        {
+            friend.GetComponent<Image>().color = Color.gray;
+            pending.GetComponent<Image>().color = Color.gray;
+            requesting.GetComponent<Image>().color = Color.white;
+        }
+        
+        else if (Cat == "Pending")
+        {
+            friend.GetComponent<Image>().color = Color.gray;
+            pending.GetComponent<Image>().color = Color.white;
+            requesting.GetComponent<Image>().color = Color.gray;
+        }
 
         foreach (Friends friend in this.friends)
         {

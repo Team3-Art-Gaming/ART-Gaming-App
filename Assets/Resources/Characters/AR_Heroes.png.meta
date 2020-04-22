@@ -1,0 +1,1699 @@
+fileFormatVersion: 2
+guid: 7e2f664935f91a2418036d3a853bc089
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5313908576797743425
+    second: AR_Heroes_0
+  - first:
+      213: -3784589213069815932
+    second: AR_Heroes_1
+  - first:
+      213: -3716295632759545932
+    second: AR_Heroes_2
+  - first:
+      213: 8633127413799726423
+    second: AR_Heroes_3
+  - first:
+      213: -2773652760252601609
+    second: AR_Heroes_4
+  - first:
+      213: 2844426200018606118
+    second: AR_Heroes_5
+  - first:
+      213: -5946677376175510428
+    second: AR_Heroes_6
+  - first:
+      213: 1321355711783258039
+    second: AR_Heroes_7
+  - first:
+      213: -3366608940645825444
+    second: AR_Heroes_8
+  - first:
+      213: -5328109180875587710
+    second: AR_Heroes_9
+  - first:
+      213: -8292506805102043474
+    second: AR_Heroes_10
+  - first:
+      213: 4329540511027871848
+    second: AR_Heroes_11
+  - first:
+      213: -5809202638005189133
+    second: AR_Heroes_12
+  - first:
+      213: -6637971299814426847
+    second: AR_Heroes_13
+  - first:
+      213: 1065838525932968214
+    second: AR_Heroes_14
+  - first:
+      213: 3180361615577169690
+    second: AR_Heroes_15
+  - first:
+      213: 6374112049497494588
+    second: AR_Heroes_16
+  - first:
+      213: 3865986990243373432
+    second: AR_Heroes_17
+  - first:
+      213: -140236382099174119
+    second: AR_Heroes_18
+  - first:
+      213: -5127149942127649928
+    second: AR_Heroes_19
+  - first:
+      213: -5505323310107215610
+    second: AR_Heroes_20
+  - first:
+      213: 5702765917335068331
+    second: AR_Heroes_21
+  - first:
+      213: 1864842487380616463
+    second: AR_Heroes_22
+  - first:
+      213: 8031382326153362864
+    second: AR_Heroes_23
+  - first:
+      213: -2342852066209279379
+    second: AR_Heroes_24
+  - first:
+      213: -4255132911184280516
+    second: AR_Heroes_25
+  - first:
+      213: -8579333817629334066
+    second: AR_Heroes_26
+  - first:
+      213: 6857435435587626528
+    second: AR_Heroes_27
+  - first:
+      213: 7867238400344864613
+    second: AR_Heroes_28
+  - first:
+      213: 292691563993178521
+    second: AR_Heroes_29
+  - first:
+      213: 6958675826372426880
+    second: AR_Heroes_30
+  - first:
+      213: -4055964791659398224
+    second: AR_Heroes_31
+  - first:
+      213: -4062942012930811546
+    second: AR_Heroes_32
+  - first:
+      213: -2908246321181011244
+    second: AR_Heroes_33
+  - first:
+      213: -387798463016968959
+    second: AR_Heroes_34
+  - first:
+      213: 43439967222092385
+    second: AR_Heroes_35
+  - first:
+      213: -273555377640576939
+    second: AR_Heroes_36
+  - first:
+      213: -3470886220879136471
+    second: AR_Heroes_37
+  - first:
+      213: 6089254063916419668
+    second: AR_Heroes_38
+  - first:
+      213: 8135658382104422331
+    second: AR_Heroes_39
+  - first:
+      213: -1503772441630078939
+    second: AR_Heroes_40
+  - first:
+      213: -5739785810539341442
+    second: AR_Heroes_41
+  - first:
+      213: 8232198733397521794
+    second: AR_Heroes_42
+  - first:
+      213: -3879657212300532589
+    second: AR_Heroes_43
+  - first:
+      213: -2005814463695744265
+    second: AR_Heroes_44
+  - first:
+      213: -212753675720849496
+    second: AR_Heroes_45
+  - first:
+      213: 6017891860426056125
+    second: AR_Heroes_46
+  - first:
+      213: -9070948530949066847
+    second: AR_Heroes_47
+  - first:
+      213: 3258801693077513543
+    second: AR_Heroes_48
+  - first:
+      213: -6068985394556320306
+    second: AR_Heroes_49
+  - first:
+      213: 8792385246365614905
+    second: AR_Heroes_50
+  - first:
+      213: 3108762796103104829
+    second: AR_Heroes_51
+  - first:
+      213: -3984647073071932796
+    second: AR_Heroes_52
+  - first:
+      213: -8797468219056941092
+    second: AR_Heroes_53
+  - first:
+      213: -467325557023745292
+    second: AR_Heroes_54
+  - first:
+      213: 3602144906061347094
+    second: AR_Heroes_55
+  - first:
+      213: -6733249482688749620
+    second: AR_Heroes_56
+  - first:
+      213: -1155808761009905046
+    second: AR_Heroes_57
+  - first:
+      213: 1104435756089132018
+    second: AR_Heroes_58
+  - first:
+      213: 2035385439411556017
+    second: AR_Heroes_59
+  - first:
+      213: -1915556828861607940
+    second: AR_Heroes_60
+  - first:
+      213: 428645800100173538
+    second: AR_Heroes_61
+  - first:
+      213: 1971886105349876727
+    second: AR_Heroes_62
+  - first:
+      213: 3665375227895549815
+    second: AR_Heroes_63
+  - first:
+      213: -5470010432546322703
+    second: AR_Heroes_64
+  - first:
+      213: 6081507501864668259
+    second: AR_Heroes_65
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 72
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AR_Heroes_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb6a11fbd443146b0800000000000000
+      internalID: -5313908576797743425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_1
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48fc23e89207a7bc0800000000000000
+      internalID: -3784589213069815932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_2
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bf1801dfc01d6cc0800000000000000
+      internalID: -3716295632759545932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_3
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75d283084a70fc770800000000000000
+      internalID: 8633127413799726423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_4
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7faacde82810289d0800000000000000
+      internalID: -2773652760252601609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_5
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6285ce9fe8e697720800000000000000
+      internalID: 2844426200018606118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_6
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46ce437ee68297da0800000000000000
+      internalID: -5946677376175510428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_7
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b746ced406665210800000000000000
+      internalID: 1321355711783258039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_8
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c54c62b61076741d0800000000000000
+      internalID: -3366608940645825444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_9
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28fb965fde0ce06b0800000000000000
+      internalID: -5328109180875587710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_10
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eae12601ff81bec80800000000000000
+      internalID: -8292506805102043474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 860ca78e72e951c30800000000000000
+      internalID: 4329540511027871848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_12
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f5407daaf0916fa0800000000000000
+      internalID: -5809202638005189133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_13
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 127b255b54031e3a0800000000000000
+      internalID: -6637971299814426847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_14
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61919260e7e9ace00800000000000000
+      internalID: 1065838525932968214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_15
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1fb3c10a0ae22c20800000000000000
+      internalID: 3180361615577169690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_16
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c34d5d43325657850800000000000000
+      internalID: 6374112049497494588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_17
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 871ecbb4faeb6a530800000000000000
+      internalID: 3865986990243373432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_18
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91d8464e0c7cd0ef0800000000000000
+      internalID: -140236382099174119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_19
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87b115dda44b8d8b0800000000000000
+      internalID: -5127149942127649928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_20
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 609b16f2e992993b0800000000000000
+      internalID: -5505323310107215610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_21
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bae16f3236b442f40800000000000000
+      internalID: 5702765917335068331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f05a066ac5041e910800000000000000
+      internalID: 1864842487380616463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_23
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bdb8bd6ca3357f60800000000000000
+      internalID: 8031382326153362864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_24
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d625e4075748c7fd0800000000000000
+      internalID: -2342852066209279379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_25
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3489c4792bb2f4c0800000000000000
+      internalID: -4255132911184280516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_26
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec525be195510f880800000000000000
+      internalID: -8579333817629334066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_27
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 026606842318a2f50800000000000000
+      internalID: 6857435435587626528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_28
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5673ed784ab0e2d60800000000000000
+      internalID: 7867238400344864613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_29
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 991219c3d69df0400800000000000000
+      internalID: 292691563993178521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_30
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08cb602abce229060800000000000000
+      internalID: 6958675826372426880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_31
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bb76abe28156b7c0800000000000000
+      internalID: -4055964791659398224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_32
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6699f3004c78d97c0800000000000000
+      internalID: -4062942012930811546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d25ba22165d3a7d0800000000000000
+      internalID: -2908246321181011244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_34
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10d5e6f3a534e9af0800000000000000
+      internalID: -387798463016968959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_35
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 162d3578b645a9000800000000000000
+      internalID: 43439967222092385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_36
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 558e55955d2243cf0800000000000000
+      internalID: -273555377640576939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_37
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92973b42f5fe4dfc0800000000000000
+      internalID: -3470886220879136471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_38
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45a87d21f40618450800000000000000
+      internalID: 6089254063916419668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_39
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb76347a13aa7e070800000000000000
+      internalID: 8135658382104422331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_40
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5280e918ee6812be0800000000000000
+      internalID: -1503772441630078939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_41
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7999fb473f2850b0800000000000000
+      internalID: -5739785810539341442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_42
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2857498c125ae3270800000000000000
+      internalID: 8232198733397521794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_43
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3946b8a1250b82ac0800000000000000
+      internalID: -3879657212300532589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f2131e5f5ae924e0800000000000000
+      internalID: -2005814463695744265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_45
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a7000eb8a52c0df0800000000000000
+      internalID: -212753675720849496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_46
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db1e86d43c8d38350800000000000000
+      internalID: 6017891860426056125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_47
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1afedecfe548d1280800000000000000
+      internalID: -9070948530949066847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_48
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 745a35dbfd6993d20800000000000000
+      internalID: 3258801693077513543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_49
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec5cf6240f1a6cba0800000000000000
+      internalID: -6068985394556320306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_50
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 933020a2cc3d40a70800000000000000
+      internalID: 8792385246365614905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_51
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d39fca8ca4b842b20800000000000000
+      internalID: 3108762796103104829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_52
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48a5f3e3990b3b8c0800000000000000
+      internalID: -3984647073071932796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_53
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd79258044d19e580800000000000000
+      internalID: -8797468219056941092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_54
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fa5323c1e9b389f0800000000000000
+      internalID: -467325557023745292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 619f44305b36df130800000000000000
+      internalID: 3602144906061347094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_56
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccf11401541be82a0800000000000000
+      internalID: -6733249482688749620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_57
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6268bb3e0eb5ffe0800000000000000
+      internalID: -1155808761009905046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_58
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f3cee6f77eb35f00800000000000000
+      internalID: 1104435756089132018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_59
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bec021f5442f3c10800000000000000
+      internalID: 2035385439411556017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_60
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cff41a496339a65e0800000000000000
+      internalID: -1915556828861607940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_61
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e61f69851bd2f500800000000000000
+      internalID: 428645800100173538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_62
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fb68ee17fb8d5b10800000000000000
+      internalID: 1971886105349876727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_63
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77f0b3b89570ed230800000000000000
+      internalID: 3665375227895549815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_64
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f645623e7e9614b0800000000000000
+      internalID: -5470010432546322703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Heroes_65
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36c448b0adad56450800000000000000
+      internalID: 6081507501864668259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 32eb1d69cce43754aaef7fa4ae085cc9
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class MasterBehaviourScript : MonoBehaviour
 {
@@ -17,11 +18,16 @@ public class MasterBehaviourScript : MonoBehaviour
     private Image mapGrid;
     [SerializeField]
     private Sprite defaultSprite;
+    [SerializeField]
+    private InputField mapNameField;
 
     private const int mapSize = 128;
+    string blankMap = "";
 
     private Text readout;
 
+    string ppMapNameKey = "SelectedMap";
+    string ppMapDataKey = "SelectedMapData";
 
     //private List<Button> mapButtons;
     private List<Button> selectorButtons;
@@ -35,14 +41,37 @@ public class MasterBehaviourScript : MonoBehaviour
     private List<LE_MapElements> map;
 
     private void Awake()
-    {
-        readout = GetComponentInChildren<Text>(); //For Debug Purposes Only
+    { 
         Screen.orientation = ScreenOrientation.LandscapeLeft;
+        for(int i = 0; i < mapSize * mapSize; ++i)
+        {
+            blankMap += "N";
+        }
         curCategory = -1;
         curSelection = -1;
         BuildSelectorStructure();
         BuildSelectors(-1);
         BuildMap();
+
+        if (PlayerPrefs.HasKey(ppMapNameKey))
+        {
+            mapNameField.text = PlayerPrefs.GetString(ppMapNameKey);
+            if(PlayerPrefs.HasKey(ppMapDataKey))
+            { 
+                if(PlayerPrefs.GetString(ppMapDataKey) == "NEW")
+                {
+                    PlayerPrefs.SetString(ppMapDataKey, blankMap);
+                }
+                BuildLevel(PlayerPrefs.GetString(ppMapDataKey));
+            }
+        }
+        else
+        {
+            mapNameField.text = "Default Map";
+            //BuildLevel(blankMap);
+        }
+
+        /*
         if (PlayerPrefs.HasKey("Username"))
         {
             Debug.Log(PlayerPrefs.GetString("Username"));
@@ -51,6 +80,7 @@ public class MasterBehaviourScript : MonoBehaviour
         {
             Debug.Log("Nope");
         }
+        */
     }
 
     private void BuildSelectorStructure()
@@ -218,20 +248,29 @@ public class MasterBehaviourScript : MonoBehaviour
         }
         //Text t = GetComponentInChildren<Text>();
         //readout.text = mapString;
-        PlayerPrefs.SetString("TempLevel", mapString);
+        PlayerPrefs.SetString(ppMapDataKey, mapString);
+        string mapName = mapNameField.text;
+        PlayerPrefs.SetString(ppMapNameKey, mapName);
+        //PlayerPrefs.SetString("TempLevel", mapString);
         PlayerPrefs.Save();
-        Debug.Log("Saved: " + mapString);
+        Debug.Log("Saved map " + mapName);
+        Debug.Log(mapString);
     }
 
     public void LoadClicked()
     {
+        //TODO: SET TO OPEN MAP SELECT SCENE
+
+        /*
         if(PlayerPrefs.HasKey("TempLevel"))
         {
             string level = PlayerPrefs.GetString("TempLevel");
             Debug.Log("Loaded: " + level);
             BuildLevel(level);
         }
+        */
     }
+
 
     private void BuildLevel(string level)
     {

@@ -1,0 +1,1699 @@
+fileFormatVersion: 2
+guid: 319737cc23758ce439352387fe45bfd6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -158290452534982887
+    second: AR_Monsters_0
+  - first:
+      213: 6482862429814800032
+    second: AR_Monsters_1
+  - first:
+      213: 5534002598045050267
+    second: AR_Monsters_2
+  - first:
+      213: -1580973681422709596
+    second: AR_Monsters_3
+  - first:
+      213: -7445186564794741509
+    second: AR_Monsters_4
+  - first:
+      213: 5257845415540922886
+    second: AR_Monsters_5
+  - first:
+      213: -2399991250443298098
+    second: AR_Monsters_6
+  - first:
+      213: 65920457430104569
+    second: AR_Monsters_7
+  - first:
+      213: -3670560905851807659
+    second: AR_Monsters_8
+  - first:
+      213: 4326529437625769113
+    second: AR_Monsters_9
+  - first:
+      213: 4542282211512447267
+    second: AR_Monsters_10
+  - first:
+      213: 7639612480374552882
+    second: AR_Monsters_11
+  - first:
+      213: 942982584233283545
+    second: AR_Monsters_12
+  - first:
+      213: -8763701348058401848
+    second: AR_Monsters_13
+  - first:
+      213: 4929875844024493754
+    second: AR_Monsters_14
+  - first:
+      213: 1906141446449422785
+    second: AR_Monsters_15
+  - first:
+      213: -7164123079587583873
+    second: AR_Monsters_16
+  - first:
+      213: 8336484741525528664
+    second: AR_Monsters_17
+  - first:
+      213: -1599837720264035136
+    second: AR_Monsters_18
+  - first:
+      213: -3209986701249332836
+    second: AR_Monsters_19
+  - first:
+      213: 3749541781774206569
+    second: AR_Monsters_20
+  - first:
+      213: -6228957819683447960
+    second: AR_Monsters_21
+  - first:
+      213: -3287968330767467123
+    second: AR_Monsters_22
+  - first:
+      213: 1806962001733533192
+    second: AR_Monsters_23
+  - first:
+      213: -9199760714447057568
+    second: AR_Monsters_24
+  - first:
+      213: 4702167516826186407
+    second: AR_Monsters_25
+  - first:
+      213: -7210715629814632302
+    second: AR_Monsters_26
+  - first:
+      213: 4388010350430345623
+    second: AR_Monsters_27
+  - first:
+      213: 6233688344154405204
+    second: AR_Monsters_28
+  - first:
+      213: 1243298423823945854
+    second: AR_Monsters_29
+  - first:
+      213: -4623086492239416434
+    second: AR_Monsters_30
+  - first:
+      213: -8679496388636634371
+    second: AR_Monsters_31
+  - first:
+      213: -8752337620680510194
+    second: AR_Monsters_32
+  - first:
+      213: 8805664966444680530
+    second: AR_Monsters_33
+  - first:
+      213: -7226426692312132546
+    second: AR_Monsters_34
+  - first:
+      213: 4249895647065030700
+    second: AR_Monsters_35
+  - first:
+      213: -8609855541372782693
+    second: AR_Monsters_36
+  - first:
+      213: 7007598526783099444
+    second: AR_Monsters_37
+  - first:
+      213: -4075502802208789591
+    second: AR_Monsters_38
+  - first:
+      213: 7758338209678979582
+    second: AR_Monsters_39
+  - first:
+      213: 4723817076994999751
+    second: AR_Monsters_40
+  - first:
+      213: 7905357029923529848
+    second: AR_Monsters_41
+  - first:
+      213: -8023910522669090797
+    second: AR_Monsters_42
+  - first:
+      213: 1036292176140220303
+    second: AR_Monsters_43
+  - first:
+      213: -7857392948013069630
+    second: AR_Monsters_44
+  - first:
+      213: -1603668956514939637
+    second: AR_Monsters_45
+  - first:
+      213: 2384989440462424259
+    second: AR_Monsters_46
+  - first:
+      213: -3775372543389515005
+    second: AR_Monsters_47
+  - first:
+      213: -1527986894399921107
+    second: AR_Monsters_48
+  - first:
+      213: 8875575551566560516
+    second: AR_Monsters_49
+  - first:
+      213: 6325928849771787753
+    second: AR_Monsters_50
+  - first:
+      213: 2858098292391512075
+    second: AR_Monsters_51
+  - first:
+      213: -9210189140903371277
+    second: AR_Monsters_52
+  - first:
+      213: 665340661160652451
+    second: AR_Monsters_53
+  - first:
+      213: 4946978838691146986
+    second: AR_Monsters_54
+  - first:
+      213: -4671252332924911738
+    second: AR_Monsters_55
+  - first:
+      213: 5309350407282724885
+    second: AR_Monsters_56
+  - first:
+      213: -9119507261051998401
+    second: AR_Monsters_57
+  - first:
+      213: 1661173606263305075
+    second: AR_Monsters_58
+  - first:
+      213: -7554806919723789648
+    second: AR_Monsters_59
+  - first:
+      213: 199596035873328524
+    second: AR_Monsters_60
+  - first:
+      213: -7052426232874891347
+    second: AR_Monsters_61
+  - first:
+      213: 4118554610091182800
+    second: AR_Monsters_62
+  - first:
+      213: 9036075832224392825
+    second: AR_Monsters_63
+  - first:
+      213: 3240194461099444631
+    second: AR_Monsters_64
+  - first:
+      213: -512988677183967263
+    second: AR_Monsters_65
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AR_Monsters_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 917015d0ca3adcdf0800000000000000
+      internalID: -158290452534982887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_1
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ae36d04801c7f950800000000000000
+      internalID: 6482862429814800032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_2
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b956092ea0abccc40800000000000000
+      internalID: 5534002598045050267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_3
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4acce8720d04f0ae0800000000000000
+      internalID: -1580973681422709596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_4
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfc06eef3426da890800000000000000
+      internalID: -7445186564794741509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_5
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60a9b355c8e97f840800000000000000
+      internalID: 5257845415540922886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_6
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca18456ca481bed0800000000000000
+      internalID: -2399991250443298098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_7
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f97d888e423ae000800000000000000
+      internalID: 65920457430104569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_8
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5585448bd4c8f0dc0800000000000000
+      internalID: -3670560905851807659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_9
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99c54ffb99bea0c30800000000000000
+      internalID: 4326529437625769113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_10
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 860
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32176c6fa9d690f30800000000000000
+      internalID: 4542282211512447267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 239bd52131b550a60800000000000000
+      internalID: 7639612480374552882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_12
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dfca9a0aa5261d00800000000000000
+      internalID: 942982584233283545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_13
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c3fd575e04116680800000000000000
+      internalID: -8763701348058401848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_14
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab6ebd5e5ff6a6440800000000000000
+      internalID: 4929875844024493754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_15
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c1644fdb89f37a10800000000000000
+      internalID: 1906141446449422785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_16
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f78210a240ce39c90800000000000000
+      internalID: -7164123079587583873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_17
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 850e71e24b421b370800000000000000
+      internalID: 8336484741525528664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_18
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c43469d11c3cc9e0800000000000000
+      internalID: -1599837720264035136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_19
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c993e4a3a16d373d0800000000000000
+      internalID: -3209986701249332836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_20
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9660325726c090430800000000000000
+      internalID: 3749541781774206569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_21
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 688
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86b50ec8ddb4e89a0800000000000000
+      internalID: -6228957819683447960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8dfedb393ace52d0800000000000000
+      internalID: -3287968330767467123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_23
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80eb4fbed5e931910800000000000000
+      internalID: 1806962001733533192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_24
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d0ac46f52e35080800000000000000
+      internalID: -9199760714447057568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_25
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a23ec28174714140800000000000000
+      internalID: 4702167516826186407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_26
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 290ba84b6546eeb90800000000000000
+      internalID: -7210715629814632302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_27
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79953204a2855ec30800000000000000
+      internalID: 4388010350430345623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_28
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 459f0d18582828650800000000000000
+      internalID: 6233688344154405204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_29
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7054d54455114110800000000000000
+      internalID: 1243298423823945854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_30
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e83b928545f77dfb0800000000000000
+      internalID: -4623086492239416434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_31
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df2170e350c3c8780800000000000000
+      internalID: -8679496388636634371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_32
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 516
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e05fc0d4e43798680800000000000000
+      internalID: -8752337620680510194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2558900f1a1043a70800000000000000
+      internalID: 8805664966444680530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_34
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e349559e53396bb90800000000000000
+      internalID: -7226426692312132546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_35
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c204ac7f299aafa30800000000000000
+      internalID: 4249895647065030700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_36
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b97fb098006a38880800000000000000
+      internalID: -8609855541372782693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_37
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43215757bbdff3160800000000000000
+      internalID: 7007598526783099444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_38
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ab6c395bc7e077c0800000000000000
+      internalID: -4075502802208789591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_39
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef1714b0f772bab60800000000000000
+      internalID: 7758338209678979582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_40
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c5063a8a9e5e8140800000000000000
+      internalID: 4723817076994999751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_41
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 874aa37955875bd60800000000000000
+      internalID: 7905357029923529848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_42
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3183ac264e755a090800000000000000
+      internalID: -8023910522669090797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_43
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 344
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f87ba526e36a16e00800000000000000
+      internalID: 1036292176140220303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ca85097ebee4f290800000000000000
+      internalID: -7857392948013069630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_45
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0d0b95a49f9eb9e0800000000000000
+      internalID: -1603668956514939637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_46
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c802d7824f291120800000000000000
+      internalID: 2384989440462424259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_47
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3034180bcae2b9bc0800000000000000
+      internalID: -3775372543389515005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_48
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2427d1e3008bcae0800000000000000
+      internalID: -1527986894399921107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_49
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40d344870f06c2b70800000000000000
+      internalID: 8875575551566560516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_50
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e5fa0dc5c63ac750800000000000000
+      internalID: 6325928849771787753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_51
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b08852b01410aa720800000000000000
+      internalID: 2858098292391512075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_52
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fd5b4626c5de2080800000000000000
+      internalID: -9210189140903371277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_53
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aeaa136ec3cb3900800000000000000
+      internalID: 665340661160652451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_54
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 172
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aec6f872b0337a440800000000000000
+      internalID: 4946978838691146986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68fbbc7a0c06c2fb0800000000000000
+      internalID: -4671252332924911738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_56
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5109926b01a9ea940800000000000000
+      internalID: 5309350407282724885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_57
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3f666a9670017180800000000000000
+      internalID: -9119507261051998401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_58
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3733497f79cad0710800000000000000
+      internalID: 1661173606263305075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_59
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b25333322fe72790800000000000000
+      internalID: -7554806919723789648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_60
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8d4ec0898b15c200800000000000000
+      internalID: 199596035873328524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_61
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da788d0e4bfb02e90800000000000000
+      internalID: -7052426232874891347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_62
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0da488ac89b082930800000000000000
+      internalID: 4118554610091182800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_63
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9762a3f1817966d70800000000000000
+      internalID: 9036075832224392825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_64
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7994501f1bb77fc20800000000000000
+      internalID: 3240194461099444631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR_Monsters_65
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 0
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1efe6aa148f71e8f0800000000000000
+      internalID: -512988677183967263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 1e0e4e33e5b0e2341a33b33d2457c348
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

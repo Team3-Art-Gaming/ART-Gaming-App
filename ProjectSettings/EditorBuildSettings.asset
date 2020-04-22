@@ -17,9 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FriendsListScene.unity
     guid: 3689dc1c70be72c4c8a7157995ce3c9d
-  - enabled: 1
-    path: Assets/Scenes/MapsScene.unity
-    guid: 2fe515226adfb6e478d963febd1b73fe
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/ProfileScene.unity
     guid: 1ff5a5e8a54d50d4da31ad6a764638d9
@@ -32,4 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AR-DM.unity
     guid: a7faa0cf40a678d40abffe60534936e0
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8bc4d8859351c9149b25e3c99faa5609,
+      type: 2}
