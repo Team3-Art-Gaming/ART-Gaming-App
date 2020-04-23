@@ -13,11 +13,18 @@ public class Map_Entry : MonoBehaviour
     [SerializeField]
     Button Play_Button;
 
-    string mapName = "NEW";
-    string mapData = "NEW";
+    private string mapName = "NEW";
+    private string mapData = "NEW";
 
-    string ppMapNameKey = "SelectedMap";
-    string ppMapDataKey = "SelectedMapData";
+    private string ppMapNameKey = "SelectedMap";
+    private string ppMapDataKey = "SelectedMapData";
+
+    public void SetMap(Maps m)
+    {
+        this.mapName = m.mapName;
+        this.mapNameTextField.text = this.mapName;
+        this.mapData = m.mapString;
+    }
 
     public void SetName(string n)
     {
@@ -27,7 +34,7 @@ public class Map_Entry : MonoBehaviour
 
     public string GetName()
     {
-        return mapName;
+        return this.mapName;
     }
 
     public void SetData(string d)
@@ -37,21 +44,21 @@ public class Map_Entry : MonoBehaviour
 
     public string GetData()
     {
-        return mapData;
+        return this.mapData;
     }
 
     public void ClickedEdit()
     {
-        PlayerPrefs.SetString(ppMapNameKey, mapName);
-        PlayerPrefs.SetString(ppMapDataKey, mapData);
+        PlayerPrefs.SetString(ppMapNameKey, this.mapName);
+        PlayerPrefs.SetString(ppMapDataKey, this.mapData);
         PlayerPrefs.Save();
         SceneManager.LoadScene(7);
     }
 
     public void ClickedPlay()
     {
-        PlayerPrefs.SetString(ppMapNameKey, mapName);
-        PlayerPrefs.SetString(ppMapDataKey, mapData);
+        PlayerPrefs.SetString(ppMapNameKey, this.mapName);
+        PlayerPrefs.SetString(ppMapDataKey, this.mapData);
         PlayerPrefs.Save();
         SceneManager.LoadScene(6);
     }

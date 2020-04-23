@@ -305,7 +305,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -1080, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &36596784
 MonoBehaviour:
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -2145,7 +2145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userDB: {fileID: 308317457}
-  popupprefab: {fileID: 5758526377020779405, guid: be96b61c409b6f84f9157e32ef271c04,
+  popupprefab: {fileID: 5758526377020779405, guid: f336b9e76a3277a4b868cb7767784d71,
     type: 3}
   popUp: {fileID: 0}
   parent: {fileID: 468007341}

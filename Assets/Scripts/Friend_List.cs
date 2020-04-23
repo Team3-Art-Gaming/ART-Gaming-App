@@ -69,7 +69,7 @@ public class Friend_List : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
-        Set_Category(this.sceneStatus);
+        this.Set_Category(this.sceneStatus);
     }
 
     public void Set_Category(string Cat)
