@@ -256,8 +256,15 @@ public class MasterBehaviourScript : MonoBehaviour
         }
         //Text t = GetComponentInChildren<Text>();
         //readout.text = mapString;
+
+        //PlayerPrefs.SetString(ppMapDataKey, mapString);
+        //string mapName = mapNameField.text;
+        //PlayerPrefs.SetString(ppMapNameKey, mapName);
+        //PlayerPrefs.SetString("TempLevel", mapString);
+
         string Map = MapName.text;
         PlayerPrefs.SetString(Map, mapString);
+
         PlayerPrefs.Save();
         Debug.Log(Map + " Saved: " + mapString);
         PushMap(mapString, Map);

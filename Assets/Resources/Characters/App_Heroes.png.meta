@@ -1,0 +1,2791 @@
+fileFormatVersion: 2
+guid: d93ce73deccffaf4a9e9835615a2673b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4199721159084174638
+    second: App_Heroes_0
+  - first:
+      213: -4068656647538242506
+    second: App_Heroes_1
+  - first:
+      213: 5725083763087547381
+    second: App_Heroes_2
+  - first:
+      213: -7966291215719356192
+    second: App_Heroes_3
+  - first:
+      213: -1623035597982013618
+    second: App_Heroes_4
+  - first:
+      213: 9161777524949817385
+    second: App_Heroes_5
+  - first:
+      213: 3390183100083793398
+    second: App_Heroes_6
+  - first:
+      213: -2435214838572532090
+    second: App_Heroes_7
+  - first:
+      213: 1527631345465166553
+    second: App_Heroes_8
+  - first:
+      213: -5876308019518732194
+    second: App_Heroes_9
+  - first:
+      213: 1954551929905616506
+    second: App_Heroes_10
+  - first:
+      213: -7028916157859533993
+    second: App_Heroes_11
+  - first:
+      213: 3668628548337851729
+    second: App_Heroes_12
+  - first:
+      213: -961764570909397196
+    second: App_Heroes_13
+  - first:
+      213: -8145780777648564115
+    second: App_Heroes_14
+  - first:
+      213: -5867778707340874329
+    second: App_Heroes_15
+  - first:
+      213: -3556473511682174100
+    second: App_Heroes_16
+  - first:
+      213: 1017971514931218145
+    second: App_Heroes_17
+  - first:
+      213: 3872313310019366606
+    second: App_Heroes_18
+  - first:
+      213: 8638336828180299659
+    second: App_Heroes_19
+  - first:
+      213: 8060793229651826818
+    second: App_Heroes_20
+  - first:
+      213: -3252484378827809768
+    second: App_Heroes_21
+  - first:
+      213: -9110855601793383394
+    second: App_Heroes_22
+  - first:
+      213: -7482785927087761218
+    second: App_Heroes_23
+  - first:
+      213: 367811088489073969
+    second: App_Heroes_24
+  - first:
+      213: -2885138295404875799
+    second: App_Heroes_25
+  - first:
+      213: -3199458406975988240
+    second: App_Heroes_26
+  - first:
+      213: -5240116160994618808
+    second: App_Heroes_27
+  - first:
+      213: -7756221585004563155
+    second: App_Heroes_28
+  - first:
+      213: -391187205281358901
+    second: App_Heroes_29
+  - first:
+      213: -4196830575939812121
+    second: App_Heroes_30
+  - first:
+      213: 3037088748436609594
+    second: App_Heroes_31
+  - first:
+      213: 5870229473342115429
+    second: App_Heroes_32
+  - first:
+      213: 348899138198140597
+    second: App_Heroes_33
+  - first:
+      213: 4143780618831521765
+    second: App_Heroes_34
+  - first:
+      213: -2606723865243745910
+    second: App_Heroes_35
+  - first:
+      213: 1601654794336658919
+    second: App_Heroes_36
+  - first:
+      213: -2339055068038525166
+    second: App_Heroes_37
+  - first:
+      213: -7031117870109032906
+    second: App_Heroes_38
+  - first:
+      213: -1511832421080360567
+    second: App_Heroes_39
+  - first:
+      213: 4345905962541073084
+    second: App_Heroes_40
+  - first:
+      213: -2880283659583585650
+    second: App_Heroes_41
+  - first:
+      213: -1460472806125483730
+    second: App_Heroes_42
+  - first:
+      213: 6833110050494419922
+    second: App_Heroes_43
+  - first:
+      213: -1291224527568085693
+    second: App_Heroes_44
+  - first:
+      213: -8642181076561533999
+    second: App_Heroes_45
+  - first:
+      213: 8172423640910241405
+    second: App_Heroes_46
+  - first:
+      213: 304450858794236228
+    second: App_Heroes_47
+  - first:
+      213: 4007522628530687200
+    second: App_Heroes_48
+  - first:
+      213: -7320470093924119115
+    second: App_Heroes_49
+  - first:
+      213: 8498058849179516491
+    second: App_Heroes_50
+  - first:
+      213: 8643341636308537166
+    second: App_Heroes_51
+  - first:
+      213: 542237274970555920
+    second: App_Heroes_52
+  - first:
+      213: -7034886268933451284
+    second: App_Heroes_53
+  - first:
+      213: 1656068208965369357
+    second: App_Heroes_54
+  - first:
+      213: -1947943553415661798
+    second: App_Heroes_55
+  - first:
+      213: -6310504540595072688
+    second: App_Heroes_56
+  - first:
+      213: 2141321524729606944
+    second: App_Heroes_57
+  - first:
+      213: 4243771264698683952
+    second: App_Heroes_58
+  - first:
+      213: 8448979725405457465
+    second: App_Heroes_59
+  - first:
+      213: -960508321464834727
+    second: App_Heroes_60
+  - first:
+      213: -8840095884170926612
+    second: App_Heroes_61
+  - first:
+      213: -6924089955722237501
+    second: App_Heroes_62
+  - first:
+      213: -2240512086118832592
+    second: App_Heroes_63
+  - first:
+      213: -1876043437806057863
+    second: App_Heroes_64
+  - first:
+      213: -6911611564630368703
+    second: App_Heroes_65
+  - first:
+      213: -7948491816569123802
+    second: App_Heroes_66
+  - first:
+      213: -4347034695573144893
+    second: App_Heroes_67
+  - first:
+      213: 7208046593420349795
+    second: App_Heroes_68
+  - first:
+      213: -6701439811780136161
+    second: App_Heroes_69
+  - first:
+      213: 8550403113371194119
+    second: App_Heroes_70
+  - first:
+      213: -3419064564245832101
+    second: App_Heroes_71
+  - first:
+      213: 1451975394195708919
+    second: App_Heroes_72
+  - first:
+      213: -8374431054483483217
+    second: App_Heroes_73
+  - first:
+      213: -447790582012812106
+    second: App_Heroes_74
+  - first:
+      213: -4851223921911658975
+    second: App_Heroes_75
+  - first:
+      213: 2216840396464086548
+    second: App_Heroes_76
+  - first:
+      213: 7460729915682201391
+    second: App_Heroes_77
+  - first:
+      213: -379348666648967101
+    second: App_Heroes_78
+  - first:
+      213: 3280944847281988111
+    second: App_Heroes_79
+  - first:
+      213: -4574041171359006409
+    second: App_Heroes_80
+  - first:
+      213: -2793062423757063261
+    second: App_Heroes_81
+  - first:
+      213: 8869296342319629979
+    second: App_Heroes_82
+  - first:
+      213: 5571814301456250581
+    second: App_Heroes_83
+  - first:
+      213: -8434509354497058176
+    second: App_Heroes_84
+  - first:
+      213: 5153771947410904567
+    second: App_Heroes_85
+  - first:
+      213: 2483205524900046889
+    second: App_Heroes_86
+  - first:
+      213: 6505409802569530889
+    second: App_Heroes_87
+  - first:
+      213: -2174395149356638989
+    second: App_Heroes_88
+  - first:
+      213: 3244222470842365159
+    second: App_Heroes_89
+  - first:
+      213: 7927196184603823603
+    second: App_Heroes_90
+  - first:
+      213: -202642129760618475
+    second: App_Heroes_91
+  - first:
+      213: 875065071969735330
+    second: App_Heroes_92
+  - first:
+      213: -2300762131311325807
+    second: App_Heroes_93
+  - first:
+      213: 1620033895962105743
+    second: App_Heroes_94
+  - first:
+      213: -5549092636694108246
+    second: App_Heroes_95
+  - first:
+      213: 1521509377520720458
+    second: App_Heroes_96
+  - first:
+      213: 5729218439092175017
+    second: App_Heroes_97
+  - first:
+      213: 3741276861622397296
+    second: App_Heroes_98
+  - first:
+      213: -3579849722835289654
+    second: App_Heroes_99
+  - first:
+      213: -2602183165842596952
+    second: App_Heroes_100
+  - first:
+      213: 2162321075429213033
+    second: App_Heroes_101
+  - first:
+      213: -8126188677999755540
+    second: App_Heroes_102
+  - first:
+      213: 696452979817923438
+    second: App_Heroes_103
+  - first:
+      213: -4062257726623015334
+    second: App_Heroes_104
+  - first:
+      213: -717071366608768731
+    second: App_Heroes_105
+  - first:
+      213: 1640364254024116946
+    second: App_Heroes_106
+  - first:
+      213: -6466108083350132072
+    second: App_Heroes_107
+  - first:
+      213: -4117482644262007349
+    second: App_Heroes_108
+  - first:
+      213: 3001369700817344667
+    second: App_Heroes_109
+  - first:
+      213: 1553282157320164499
+    second: App_Heroes_110
+  - first:
+      213: -1679134606783736070
+    second: App_Heroes_111
+  - first:
+      213: -5339482597236222931
+    second: App_Heroes_112
+  - first:
+      213: -1714097643822697031
+    second: App_Heroes_113
+  - first:
+      213: 4001613776457281606
+    second: App_Heroes_114
+  - first:
+      213: -684126426396687433
+    second: App_Heroes_115
+  - first:
+      213: -160688501117503647
+    second: App_Heroes_116
+  - first:
+      213: -322685813715822505
+    second: App_Heroes_117
+  - first:
+      213: -7759205240289169466
+    second: App_Heroes_118
+  - first:
+      213: 5174347075934827017
+    second: App_Heroes_119
+  - first:
+      213: -5346260045225013982
+    second: App_Heroes_120
+  - first:
+      213: 6909217292050575633
+    second: App_Heroes_121
+  - first:
+      213: 4272568237922641081
+    second: App_Heroes_122
+  - first:
+      213: -2375796661038871456
+    second: App_Heroes_123
+  - first:
+      213: -1266055766163828097
+    second: App_Heroes_124
+  - first:
+      213: -7859672289584120310
+    second: App_Heroes_125
+  - first:
+      213: 7530424200873065081
+    second: App_Heroes_126
+  - first:
+      213: -4752766491392358937
+    second: App_Heroes_127
+  - first:
+      213: -7660912824555090295
+    second: App_Heroes_128
+  - first:
+      213: -6307021304888584378
+    second: App_Heroes_129
+  - first:
+      213: 2371322508409448447
+    second: App_Heroes_130
+  - first:
+      213: 6967060721073670325
+    second: App_Heroes_131
+  - first:
+      213: -5290229658968353336
+    second: App_Heroes_132
+  - first:
+      213: -2698876221304222366
+    second: App_Heroes_133
+  - first:
+      213: -475322387818092941
+    second: App_Heroes_134
+  - first:
+      213: -1611935090864401485
+    second: App_Heroes_135
+  - first:
+      213: 4722827670684033606
+    second: App_Heroes_136
+  - first:
+      213: -2421727356008196949
+    second: App_Heroes_137
+  - first:
+      213: -8570710257338242787
+    second: App_Heroes_138
+  - first:
+      213: 729268115249830171
+    second: App_Heroes_139
+  - first:
+      213: 628841552158812542
+    second: App_Heroes_140
+  - first:
+      213: 3406494649995429134
+    second: App_Heroes_141
+  - first:
+      213: -5181826225323937611
+    second: App_Heroes_142
+  - first:
+      213: -2529893972562253806
+    second: App_Heroes_143
+  - first:
+      213: -1156834360487051903
+    second: App_Heroes_144
+  - first:
+      213: 3189598530214739362
+    second: App_Heroes_145
+  - first:
+      213: -515340683572653073
+    second: App_Heroes_146
+  - first:
+      213: 9070591397372316644
+    second: App_Heroes_147
+  - first:
+      213: 3233752871788804982
+    second: App_Heroes_148
+  - first:
+      213: 3903377130645769069
+    second: App_Heroes_149
+  - first:
+      213: -9137807338690255240
+    second: App_Heroes_150
+  - first:
+      213: -1898521934123423613
+    second: App_Heroes_151
+  - first:
+      213: -4185075774358681499
+    second: App_Heroes_152
+  - first:
+      213: -6523855240054010142
+    second: App_Heroes_153
+  - first:
+      213: 3847538011533795013
+    second: App_Heroes_154
+  - first:
+      213: -5075182387543858765
+    second: App_Heroes_155
+  - first:
+      213: -3956968600883834308
+    second: App_Heroes_156
+  - first:
+      213: 3714088657438029270
+    second: App_Heroes_157
+  - first:
+      213: 9202523064963006972
+    second: App_Heroes_158
+  - first:
+      213: 7079728875255568179
+    second: App_Heroes_159
+  - first:
+      213: -1978567163287817504
+    second: App_Heroes_160
+  - first:
+      213: 5735677813115693137
+    second: App_Heroes_161
+  - first:
+      213: 7982959497035317875
+    second: App_Heroes_162
+  - first:
+      213: -8970701686921680206
+    second: App_Heroes_163
+  - first:
+      213: -1247563274390751402
+    second: App_Heroes_164
+  - first:
+      213: -5994832035680543535
+    second: App_Heroes_165
+  - first:
+      213: 1990200293598019213
+    second: App_Heroes_166
+  - first:
+      213: -7612208549406269753
+    second: App_Heroes_167
+  - first:
+      213: -8457430093329850653
+    second: App_Heroes_168
+  - first:
+      213: -3674647520243181842
+    second: App_Heroes_169
+  - first:
+      213: -3982164724300955800
+    second: App_Heroes_170
+  - first:
+      213: 5576886729244388924
+    second: App_Heroes_171
+  - first:
+      213: -7944972282929422630
+    second: App_Heroes_172
+  - first:
+      213: -3772001039827353841
+    second: App_Heroes_173
+  - first:
+      213: 2209889424051760098
+    second: App_Heroes_174
+  - first:
+      213: -2869679373212246181
+    second: App_Heroes_175
+  - first:
+      213: 8108036298618653320
+    second: App_Heroes_176
+  - first:
+      213: -2319917203659515626
+    second: App_Heroes_177
+  - first:
+      213: 316487218379388724
+    second: App_Heroes_178
+  - first:
+      213: -3001629747849353515
+    second: App_Heroes_179
+  - first:
+      213: -1774490845667392283
+    second: App_Heroes_180
+  - first:
+      213: 7994434435404208575
+    second: App_Heroes_181
+  - first:
+      213: -2487254132226951596
+    second: App_Heroes_182
+  - first:
+      213: -6715595060566742631
+    second: App_Heroes_183
+  - first:
+      213: -5618469407077467463
+    second: App_Heroes_184
+  - first:
+      213: 1596345343638289602
+    second: App_Heroes_185
+  - first:
+      213: -4671571476916852732
+    second: App_Heroes_186
+  - first:
+      213: -5986914845169998893
+    second: App_Heroes_187
+  - first:
+      213: -6631931242746668598
+    second: App_Heroes_188
+  - first:
+      213: 7609675102361368569
+    second: App_Heroes_189
+  - first:
+      213: -759195349401637391
+    second: App_Heroes_190
+  - first:
+      213: -5086504550639523236
+    second: App_Heroes_191
+  - first:
+      213: -1829358408116536265
+    second: App_Heroes_192
+  - first:
+      213: 40358416506209306
+    second: App_Heroes_193
+  - first:
+      213: -3502651714760794932
+    second: App_Heroes_194
+  - first:
+      213: -6298731693097023895
+    second: App_Heroes_195
+  - first:
+      213: -2253396710633481346
+    second: App_Heroes_196
+  - first:
+      213: -1331770917427890576
+    second: App_Heroes_197
+  - first:
+      213: 948298737884529717
+    second: App_Heroes_198
+  - first:
+      213: 74739107932970767
+    second: App_Heroes_199
+  - first:
+      213: -9139938466800724244
+    second: App_Heroes_200
+  - first:
+      213: -4163289275735625256
+    second: App_Heroes_201
+  - first:
+      213: 3619994564384280311
+    second: App_Heroes_202
+  - first:
+      213: 446919668883773599
+    second: App_Heroes_203
+  - first:
+      213: -5106246267923039632
+    second: App_Heroes_204
+  - first:
+      213: -5602912321883924723
+    second: App_Heroes_205
+  - first:
+      213: -536618271566371199
+    second: App_Heroes_206
+  - first:
+      213: 351057615556783380
+    second: App_Heroes_207
+  - first:
+      213: 4972664617013563714
+    second: App_Heroes_208
+  - first:
+      213: 8760937309057749969
+    second: App_Heroes_209
+  - first:
+      213: 4765915308692066903
+    second: App_Heroes_210
+  - first:
+      213: 8519526944766338194
+    second: App_Heroes_211
+  - first:
+      213: 6053420641461150065
+    second: App_Heroes_212
+  - first:
+      213: -7267049150650341070
+    second: App_Heroes_213
+  - first:
+      213: 180463873779672463
+    second: App_Heroes_214
+  - first:
+      213: 871577089751880176
+    second: App_Heroes_215
+  - first:
+      213: 8910688677318624948
+    second: App_Heroes_216
+  - first:
+      213: 2607347995122572076
+    second: App_Heroes_217
+  - first:
+      213: -4500977190915050836
+    second: App_Heroes_218
+  - first:
+      213: 7898001402845093506
+    second: App_Heroes_219
+  - first:
+      213: 3464772747728622283
+    second: App_Heroes_220
+  - first:
+      213: 3865643447809425389
+    second: App_Heroes_221
+  - first:
+      213: 1587946244182572397
+    second: App_Heroes_222
+  - first:
+      213: -587663555357365301
+    second: App_Heroes_223
+  - first:
+      213: -7705333356521714091
+    second: App_Heroes_224
+  - first:
+      213: 8793670048125913024
+    second: App_Heroes_225
+  - first:
+      213: 7951097365004141129
+    second: App_Heroes_226
+  - first:
+      213: -344671147476320870
+    second: App_Heroes_227
+  - first:
+      213: -7527410595745218420
+    second: App_Heroes_228
+  - first:
+      213: 2485180299686199338
+    second: App_Heroes_229
+  - first:
+      213: 6605568727981231941
+    second: App_Heroes_230
+  - first:
+      213: 2472672379034563262
+    second: App_Heroes_231
+  - first:
+      213: -8153927837809315153
+    second: App_Heroes_232
+  - first:
+      213: -90326364916565675
+    second: App_Heroes_233
+  - first:
+      213: -7006913770345889252
+    second: App_Heroes_234
+  - first:
+      213: 5694608042245920447
+    second: App_Heroes_235
+  - first:
+      213: -8580795405216492966
+    second: App_Heroes_236
+  - first:
+      213: 5451933533942729346
+    second: App_Heroes_237
+  - first:
+      213: -2005728650651922792
+    second: App_Heroes_238
+  - first:
+      213: 2772697112470757668
+    second: App_Heroes_239
+  - first:
+      213: 5941256350345576902
+    second: App_Heroes_240
+  - first:
+      213: 6483682947228670684
+    second: App_Heroes_241
+  - first:
+      213: 388522442685790533
+    second: App_Heroes_242
+  - first:
+      213: -1532727105979358312
+    second: App_Heroes_243
+  - first:
+      213: -5928843206696842243
+    second: App_Heroes_244
+  - first:
+      213: -3446304250075621477
+    second: App_Heroes_245
+  - first:
+      213: 5623372023603240206
+    second: App_Heroes_246
+  - first:
+      213: -4839476108693786214
+    second: App_Heroes_247
+  - first:
+      213: 9166995829799108867
+    second: App_Heroes_248
+  - first:
+      213: -7570867863532831362
+    second: App_Heroes_249
+  - first:
+      213: -3854713903317765489
+    second: App_Heroes_250
+  - first:
+      213: 620438609839085365
+    second: App_Heroes_251
+  - first:
+      213: 1377203851570060310
+    second: App_Heroes_252
+  - first:
+      213: -4024992275380475527
+    second: App_Heroes_253
+  - first:
+      213: 451736024734890473
+    second: App_Heroes_254
+  - first:
+      213: -1586207128476784286
+    second: App_Heroes_255
+  - first:
+      213: -7085019123998263023
+    second: App_Heroes_256
+  - first:
+      213: 5166089237810217545
+    second: App_Heroes_257
+  - first:
+      213: 7203341313590528678
+    second: App_Heroes_258
+  - first:
+      213: 6870554313599171073
+    second: App_Heroes_259
+  - first:
+      213: -5596326171478318404
+    second: App_Heroes_260
+  - first:
+      213: 7468205691706051175
+    second: App_Heroes_261
+  - first:
+      213: -5114073398249738849
+    second: App_Heroes_262
+  - first:
+      213: 1352734598697403691
+    second: App_Heroes_263
+  - first:
+      213: 191929819143626967
+    second: App_Heroes_264
+  - first:
+      213: 1687534283815938880
+    second: App_Heroes_265
+  - first:
+      213: 5228383259170147314
+    second: App_Heroes_266
+  - first:
+      213: 3496981476492680684
+    second: App_Heroes_267
+  - first:
+      213: 7978683974350953645
+    second: App_Heroes_268
+  - first:
+      213: 2015419889047484322
+    second: App_Heroes_269
+  - first:
+      213: -7092963879116454779
+    second: App_Heroes_270
+  - first:
+      213: -8821352435619507016
+    second: App_Heroes_271
+  - first:
+      213: -7618787021519890027
+    second: App_Heroes_272
+  - first:
+      213: -4349008368601968343
+    second: App_Heroes_273
+  - first:
+      213: -1821062245358815149
+    second: App_Heroes_274
+  - first:
+      213: -5750254673798970379
+    second: App_Heroes_275
+  - first:
+      213: -2653116034497206452
+    second: App_Heroes_276
+  - first:
+      213: -3987021481597891119
+    second: App_Heroes_277
+  - first:
+      213: -2915048319765610864
+    second: App_Heroes_278
+  - first:
+      213: -2030216012487317371
+    second: App_Heroes_279
+  - first:
+      213: 2037048524251759177
+    second: App_Heroes_280
+  - first:
+      213: -3397594335905536281
+    second: App_Heroes_281
+  - first:
+      213: -7415778353495316095
+    second: App_Heroes_282
+  - first:
+      213: -7307307215980312336
+    second: App_Heroes_283
+  - first:
+      213: -784837667793095489
+    second: App_Heroes_284
+  - first:
+      213: -2003958476883438963
+    second: App_Heroes_285
+  - first:
+      213: -8584108095379331855
+    second: App_Heroes_286
+  - first:
+      213: -7307561866472246588
+    second: App_Heroes_287
+  - first:
+      213: -4682818537191882550
+    second: App_Heroes_288
+  - first:
+      213: -5617353685777654261
+    second: App_Heroes_289
+  - first:
+      213: -5262301196962637
+    second: App_Heroes_290
+  - first:
+      213: 1254845834433883748
+    second: App_Heroes_291
+  - first:
+      213: -4981214912973610013
+    second: App_Heroes_292
+  - first:
+      213: 2619562431227006169
+    second: App_Heroes_293
+  - first:
+      213: 4158122990623935779
+    second: App_Heroes_294
+  - first:
+      213: -180871505856845590
+    second: App_Heroes_295
+  - first:
+      213: -6130476487678801173
+    second: App_Heroes_296
+  - first:
+      213: 7296757386963674292
+    second: App_Heroes_297
+  - first:
+      213: -3206137326439922056
+    second: App_Heroes_298
+  - first:
+      213: 3268278039064354683
+    second: App_Heroes_299
+  - first:
+      213: 2854530304343970531
+    second: App_Heroes_300
+  - first:
+      213: -8370916112507600423
+    second: App_Heroes_301
+  - first:
+      213: 3920447051678195367
+    second: App_Heroes_302
+  - first:
+      213: -346582372756790946
+    second: App_Heroes_303
+  - first:
+      213: -1219829915047121704
+    second: App_Heroes_304
+  - first:
+      213: 9152395627959423488
+    second: App_Heroes_305
+  - first:
+      213: -4695214578681394735
+    second: App_Heroes_306
+  - first:
+      213: 8712798936526857017
+    second: App_Heroes_307
+  - first:
+      213: 252699207745573213
+    second: App_Heroes_308
+  - first:
+      213: -1344179819751014941
+    second: App_Heroes_309
+  - first:
+      213: 978646754651382372
+    second: App_Heroes_310
+  - first:
+      213: -3143669834902166001
+    second: App_Heroes_311
+  - first:
+      213: -5001235946460876912
+    second: App_Heroes_312
+  - first:
+      213: 8924893496796170518
+    second: App_Heroes_313
+  - first:
+      213: 7064570920009017897
+    second: App_Heroes_314
+  - first:
+      213: 482959615278782375
+    second: App_Heroes_315
+  - first:
+      213: 5239789760627915926
+    second: App_Heroes_316
+  - first:
+      213: 4113591274391632661
+    second: App_Heroes_317
+  - first:
+      213: 630579849465228121
+    second: App_Heroes_318
+  - first:
+      213: -5376232817713186789
+    second: App_Heroes_319
+  - first:
+      213: -499150957961800099
+    second: App_Heroes_320
+  - first:
+      213: 7652776014034416374
+    second: App_Heroes_321
+  - first:
+      213: -7699518221800498590
+    second: App_Heroes_322
+  - first:
+      213: 3367989316187653194
+    second: App_Heroes_323
+  - first:
+      213: -4971855735835486808
+    second: App_Heroes_324
+  - first:
+      213: 7344753225353749328
+    second: App_Heroes_325
+  - first:
+      213: 2860033066152235144
+    second: App_Heroes_326
+  - first:
+      213: -1355147291659249340
+    second: App_Heroes_327
+  - first:
+      213: -7587942694086875753
+    second: App_Heroes_328
+  - first:
+      213: -5307914202545385761
+    second: App_Heroes_329
+  - first:
+      213: -1535759019574935709
+    second: App_Heroes_330
+  - first:
+      213: -7192186021626583458
+    second: App_Heroes_331
+  - first:
+      213: 450821769479021788
+    second: App_Heroes_332
+  - first:
+      213: -8523009308734360350
+    second: App_Heroes_333
+  - first:
+      213: -6161256286591749899
+    second: App_Heroes_334
+  - first:
+      213: 7996277421437566175
+    second: App_Heroes_335
+  - first:
+      213: -6767725339676651031
+    second: App_Heroes_336
+  - first:
+      213: -6408352798871868004
+    second: App_Heroes_337
+  - first:
+      213: -1278278537344453798
+    second: App_Heroes_338
+  - first:
+      213: -1941447093275698222
+    second: App_Heroes_339
+  - first:
+      213: -3157173901313605908
+    second: App_Heroes_340
+  - first:
+      213: -5275364122109954030
+    second: App_Heroes_341
+  - first:
+      213: -3236913077209852411
+    second: App_Heroes_342
+  - first:
+      213: 915230366995221851
+    second: App_Heroes_343
+  - first:
+      213: -5471624726196091499
+    second: App_Heroes_344
+  - first:
+      213: 9146471288959377398
+    second: App_Heroes_345
+  - first:
+      213: -6153534758812926808
+    second: App_Heroes_346
+  - first:
+      213: 5722861323629014013
+    second: App_Heroes_347
+  - first:
+      213: -6488941441273767359
+    second: App_Heroes_348
+  - first:
+      213: -3744946612666205831
+    second: App_Heroes_349
+  - first:
+      213: -5211188615011819409
+    second: App_Heroes_350
+  - first:
+      213: 768892063571693859
+    second: App_Heroes_351
+  - first:
+      213: 8909330680764125601
+    second: App_Heroes_352
+  - first:
+      213: 1667328694022695503
+    second: App_Heroes_353
+  - first:
+      213: 1432887566457516414
+    second: App_Heroes_354
+  - first:
+      213: -7844133197958952288
+    second: App_Heroes_355
+  - first:
+      213: -6506635728958808455
+    second: App_Heroes_356
+  - first:
+      213: -5172220129277005268
+    second: App_Heroes_357
+  - first:
+      213: -983902455310546187
+    second: App_Heroes_358
+  - first:
+      213: -1151503732978286489
+    second: App_Heroes_359
+  - first:
+      213: -2950836968761659636
+    second: App_Heroes_360
+  - first:
+      213: -5619680962616672092
+    second: App_Heroes_361
+  - first:
+      213: 5283309708712942850
+    second: App_Heroes_362
+  - first:
+      213: 2433658391000531332
+    second: App_Heroes_363
+  - first:
+      213: 9113418219141839536
+    second: App_Heroes_0
+  - first:
+      213: -7984253373352358506
+    second: App_Heroes_1
+  - first:
+      213: -8742744655656232836
+    second: App_Heroes_2
+  - first:
+      213: 5993804230938514868
+    second: App_Heroes_3
+  - first:
+      213: 3171305357074863979
+    second: App_Heroes_4
+  - first:
+      213: -3658048722055810156
+    second: App_Heroes_5
+  - first:
+      213: 3168148588762614263
+    second: App_Heroes_6
+  - first:
+      213: 6745665528830247559
+    second: App_Heroes_7
+  - first:
+      213: -2269034010281929528
+    second: App_Heroes_8
+  - first:
+      213: -746772570369378824
+    second: App_Heroes_9
+  - first:
+      213: -1280804706713580895
+    second: App_Heroes_10
+  - first:
+      213: 7173499825460322043
+    second: App_Heroes_11
+  - first:
+      213: -5607307514970784326
+    second: App_Heroes_12
+  - first:
+      213: -497642115249948690
+    second: App_Heroes_13
+  - first:
+      213: 1810228292901184977
+    second: App_Heroes_14
+  - first:
+      213: -9145444894285885472
+    second: App_Heroes_15
+  - first:
+      213: 9120574403243921341
+    second: App_Heroes_16
+  - first:
+      213: 1702562230187151846
+    second: App_Heroes_17
+  - first:
+      213: 5098023534094306424
+    second: App_Heroes_18
+  - first:
+      213: -680830185560837280
+    second: App_Heroes_19
+  - first:
+      213: -553979254629821983
+    second: App_Heroes_20
+  - first:
+      213: -2254824083210475718
+    second: App_Heroes_21
+  - first:
+      213: -5121342564002097990
+    second: App_Heroes_22
+  - first:
+      213: 7513207291081862662
+    second: App_Heroes_23
+  - first:
+      213: 2768924686062914784
+    second: App_Heroes_24
+  - first:
+      213: -2433345215728004500
+    second: App_Heroes_25
+  - first:
+      213: 8706892970483743033
+    second: App_Heroes_26
+  - first:
+      213: -6432781007716936537
+    second: App_Heroes_27
+  - first:
+      213: -5572606757606696618
+    second: App_Heroes_28
+  - first:
+      213: -1066629291179636039
+    second: App_Heroes_29
+  - first:
+      213: -3273856450444006655
+    second: App_Heroes_30
+  - first:
+      213: 5360456567511365135
+    second: App_Heroes_31
+  - first:
+      213: -3735979629871515981
+    second: App_Heroes_32
+  - first:
+      213: 4020653123654313269
+    second: App_Heroes_33
+  - first:
+      213: -3964244090444339775
+    second: App_Heroes_34
+  - first:
+      213: -1474223969817167311
+    second: App_Heroes_35
+  - first:
+      213: -7435914197002224436
+    second: App_Heroes_36
+  - first:
+      213: -8530629412401801636
+    second: App_Heroes_37
+  - first:
+      213: 7737453556010335677
+    second: App_Heroes_38
+  - first:
+      213: -4746660699132781751
+    second: App_Heroes_39
+  - first:
+      213: -6732371756528312579
+    second: App_Heroes_40
+  - first:
+      213: 5179157944642878795
+    second: App_Heroes_41
+  - first:
+      213: -7187141400305430425
+    second: App_Heroes_42
+  - first:
+      213: -5339189281735579987
+    second: App_Heroes_43
+  - first:
+      213: -1632766717489691329
+    second: App_Heroes_44
+  - first:
+      213: 2822070701630823916
+    second: App_Heroes_45
+  - first:
+      213: -9095594109788620171
+    second: App_Heroes_46
+  - first:
+      213: -8872844851225918115
+    second: App_Heroes_47
+  - first:
+      213: 3075326248909227553
+    second: App_Heroes_48
+  - first:
+      213: -195477468035236335
+    second: App_Heroes_49
+  - first:
+      213: -3284192836989353824
+    second: App_Heroes_50
+  - first:
+      213: -5786682071911585896
+    second: App_Heroes_51
+  - first:
+      213: -6622792911146283599
+    second: App_Heroes_52
+  - first:
+      213: 1712032855372175443
+    second: App_Heroes_53
+  - first:
+      213: 5223752770204427223
+    second: App_Heroes_54
+  - first:
+      213: -3861790022459887720
+    second: App_Heroes_55
+  - first:
+      213: 8981379195878129404
+    second: App_Heroes_56
+  - first:
+      213: 3750888795378455691
+    second: App_Heroes_57
+  - first:
+      213: -1111401069642836120
+    second: App_Heroes_58
+  - first:
+      213: 5242358971968843487
+    second: App_Heroes_59
+  - first:
+      213: -175375825686014298
+    second: App_Heroes_60
+  - first:
+      213: 5387456554839295777
+    second: App_Heroes_61
+  - first:
+      213: 3221737765509270497
+    second: App_Heroes_62
+  - first:
+      213: -3439134897591815628
+    second: App_Heroes_63
+  - first:
+      213: -347538873080207292
+    second: App_Heroes_64
+  - first:
+      213: -4805191365015936179
+    second: App_Heroes_65
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 72
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: App_Heroes_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 862
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bab589d59d597e70800000000000000
+      internalID: 9113418219141839536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_1
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 862
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69d4e9cfbdb323190800000000000000
+      internalID: -7984253373352358506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_2
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 862
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c785aa58e088ba680800000000000000
+      internalID: -8742744655656232836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_3
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 862
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b5d25601354e2350800000000000000
+      internalID: 5993804230938514868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_4
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 862
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b679db28b6db20c20800000000000000
+      internalID: 3171305357074863979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_5
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 862
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 493bac681100c3dc0800000000000000
+      internalID: -3658048722055810156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_6
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 862
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f9c9dc1b5687fb20800000000000000
+      internalID: 3168148588762614263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_7
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 862
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7824683fe0b6d9d50800000000000000
+      internalID: 6745665528830247559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_8
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 862
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c49dd9e695c280e0800000000000000
+      internalID: -2269034010281929528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_9
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 862
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f5b027cd4ee2a5f0800000000000000
+      internalID: -746772570369378824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_10
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 862
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aa40bdb7eaa93ee0800000000000000
+      internalID: -1280804706713580895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 690
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfe93ec95146d8360800000000000000
+      internalID: 7173499825460322043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_12
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 690
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abdb9cf1687de22b0800000000000000
+      internalID: -5607307514970784326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_13
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 690
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee7b04ff1250819f0800000000000000
+      internalID: -497642115249948690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_14
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 690
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d5acb89a093f1910800000000000000
+      internalID: 1810228292901184977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_15
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 690
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ef0e23c25ad41180800000000000000
+      internalID: -9145444894285885472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_16
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 690
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbfcfdcc81ac29e70800000000000000
+      internalID: 9120574403243921341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_17
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 690
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e15d4ae357b0a710800000000000000
+      internalID: 1702562230187151846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_18
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 690
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87cc54ec461dfb640800000000000000
+      internalID: 5098023534094306424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_19
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 690
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 063784dad843d86f0800000000000000
+      internalID: -680830185560837280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_20
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 690
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e19ad29dcedf48f0800000000000000
+      internalID: -553979254629821983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_21
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 690
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a376e31617145b0e0800000000000000
+      internalID: -2254824083210475718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 518
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab4119372165de8b0800000000000000
+      internalID: -5121342564002097990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_23
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 518
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60e2fcc7936444860800000000000000
+      internalID: 7513207291081862662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_24
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 518
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ec0792e4523d6620800000000000000
+      internalID: 2768924686062914784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_25
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 518
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c62d2a03b650b3ed0800000000000000
+      internalID: -2433345215728004500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_26
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 518
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 939770b860915d870800000000000000
+      internalID: 8706892970483743033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_27
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 518
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a4172d71cb2ab6a0800000000000000
+      internalID: -6432781007716936537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_28
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 518
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65959ebcdaf1aa2b0800000000000000
+      internalID: -5572606757606696618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_29
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 518
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ba06389f429231f0800000000000000
+      internalID: -1066629291179636039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_30
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 518
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10be9a967ece092d0800000000000000
+      internalID: -3273856450444006655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_31
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 518
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f06bc64e8da246a40800000000000000
+      internalID: 5360456567511365135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_32
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 518
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b6b9691252272cc0800000000000000
+      internalID: -3735979629871515981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 346
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 535ea70b6ba3cc730800000000000000
+      internalID: 4020653123654313269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_34
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 346
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c5af12d00d2cf8c0800000000000000
+      internalID: -3964244090444339775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_35
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 346
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13a7ea73c118a8be0800000000000000
+      internalID: -1474223969817167311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_36
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 346
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cccf56b5f635ec890800000000000000
+      internalID: -7435914197002224436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_37
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 346
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c569a432fbd1d9980800000000000000
+      internalID: -8530629412401801636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_38
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 346
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbd3410b305f06b60800000000000000
+      internalID: 7737453556010335677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_39
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 346
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94b12e63e39702eb0800000000000000
+      internalID: -4746660699132781751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_40
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 346
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfed14c9e8fc192a0800000000000000
+      internalID: -6732371756528312579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_41
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 346
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4db416d5b010e740800000000000000
+      internalID: 5179157944642878795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_42
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 346
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7609a4cb9f4224c90800000000000000
+      internalID: -7187141400305430425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_43
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 346
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da6e391f2a367e5b0800000000000000
+      internalID: -5339189281735579987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 174
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3542fa325f3759e0800000000000000
+      internalID: -1632766717489691329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_45
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 174
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ced1eb5e9520a2720800000000000000
+      internalID: 2822070701630823916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_46
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 174
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57af9e00955f5c180800000000000000
+      internalID: -9095594109788620171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_47
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 174
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d55868f3e925dd480800000000000000
+      internalID: -8872844851225918115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_48
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 174
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1264baafde0cdaa20800000000000000
+      internalID: 3075326248909227553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_49
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 174
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11eba2c4746894df0800000000000000
+      internalID: -195477468035236335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_50
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 174
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a00e51e3043c62d0800000000000000
+      internalID: -3284192836989353824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_51
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 174
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 897a693905391bfa0800000000000000
+      internalID: -5786682071911585896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_52
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 174
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bd8626bfec1714a0800000000000000
+      internalID: -6622792911146283599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_53
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 174
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 358914cafcc52c710800000000000000
+      internalID: 1712032855372175443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_54
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 174
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d36f76c77f7e7840800000000000000
+      internalID: 5223752770204427223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89f612a6f6a286ac0800000000000000
+      internalID: -3861790022459887720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_56
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 2
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfe36631bc444ac70800000000000000
+      internalID: 8981379195878129404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_57
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 2
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8496808c75dd0430800000000000000
+      internalID: 3750888795378455691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_58
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 2
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86713f89d928390f0800000000000000
+      internalID: -1111401069642836120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_59
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 2
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdee845b5b990c840800000000000000
+      internalID: 5242358971968843487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_60
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 2
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a65bcf9d90f09df0800000000000000
+      internalID: -175375825686014298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_61
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 2
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 127cb02513714ca40800000000000000
+      internalID: 5387456554839295777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_62
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 2
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eb04a0ad69e5bc20800000000000000
+      internalID: 3221737765509270497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_63
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 2
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 432f36e280db540d0800000000000000
+      internalID: -3439134897591815628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_64
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 2
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4482a6c7c3b4d2bf0800000000000000
+      internalID: -347538873080207292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: App_Heroes_65
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 2
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d43637a99e7805db0800000000000000
+      internalID: -4805191365015936179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 96e7cc8693dada445bcab154aee63247
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
