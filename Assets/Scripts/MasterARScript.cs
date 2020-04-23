@@ -33,11 +33,12 @@ public class MasterARScript : MonoBehaviour
 
     GameObject[] meshes;
     List<Room> map;
-    //List<Entity> entities;
     List<Entity> entities; 
 
     const float scale = 0.002f;
     const float offset = 0.315f;
+    const float floor = 0.05f;
+    const float pointerHeight = 0.32f;
     
     const int descriptorSize = 8;
     const int numOfIcons = 3;
@@ -78,6 +79,9 @@ public class MasterARScript : MonoBehaviour
 
     [SerializeField]
     GameObject pointer;
+    Collider pointerCollider;
+    [SerializeField]
+    Transform entityHolder;
     [SerializeField]
     SpriteRenderer monster;
 
@@ -89,6 +93,8 @@ public class MasterARScript : MonoBehaviour
         meshes = Resources.LoadAll<GameObject>("Sets/Dungeon") as GameObject[];
         heroSprites = Resources.LoadAll<Sprite>("Characters/AR_Heroes");
         monsterSprites = Resources.LoadAll<Sprite>("Characters/AR_Monsters");
+        pointerCollider = GameObject.Find("PointerStick").GetComponent<Collider>();
+
 
         selectedCellX = 0;
         selectedCellY = 0;
@@ -102,12 +108,7 @@ public class MasterARScript : MonoBehaviour
         icoPosY = 0;
         selectedMonster = 0;
         pointingAtMonster = -1;
-        
-        //if (PlayerPrefs.HasKey("TempLevel"))
-        //{
-        //    stringToMap(PlayerPrefs.GetString("TempLevel"));
-        //    displayLevel();
-        //}
+
         pointer.SendMessage("SetMonster", monsterSprites[monsters[selectedMonster]]);
     }
 
@@ -126,12 +127,13 @@ public class MasterARScript : MonoBehaviour
             {
                 Entity ent = new Entity();
                 Vector3 vec = pointer.transform.localPosition;
-                vec.y = 0.1f;
-                SpriteRenderer sr = Instantiate<SpriteRenderer>(monster,this.transform);
+                vec.y = floor;
+                SpriteRenderer sr = Instantiate<SpriteRenderer>(monster,entityHolder.transform);
                 sr.sprite = monsterSprites[monsters[selectedMonster]];
                 sr.transform.localPosition = vec;
                 ent.sr = sr;
                 ent.collider = sr.GetComponent<Collider>();
+                ent.type = selectedMonster;
                 entities.Add(ent);
             }
         }
@@ -155,7 +157,17 @@ public class MasterARScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.JoystickButton4) == true) 
         {
             Debug.Log("D");
-            mapToString(Math.Abs(mapPosX), Math.Abs(mapPosY), 10, 5);
+            string hostMap = mapToString(0, 0, mapSizeY, mapSizeX);
+            Debug.Log(hostMap);
+            string guestMap = mapToString(Math.Abs(mapPosY), Math.Abs(mapPosX), 10, 5);
+            Debug.Log(guestMap);
+            List<string> ents = new List<string>();
+            foreach(Entity ent in entities)
+            {
+                string concat = "t" + ent.type + "x" + ent.sr.transform.localPosition.x + "z" + ent.sr.transform.localPosition.z + "r" + Math.Floor(ent.sr.transform.rotation.eulerAngles.z);
+                Debug.Log(concat);
+                ents.Add(concat);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.JoystickButton7) == true)
@@ -166,31 +178,18 @@ public class MasterARScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.JoystickButton6) == true)
         {
-            if(selectedIcon == 2)
+            Debug.Log("T2");
+            if (selectedIcon == 2)
             {
                 selectedMonster++;
                 if (selectedMonster > monsters.Length) selectedMonster = 0; 
                 pointer.SendMessage("SetMonster", monsterSprites[monsters[selectedMonster]]);
             }
-            //Debug.Log("T2");
-            //ToggleActiveIcon(-1);
         }
     }
 
     void FixedUpdate()
     {
-        /*
-        targetPos = target.position;
-        targetRot = target.rotation;
-        foreach(Room r in map)
-        {
-            if (r.cat >= 0)
-            {
-                r.model.transform.position = PositionInPlane(r.xPos, 0.0f, r.yPos);
-                r.model.transform.rotation = RotateInPlane(quats[r.rot]);
-            }
-        }
-        */
         if (interval >= 0) interval--; 
         float horizontal = Input.GetAxis("Axis 1");
         int digitalH = AnalogToDigital(horizontal);
@@ -202,29 +201,21 @@ public class MasterARScript : MonoBehaviour
             if (selectedIcon == 0 && interval < 0) //World
             {
                 interval = 10;
-                //Debug.Log("Horizontal " + horizontal);
                 mapPosX += digitalH;
                 mapPosY += digitalV;
 
                 if (mapPosX > 0) mapPosX = 0;
                 if (mapPosY > 0) mapPosY = 0;
 
-                // Debug.Log("MapX: " + mapPosX + "MapY: " + mapPosY);
-                //transform.localPosition += new Vector3(analogH * offset, 0, 0);
-                //transform.localPosition += new Vector3(0, 0, -analogV * offset);
 
-                transform.localPosition = new Vector3(baseX + offset * mapPosX, 0, baseY + offset * mapPosY);
+                transform.localPosition = new Vector3(baseX + offset * mapPosX, 0.0f, baseY + offset * mapPosY);
             }
             else if (selectedIcon == 1 && interval < 0) //Light
             {
                 interval = 10;
-                //Debug.Log("Horizontal " + horizontal);
-
                 icoPosX += digitalH;
                 icoPosY += digitalV;
-
-                //Debug.Log("IcoX: " + icoPosX + "IcoY: " + icoPosY);
-                pointer.transform.localPosition = new Vector3(baseX + offset * icoPosX, 0.32f, baseY + offset * icoPosY);
+                pointer.transform.localPosition = new Vector3(baseX + offset * icoPosX, pointerHeight, baseY + offset * icoPosY);
             }
             else if (selectedIcon >= 2)  //Monster
             {
@@ -234,20 +225,12 @@ public class MasterARScript : MonoBehaviour
                 if (isInBounds(proposedMove) && selectedIcon != 4) pointer.transform.localPosition = proposedMove;
                 if (selectedIcon == 2)
                 {
-                    //Debug.Log("Moving");
-                    //pointer.transform.localPosition = proposedMove;
                     int count = 0;
                     bool foundMonster = false;
                     foreach (Entity entity in entities)
                     {
-                        //Collider collider = entity.GetComponent<Collider>();
-                        Vector3 vec = pointer.transform.position;
-                        vec.y = -0.2f;
-                        Debug.Log(entity.collider.bounds);
-                        Debug.Log("pm "+vec);
-                        if (entity.collider.bounds.Contains(vec))
+                        if (entity.collider.bounds.Intersects(pointerCollider.bounds))
                         {
-                            //Debug.Log("Colliding");
                             highlighEntity(count);
                             pointingAtMonster = count;
                             foundMonster = true;
@@ -263,37 +246,16 @@ public class MasterARScript : MonoBehaviour
                 }
                 else if (selectedIcon == 3)
                 {
-                    Debug.Log("in3");
-                    entities[pointingAtMonster].sr.transform.position = new Vector3(proposedMove.x, 0.1f, proposedMove.z);
+                    entities[pointingAtMonster].sr.transform.localPosition = new Vector3(proposedMove.x, floor, proposedMove.z);
                 }
                 else if (selectedIcon == 4)
                 {
                     entities[pointingAtMonster].sr.transform.Rotate(new Vector3(0, 0, digitalH * speed));
-                    //Debug.Log(entities[pointingAtMonster].transform.rotation.eulerAngles.y);
                 }
             }
         }
         selectedCellX = icoPosX - mapPosX;
         selectedCellY = icoPosY - mapPosY;
-    }
-
-    private Vector3 PositionInPlane(float desiredX, float desiredY, float desiredZ)
-    {
-        Vector3 positionInPlane = target.position;
-        positionInPlane.x += desiredX;
-        positionInPlane.y = 0.0f + desiredY;
-        positionInPlane.z += desiredZ;
-        return positionInPlane;
-    }
-
-    private Quaternion RotateInPlane(Quaternion q)//float desiredX, float desiredY, float desiredZ)
-    {
-        Vector3 vec = q.eulerAngles;
-        Vector3 rotInPlane = target.rotation.eulerAngles;
-        rotInPlane.x = 0.0f + vec.x;
-        rotInPlane.y += vec.y;
-        rotInPlane.z = 0.0f + vec.z;
-        return Quaternion.Euler(rotInPlane);
     }
 
     public void FoundTarget()
@@ -337,7 +299,6 @@ public class MasterARScript : MonoBehaviour
                 room.yPos = y * offset;
                 string descriptor = level.Substring(stringMarker, descriptorSize);
                 stringMarker += descriptorSize;
-                //Debug.Log(descriptor);
                 string selCatHex = descriptor.Substring(0, 3);
                 room.cat = int.Parse(selCatHex, System.Globalization.NumberStyles.HexNumber);
                  
@@ -345,8 +306,6 @@ public class MasterARScript : MonoBehaviour
                 room.itm = int.Parse(selHex, System.Globalization.NumberStyles.HexNumber);
                 room.rot = int.Parse(descriptor.Substring(6, 1));
                 map.Add(room);
-                //rot+=1;
-                //Debug.Log("Hex: " + selHex + " Int: " + selInt + " Rot: " + rot);
             }
         }
     }
@@ -374,30 +333,9 @@ public class MasterARScript : MonoBehaviour
                 }
             }
         }
-        Debug.Log(mapString);
         return mapString;
     }
 
-    private void getAllUnderFrame()
-    {
-        for (int i = 0; i < mapSizeX * mapSizeY; ++i)
-        {
-            if (map[i].cat >= 0) setMeshColor(map[i].model, 0);
-        }
-        int baseX = Math.Abs(mapPosX);
-        int baseY = Math.Abs(mapPosY);
-        int bottomCorner = baseX * mapSizeX + baseY;
-        GameObject bo = map[bottomCorner].model;
-
-        for (int x = baseX; x < baseX + 10; ++x)
-        {
-            for (int y = baseY; y < baseY + 5; ++y)
-            {
-                int r = x * mapSizeX + y;
-                if (map[r] != null && map[r].cat >= 0) setMeshColor(map[r].model, 1);
-            }
-        }
-    }
 
     private void displayLevel()
     {
@@ -408,22 +346,16 @@ public class MasterARScript : MonoBehaviour
                 Room room = map[y * mapSizeX + x];
                 if(room.cat >= 0)
                 {
-                    Vector3 pos = PositionInPlane(y * offset, 0, x * offset);
-                    //Quaternion rot = RotateInPlane(quats[room.rot]);
-                    //GameObject go = Instantiate(meshes[room.itm], pos, rot, this.transform);
                     GameObject go = Instantiate(meshes[room.itm], this.transform);
                     go.transform.localScale = new Vector3(scale, scale, scale);
                     go.transform.localPosition = new Vector3(y * offset, 0, x * offset);
                     go.transform.localRotation = quats[room.rot];
-                    //setMeshColor(go, Convert.ToInt32(room.visible));
                     room.model = go;
                 }
             }
         }
         transform.localPosition = new Vector3(baseX + offset * mapPosX, 0, baseY + offset * mapPosY);
-        //transform.localPosition = new Vector3(baseX, 0, baseY);
-        //pointer.SendMessage("SetPos", new Vector3(baseX, 0.36f, baseY));
-        pointer.transform.localPosition = new Vector3(baseX + offset * mapPosX, 0.1f, baseY + offset * mapPosY);
+        pointer.transform.localPosition = new Vector3(baseX, pointerHeight, baseY);
     }
 
     public void DestroyLevel()
@@ -445,16 +377,6 @@ public class MasterARScript : MonoBehaviour
         }
     }
 
-    //private void loadMeshes()
-    //{
-        //meshes = Resources.LoadAll<GameObject>("Sets/Dungeon") as GameObject[];
-        //foreach(GameObject mesh in meshes)
-        //{
-        //    Debug.Log(mesh.name);
-        //}
-        //Debug.Log("Found " + meshes.Length + " objs");
-    //}
-
     private int AnalogToDigital(float inp)
     {
         int analog = 0;
@@ -465,13 +387,9 @@ public class MasterARScript : MonoBehaviour
 
     private void ToggleActiveIcon(int toggledir)
     {
-        //icons[curIcon].SetActive(false);
-
         selectedIcon += toggledir;
         if (selectedIcon >= numOfIcons) selectedIcon = 0;
         else if (selectedIcon < 0) selectedIcon = numOfIcons - 1;
-
-        //icons[curIcon].SetActive(true);
         pointer.SendMessage("SetIcon", selectedIcon);
     }
 }
