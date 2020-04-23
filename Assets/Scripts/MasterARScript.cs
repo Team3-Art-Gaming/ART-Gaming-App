@@ -9,29 +9,32 @@ class Room
     public int cat = -1;
     public int itm = -1;
     public int rot = -1;
+    public float xPos = 0.0f;
+    public float yPos = 0.0f; 
     public bool visible = false;
 }
 
 class Entity
 {
     public int type;
-    public float xPos;
-    public float yPos;
-    public int rot;
+    public Collider collider;
+    public SpriteRenderer sr;
 }
 
 public class MasterARScript : MonoBehaviour
 {
+
     Quaternion[] quats = {Quaternion.LookRotation(Vector3.right,Vector3.up),
                           Quaternion.LookRotation(Vector3.forward,Vector3.up),
                           Quaternion.LookRotation(Vector3.left,Vector3.up),
                           Quaternion.LookRotation(Vector3.back,Vector3.up),
                           Quaternion.LookRotation(Vector3.up,Vector3.forward)};
-        
+
+
     GameObject[] meshes;
     List<Room> map;
     //List<Entity> entities;
-    List<SpriteRenderer> entities; 
+    List<Entity> entities; 
 
     const float scale = 0.002f;
     const float offset = 0.315f;
@@ -68,6 +71,10 @@ public class MasterARScript : MonoBehaviour
 
     int selectedMonster;
     int pointingAtMonster;
+    [SerializeField]
+    Transform target;
+    Vector3 targetPos;
+    Quaternion targetRot;
 
     [SerializeField]
     GameObject pointer;
@@ -78,8 +85,8 @@ public class MasterARScript : MonoBehaviour
     void Start()
     {
         map = new List<Room>();
-        entities = new List<SpriteRenderer>();
-        loadMeshes();
+        entities = new List<Entity>();
+        meshes = Resources.LoadAll<GameObject>("Sets/Dungeon") as GameObject[];
         heroSprites = Resources.LoadAll<Sprite>("Characters/AR_Heroes");
         monsterSprites = Resources.LoadAll<Sprite>("Characters/AR_Monsters");
 
@@ -96,11 +103,11 @@ public class MasterARScript : MonoBehaviour
         selectedMonster = 0;
         pointingAtMonster = -1;
         
-        if (PlayerPrefs.HasKey("TempLevel"))
-        {
-            stringToMap(PlayerPrefs.GetString("TempLevel"));
-            displayLevel();
-        }
+        //if (PlayerPrefs.HasKey("TempLevel"))
+        //{
+        //    stringToMap(PlayerPrefs.GetString("TempLevel"));
+        //    displayLevel();
+        //}
         pointer.SendMessage("SetMonster", monsterSprites[monsters[selectedMonster]]);
     }
 
@@ -117,10 +124,15 @@ public class MasterARScript : MonoBehaviour
             }
             else if(selectedIcon == 2)
             {
-                Vector3 vec = new Vector3(pointer.transform.position.x, 0.05f, pointer.transform.position.z);
-                SpriteRenderer sr = Instantiate<SpriteRenderer>(monster,vec, quats[4], this.transform);
+                Entity ent = new Entity();
+                Vector3 vec = pointer.transform.localPosition;
+                vec.y = 0.1f;
+                SpriteRenderer sr = Instantiate<SpriteRenderer>(monster,this.transform);
                 sr.sprite = monsterSprites[monsters[selectedMonster]];
-                entities.Add(sr);
+                sr.transform.localPosition = vec;
+                ent.sr = sr;
+                ent.collider = sr.GetComponent<Collider>();
+                entities.Add(ent);
             }
         }
 
@@ -167,93 +179,136 @@ public class MasterARScript : MonoBehaviour
 
     void FixedUpdate()
     {
+        /*
+        targetPos = target.position;
+        targetRot = target.rotation;
+        foreach(Room r in map)
+        {
+            if (r.cat >= 0)
+            {
+                r.model.transform.position = PositionInPlane(r.xPos, 0.0f, r.yPos);
+                r.model.transform.rotation = RotateInPlane(quats[r.rot]);
+            }
+        }
+        */
         if (interval >= 0) interval--; 
         float horizontal = Input.GetAxis("Axis 1");
         int digitalH = AnalogToDigital(horizontal);
 
         float vertical = -Input.GetAxis("Axis 2");
         int digitalV = AnalogToDigital(vertical);
-
-        if (selectedIcon == 0 && interval < 0 && (digitalH != 0 || digitalV != 0)) //World
+        if ((digitalH != 0 || digitalV != 0))
         {
-            interval = 10;
-            //Debug.Log("Horizontal " + horizontal);
-            mapPosX += digitalH;
-            mapPosY += digitalV;
-
-            if (mapPosX > 0) mapPosX = 0;
-            if (mapPosY > 0) mapPosY = 0;
-
-            // Debug.Log("MapX: " + mapPosX + "MapY: " + mapPosY);
-            //transform.localPosition += new Vector3(analogH * offset, 0, 0);
-            //transform.localPosition += new Vector3(0, 0, -analogV * offset);
-
-            transform.localPosition = new Vector3(baseX + offset * mapPosX, 0, baseY + offset * mapPosY);
-        }
-        else if (selectedIcon == 1 && interval < 0 && (digitalH != 0 || digitalV != 0)) //Light
-        {
-            interval = 10;
-            //Debug.Log("Horizontal " + horizontal);
-
-            icoPosX += digitalH;
-            icoPosY += digitalV;
-
-            //Debug.Log("IcoX: " + icoPosX + "IcoY: " + icoPosY);
-            pointer.transform.localPosition = new Vector3(baseX + offset * icoPosX, 0.32f, baseY + offset * icoPosY);
-        }
-        else if (selectedIcon >= 2)  //Monster
-        {
-            Vector3 proposedMove = pointer.transform.localPosition;
-            proposedMove += new Vector3(digitalH * speed * Time.deltaTime, 0, 0);
-            proposedMove += new Vector3(0, 0, digitalV * speed * Time.deltaTime);
-            if(isInBounds(proposedMove) && selectedIcon != 4) pointer.transform.localPosition = proposedMove;
-            if (selectedIcon == 2)
+            if (selectedIcon == 0 && interval < 0) //World
             {
-                //Debug.Log("Moving");
-                //pointer.transform.localPosition = proposedMove;
-                int count = 0;
-                bool foundMonster = false;
-                foreach (SpriteRenderer entity in entities)
+                interval = 10;
+                //Debug.Log("Horizontal " + horizontal);
+                mapPosX += digitalH;
+                mapPosY += digitalV;
+
+                if (mapPosX > 0) mapPosX = 0;
+                if (mapPosY > 0) mapPosY = 0;
+
+                // Debug.Log("MapX: " + mapPosX + "MapY: " + mapPosY);
+                //transform.localPosition += new Vector3(analogH * offset, 0, 0);
+                //transform.localPosition += new Vector3(0, 0, -analogV * offset);
+
+                transform.localPosition = new Vector3(baseX + offset * mapPosX, 0, baseY + offset * mapPosY);
+            }
+            else if (selectedIcon == 1 && interval < 0) //Light
+            {
+                interval = 10;
+                //Debug.Log("Horizontal " + horizontal);
+
+                icoPosX += digitalH;
+                icoPosY += digitalV;
+
+                //Debug.Log("IcoX: " + icoPosX + "IcoY: " + icoPosY);
+                pointer.transform.localPosition = new Vector3(baseX + offset * icoPosX, 0.32f, baseY + offset * icoPosY);
+            }
+            else if (selectedIcon >= 2)  //Monster
+            {
+                Vector3 proposedMove = pointer.transform.localPosition;
+                proposedMove += new Vector3(digitalH * speed * Time.deltaTime, 0, 0);
+                proposedMove += new Vector3(0, 0, digitalV * speed * Time.deltaTime);
+                if (isInBounds(proposedMove) && selectedIcon != 4) pointer.transform.localPosition = proposedMove;
+                if (selectedIcon == 2)
                 {
-                    Collider collider = entity.GetComponent<Collider>();
-                    proposedMove.y = 0.1f;
-                    Debug.Log(collider.bounds);
-                    Debug.Log(proposedMove);
-                    if (collider.bounds.Contains(proposedMove))
+                    //Debug.Log("Moving");
+                    //pointer.transform.localPosition = proposedMove;
+                    int count = 0;
+                    bool foundMonster = false;
+                    foreach (Entity entity in entities)
                     {
-                        Debug.Log("Colliding");
-                        highlighEntity(count);
-                        pointingAtMonster = count;
-                        foundMonster = true;
-                        break;
+                        //Collider collider = entity.GetComponent<Collider>();
+                        Vector3 vec = pointer.transform.position;
+                        vec.y = -0.2f;
+                        Debug.Log(entity.collider.bounds);
+                        Debug.Log("pm "+vec);
+                        if (entity.collider.bounds.Contains(vec))
+                        {
+                            //Debug.Log("Colliding");
+                            highlighEntity(count);
+                            pointingAtMonster = count;
+                            foundMonster = true;
+                            break;
+                        }
+                        count++;
                     }
-                    count++;
+                    if (!foundMonster)
+                    {
+                        highlighEntity(-1);
+                        pointingAtMonster = -1;
+                    }
                 }
-                if (!foundMonster)
+                else if (selectedIcon == 3)
                 {
-                    highlighEntity(-1);
-                    pointingAtMonster = -1;
+                    Debug.Log("in3");
+                    entities[pointingAtMonster].sr.transform.position = new Vector3(proposedMove.x, 0.1f, proposedMove.z);
                 }
-            }
-            else if (selectedIcon == 3)
-            {
-                Debug.Log("in3");
-                entities[pointingAtMonster].transform.position = new Vector3(proposedMove.x, 0.1f, proposedMove.z);
-            }
-            else if(selectedIcon == 4)
-            {
-                entities[pointingAtMonster].transform.Rotate(new Vector3(0, 0, digitalH*speed));
-                Debug.Log(entities[pointingAtMonster].transform.rotation.eulerAngles.y);
+                else if (selectedIcon == 4)
+                {
+                    entities[pointingAtMonster].sr.transform.Rotate(new Vector3(0, 0, digitalH * speed));
+                    //Debug.Log(entities[pointingAtMonster].transform.rotation.eulerAngles.y);
+                }
             }
         }
         selectedCellX = icoPosX - mapPosX;
         selectedCellY = icoPosY - mapPosY;
     }
 
+    private Vector3 PositionInPlane(float desiredX, float desiredY, float desiredZ)
+    {
+        Vector3 positionInPlane = target.position;
+        positionInPlane.x += desiredX;
+        positionInPlane.y = 0.0f + desiredY;
+        positionInPlane.z += desiredZ;
+        return positionInPlane;
+    }
+
+    private Quaternion RotateInPlane(Quaternion q)//float desiredX, float desiredY, float desiredZ)
+    {
+        Vector3 vec = q.eulerAngles;
+        Vector3 rotInPlane = target.rotation.eulerAngles;
+        rotInPlane.x = 0.0f + vec.x;
+        rotInPlane.y += vec.y;
+        rotInPlane.z = 0.0f + vec.z;
+        return Quaternion.Euler(rotInPlane);
+    }
+
+    public void FoundTarget()
+    {
+        if (PlayerPrefs.HasKey("TempLevel"))
+        {
+            stringToMap(PlayerPrefs.GetString("TempLevel"));
+            displayLevel();
+        }
+    }
+
     private void highlighEntity(int ent)
     {
-        if(pointingAtMonster >= 0) entities[pointingAtMonster].color = Color.white;
-        if(ent >= 0) entities[ent].color = Color.red;
+        if(pointingAtMonster >= 0) entities[pointingAtMonster].sr.color = Color.white;
+        if(ent >= 0) entities[ent].sr.color = Color.red;
     }
 
     private bool isInBounds(Vector3 vec)
@@ -277,7 +332,9 @@ public class MasterARScript : MonoBehaviour
             {
                 Room room = new Room();
                 int x = i / mapSizeX;
+                room.xPos = x * offset;
                 int y = i % mapSizeX;
+                room.yPos = y * offset;
                 string descriptor = level.Substring(stringMarker, descriptorSize);
                 stringMarker += descriptorSize;
                 //Debug.Log(descriptor);
@@ -351,15 +408,31 @@ public class MasterARScript : MonoBehaviour
                 Room room = map[y * mapSizeX + x];
                 if(room.cat >= 0)
                 {
-                    GameObject go = Instantiate(meshes[room.itm], new Vector3(y * offset, 0, x * offset), quats[room.rot], this.transform);
+                    Vector3 pos = PositionInPlane(y * offset, 0, x * offset);
+                    //Quaternion rot = RotateInPlane(quats[room.rot]);
+                    //GameObject go = Instantiate(meshes[room.itm], pos, rot, this.transform);
+                    GameObject go = Instantiate(meshes[room.itm], this.transform);
                     go.transform.localScale = new Vector3(scale, scale, scale);
-                    setMeshColor(go, Convert.ToInt32(room.visible));
+                    go.transform.localPosition = new Vector3(y * offset, 0, x * offset);
+                    go.transform.localRotation = quats[room.rot];
+                    //setMeshColor(go, Convert.ToInt32(room.visible));
                     room.model = go;
                 }
             }
         }
-        transform.localPosition = new Vector3(baseX, 0, baseY);
-        pointer.transform.localPosition = new Vector3(baseX, 0.32f, baseY);
+        transform.localPosition = new Vector3(baseX + offset * mapPosX, 0, baseY + offset * mapPosY);
+        //transform.localPosition = new Vector3(baseX, 0, baseY);
+        //pointer.SendMessage("SetPos", new Vector3(baseX, 0.36f, baseY));
+        pointer.transform.localPosition = new Vector3(baseX + offset * mapPosX, 0.1f, baseY + offset * mapPosY);
+    }
+
+    public void DestroyLevel()
+    {
+        foreach(Room r in map)
+        {
+            Destroy(r.model);
+        }
+        map.Clear();
     }
 
     private void setMeshColor(GameObject go, int color)
@@ -372,15 +445,15 @@ public class MasterARScript : MonoBehaviour
         }
     }
 
-    private void loadMeshes()
-    {
-        meshes = Resources.LoadAll<GameObject>("Sets/Dungeon") as GameObject[];
-        foreach(GameObject mesh in meshes)
-        {
-            Debug.Log(mesh.name);
-        }
-        Debug.Log("Found " + meshes.Length + " objs");
-    }
+    //private void loadMeshes()
+    //{
+        //meshes = Resources.LoadAll<GameObject>("Sets/Dungeon") as GameObject[];
+        //foreach(GameObject mesh in meshes)
+        //{
+        //    Debug.Log(mesh.name);
+        //}
+        //Debug.Log("Found " + meshes.Length + " objs");
+    //}
 
     private int AnalogToDigital(float inp)
     {

@@ -39,4 +39,9 @@ public class ARController : MonoBehaviour
     {
         monsterSprite.sprite = sprite;
     }
+
+    public void SetPos(Vector3 vec)
+    {
+        transform.localPosition = vec;
+    }
 }
