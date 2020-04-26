@@ -16,7 +16,11 @@ class Room
 
 class Entity
 {
+    public int owner;
     public int type;
+    public float startX;
+    public float startZ;
+    public int startRot;
     public Collider collider;
     public SpriteRenderer sr;
 }
@@ -86,6 +90,9 @@ public class MasterARScript : MonoBehaviour
     SpriteRenderer monster;
 
 
+    string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
+    string[] debugEntityStrings = { "0t0x-0.9750006z0.06999996r354", "0t1x-0.275001z0.295r354" };
+
     void Start()
     {
         map = new List<Room>();
@@ -154,22 +161,23 @@ public class MasterARScript : MonoBehaviour
             Debug.Log("B");
             
         }
-        if (Input.GetKeyDown(KeyCode.JoystickButton4) == true) 
+        if (Input.GetKeyDown(KeyCode.JoystickButton4) == true)
         {
             Debug.Log("D");
+
             string hostMap = mapToString(0, 0, mapSizeY, mapSizeX);
             Debug.Log(hostMap);
+
             string guestMap = mapToString(Math.Abs(mapPosY), Math.Abs(mapPosX), 10, 5);
             Debug.Log(guestMap);
+
             List<string> ents = new List<string>();
-            foreach(Entity ent in entities)
+            foreach (Entity ent in entities)
             {
-                string concat = "t" + ent.type + "x" + ent.sr.transform.localPosition.x + "z" + ent.sr.transform.localPosition.z + "r" + Math.Floor(ent.sr.transform.rotation.eulerAngles.z);
-                Debug.Log(concat);
+                string concat = EntityToString(ent);
                 ents.Add(concat);
             }
         }
-
         if (Input.GetKeyDown(KeyCode.JoystickButton7) == true)
         {
             Debug.Log("T1");
@@ -263,7 +271,14 @@ public class MasterARScript : MonoBehaviour
         if (PlayerPrefs.HasKey("TempLevel"))
         {
             stringToMap(PlayerPrefs.GetString("TempLevel"));
+            //mapSizeX = 5;
+            //mapSizeY = 10;
+            //stringToMap(debugGuestString);
             displayLevel();
+            foreach(string e in debugEntityStrings)
+            {
+                StringToEntity(e);
+            }
         }
     }
 
@@ -336,6 +351,40 @@ public class MasterARScript : MonoBehaviour
         return mapString;
     }
 
+    private string EntityToString(Entity ent)
+    {
+        string concat = "";
+        concat += ent.owner;
+        concat += "t" + ent.type;
+        concat += "x" + ent.sr.transform.localPosition.x;
+        concat += "z" + ent.sr.transform.localPosition.z;
+        concat += "r" + Math.Floor(ent.sr.transform.rotation.eulerAngles.z);
+        Debug.Log(concat);
+        return concat;
+    }
+
+    private Entity StringToEntity(string entityString)
+    {
+        Entity ent = new Entity();
+        char[] keys = { 't', 'x', 'z', 'r' };
+        string[] info = entityString.Split(keys);
+        foreach(string s in info)
+        {
+            Debug.Log(s);
+        }
+        ent.owner = Convert.ToInt32(info[0]);
+        ent.type = Convert.ToInt32(info[1]);
+        ent.startX = Convert.ToSingle(info[2]);
+        ent.startZ = Convert.ToSingle(info[3]);
+        ent.startRot = Convert.ToInt32(info[4]);
+        ent.sr = Instantiate<SpriteRenderer>(monster, entityHolder.transform);
+        ent.sr.sprite = monsterSprites[monsters[ent.type]];
+        ent.sr.transform.localPosition = new Vector3(ent.startX, floor, ent.startZ);
+        ent.sr.transform.rotation = Quaternion.Euler(0,0,ent.startRot);
+        ent.collider = ent.sr.GetComponent<Collider>();
+        entities.Add(ent);
+        return ent;
+    }
 
     private void displayLevel()
     {
@@ -360,11 +409,14 @@ public class MasterARScript : MonoBehaviour
 
     public void DestroyLevel()
     {
-        foreach(Room r in map)
+        if (map.Count > 0)
         {
-            Destroy(r.model);
+            foreach (Room r in map)
+            {
+                if (r.model) Destroy(r.model);
+            }
+            map.Clear();
         }
-        map.Clear();
     }
 
     private void setMeshColor(GameObject go, int color)
