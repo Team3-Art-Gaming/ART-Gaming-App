@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using Firebase.Unity.Editor;
+using Firebase.Database;
+using System.Threading.Tasks;
+using Firebase;
+using Firebase.Extensions;
+using Firebase.Auth;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class MasterBehaviourScript : MonoBehaviour
@@ -20,6 +27,7 @@ public class MasterBehaviourScript : MonoBehaviour
     private Sprite defaultSprite;
     [SerializeField]
     private InputField mapNameField;
+    public InputField MapName;
 
     private const int mapSize = 128;
     string blankMap = "";
@@ -235,7 +243,7 @@ public class MasterBehaviourScript : MonoBehaviour
     public void SaveClicked()
     {
         string mapString = "";
-        foreach(LE_MapElements lem in map)
+        foreach (LE_MapElements lem in map)
         {
             if (lem.catHex == "N")
             {
@@ -248,13 +256,41 @@ public class MasterBehaviourScript : MonoBehaviour
         }
         //Text t = GetComponentInChildren<Text>();
         //readout.text = mapString;
-        PlayerPrefs.SetString(ppMapDataKey, mapString);
-        string mapName = mapNameField.text;
-        PlayerPrefs.SetString(ppMapNameKey, mapName);
+
+        //PlayerPrefs.SetString(ppMapDataKey, mapString);
+        //string mapName = mapNameField.text;
+        //PlayerPrefs.SetString(ppMapNameKey, mapName);
         //PlayerPrefs.SetString("TempLevel", mapString);
+
+        string Map = MapName.text;
+        PlayerPrefs.SetString(Map, mapString);
+
         PlayerPrefs.Save();
-        Debug.Log("Saved map " + mapName);
-        Debug.Log(mapString);
+        Debug.Log(Map + " Saved: " + mapString);
+        PushMap(mapString, Map);
+
+    }
+
+    public void PushMap(string map, string MapName)
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        //DBreference.Child(path).SetValueAsync(data);
+        //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child("blip").SetValueAsync(data);
+
+        string name = PlayerPrefs.GetString("Username");
+        string path = "/users/";
+        path = string.Concat(path, name);
+        path = string.Concat(path, "/CreatedMaps/");
+        FirebaseDatabase.DefaultInstance.GetReference(path).Child(MapName).SetValueAsync(map);
+
+
+        //DBreference.Child("/1Test/MAPS/map/").SetValueAsync(map);
+        //DBreference.Child("/1Test/MAPS/mapsize/").SetValueAsync(map.Length);
+        //DBreference.Child("/1Test/MAPS/user/").SetValueAsync(name);
+
+        return;
     }
 
     public void LoadClicked()
