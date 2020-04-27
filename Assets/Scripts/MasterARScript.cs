@@ -148,6 +148,118 @@ public class MasterARScript : MonoBehaviour
         }
     }
 
+    public List<string> GetEntitiesString(string path)
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        List<string> Entities = new List<string>();
+        string CurrentSession = PlayerPrefs.GetString("CurrentSession");
+
+        FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/Entites/").GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                Debug.Log("BLARG");
+                return null;
+            }
+            else if (task.IsCompleted)
+            {
+
+                DataSnapshot snapshot = task.Result;
+
+                foreach (var child in snapshot.Children)
+                {
+                    //Debug.Log(child.Key + ": " + child.Value);
+
+                    Entities.Add(child.Value.ToString());
+                }
+
+                return Entities;
+            }
+            else
+            {
+                Debug.Log("ELSE");
+                return null;
+            }
+        });
+
+        int milliseconds = 2000;
+        Thread.Sleep(milliseconds);
+        return Entities;
+    }
+
+public List<string> GetGuestMapString()
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        List<string> GuestMap = new List<string>();
+        string CurrentSession = PlayerPrefs.GetString("CurrentSession");
+
+        FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/guestMap/").GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                Debug.Log("BLARG");
+                return null;
+            }
+            else if (task.IsCompleted)
+            {
+
+                DataSnapshot snapshot = task.Result;
+                string data = snapshot.ToString();
+
+                GuestMap.Add(data);
+
+                return GuestMap;
+            }
+            else
+            {
+                Debug.Log("ELSE");
+                return null;
+            }
+        });
+
+        int milliseconds = 2000;
+        Thread.Sleep(milliseconds);
+        return GuestMap;
+    }
+
+public List<string> GetHostMapString()
+	{
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        List<string> HostMap = new List<string>();
+        string CurrentSession = PlayerPrefs.GetString("CurrentSession");
+
+        FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/hostMap/").GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                Debug.Log("BLARG");
+                return null;
+            }
+            else if (task.IsCompleted)
+            {
+                
+                DataSnapshot snapshot = task.Result;
+                string data = snapshot.ToString();
+
+                HostMap.Add(data);
+
+                return HostMap;
+            }
+            else
+            {
+                Debug.Log("ELSE");
+                return null;
+            }
+        });
+        
+        int milliseconds = 2000;
+        Thread.Sleep(milliseconds);
+        return HostMap;
+    }
+
     public void PushData(string path, string data)
     {
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
