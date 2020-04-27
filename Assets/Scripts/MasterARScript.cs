@@ -72,6 +72,8 @@ public class MasterARScript : MonoBehaviour
     
     Color[] colors = { Color.black, Color.white };
 
+    string mapString;
+
     int mapSizeX;
     int mapSizeY;
 
@@ -104,11 +106,12 @@ public class MasterARScript : MonoBehaviour
     SpriteRenderer monster;
 
 
-    string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
-    string[] debugEntityStrings = { "0t0x-0.9750006z0.06999996r354", "0t1x-0.275001z0.295r354" };
+    //string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
+    //string[] debugEntityStrings = { "0t0x-0.9750006z0.06999996r354", "0t1x-0.275001z0.295r354" };
 
     void Start()
     {
+        mapString = "";
         map = new List<Room>();
         entities = new List<Entity>();
         meshes = Resources.LoadAll<GameObject>("Sets/Dungeon") as GameObject[];
@@ -131,6 +134,18 @@ public class MasterARScript : MonoBehaviour
         pointingAtMonster = -1;
 
         pointer.SendMessage("SetMonster", monsterSprites[monsters[selectedMonster]]);
+        StartCoroutine(checkDB());
+    }
+
+    IEnumerator checkDB()
+    {
+        while(true)
+        {
+            //SET mapString
+            //SET entities
+            Debug.Log("HELLO");
+            yield return new WaitForSeconds(10f);
+        }
     }
 
     public void PushData(string path, string data)
@@ -209,9 +224,9 @@ public class MasterARScript : MonoBehaviour
                 ents.Add(concat);
             }
 
-            foreach(string str in ents)
+            int i = 0;
+            foreach (string str in ents)
 			{
-                int i = 0;
                 FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Entities").Child("entities" + i.ToString()).SetValueAsync(str);
                 i++;
 			}
@@ -313,10 +328,10 @@ public class MasterARScript : MonoBehaviour
             //mapSizeY = 10;
             //stringToMap(debugGuestString);
             displayLevel();
-            foreach(string e in debugEntityStrings)
-            {
-                StringToEntity(e);
-            }
+            //foreach(string e in debugEntityStrings)
+            //{
+            //    StringToEntity(e);
+            //}
         }
     }
 
