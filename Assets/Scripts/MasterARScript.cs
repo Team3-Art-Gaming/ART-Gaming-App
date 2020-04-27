@@ -2,6 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using Firebase.Unity.Editor;
+using Firebase.Database;
+using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.UI;
+using Firebase;
+using Firebase.Extensions;
+using Firebase.Auth;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using System.Threading;
+
 
 class Room
 {
@@ -119,6 +133,15 @@ public class MasterARScript : MonoBehaviour
         pointer.SendMessage("SetMonster", monsterSprites[monsters[selectedMonster]]);
     }
 
+    public void PushData(string path, string data)
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        DBreference.Child(path).SetValueAsync(data);
+        //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child("blip").SetValueAsync(data);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.JoystickButton1) == true)
@@ -165,11 +188,19 @@ public class MasterARScript : MonoBehaviour
         {
             Debug.Log("D");
 
+            string CurrentSession = PlayerPrefs.GetString("CurrentSession");
+
             string hostMap = mapToString(0, 0, mapSizeY, mapSizeX);
             Debug.Log(hostMap);
 
+
+            FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession).Child("hostMap").SetValueAsync(hostMap);
+            //FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/").Child(SessionName).SetValueAsync(SessionName);
+
             string guestMap = mapToString(Math.Abs(mapPosY), Math.Abs(mapPosX), 10, 5);
             Debug.Log(guestMap);
+
+            FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession).Child("guestMap").SetValueAsync(guestMap);
 
             List<string> ents = new List<string>();
             foreach (Entity ent in entities)
@@ -177,6 +208,13 @@ public class MasterARScript : MonoBehaviour
                 string concat = EntityToString(ent);
                 ents.Add(concat);
             }
+
+            foreach(string str in ents)
+			{
+                int i = 0;
+                FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Entities").Child("entities" + i.ToString()).SetValueAsync(str);
+                i++;
+			}
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton7) == true)
         {
