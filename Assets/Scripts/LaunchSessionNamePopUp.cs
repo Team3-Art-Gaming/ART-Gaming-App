@@ -64,6 +64,8 @@ public class LaunchSessionNamePopUp : MonoBehaviour
                 {
                     launchScript.createInvitedSessionUsers(friends, this.inputBox.text.ToString());
                     launchScript.LaunchGame(this.inputBox.text.ToString(), PlayerPrefs.GetString("SelectedMap"), PlayerPrefs.GetString("SelectedMapData"), friends);
+                    PlayerPrefs.SetString("CurrentSession", inputBox.text);
+                    PlayerPrefs.Save();
                     SceneManager.LoadScene(8);
                 }
                 this.deactivatePopUp();
