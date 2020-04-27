@@ -143,12 +143,21 @@ public class MasterARScript : MonoBehaviour
         {
             //SET mapString
             //SET entities
+            DestroyLevel();
+            DestroyEntities();
+            mapString = GetHostMapString();
+            List<string> ents = GetEntitiesString();
+            FoundTarget();
+            foreach (string e in ents)
+            {
+                StringToEntity(e);
+            }
             Debug.Log("HELLO");
             yield return new WaitForSeconds(10f);
         }
     }
 
-    public List<string> GetEntitiesString(string path)
+    public List<string> GetEntitiesString()
     {
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
@@ -188,7 +197,7 @@ public class MasterARScript : MonoBehaviour
         return Entities;
     }
 
-public List<string> GetGuestMapString()
+public string GetGuestMapString()
     {
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
@@ -221,10 +230,10 @@ public List<string> GetGuestMapString()
 
         int milliseconds = 2000;
         Thread.Sleep(milliseconds);
-        return GuestMap;
+        return GuestMap[0];
     }
 
-public List<string> GetHostMapString()
+public string GetHostMapString()
 	{
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
@@ -232,7 +241,7 @@ public List<string> GetHostMapString()
         List<string> HostMap = new List<string>();
         string CurrentSession = PlayerPrefs.GetString("CurrentSession");
 
-        FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/hostMap/").GetValueAsync().ContinueWithOnMainThread(task => {
+        FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/MapString/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
                 Debug.Log("BLARG");
@@ -243,7 +252,7 @@ public List<string> GetHostMapString()
                 
                 DataSnapshot snapshot = task.Result;
                 string data = snapshot.ToString();
-
+                Debug.Log("TEST " + data);
                 HostMap.Add(data);
 
                 return HostMap;
@@ -257,7 +266,7 @@ public List<string> GetHostMapString()
         
         int milliseconds = 2000;
         Thread.Sleep(milliseconds);
-        return HostMap;
+        return HostMap[0];
     }
 
     public void PushData(string path, string data)
@@ -435,15 +444,20 @@ public List<string> GetHostMapString()
     {
         if (PlayerPrefs.HasKey("TempLevel"))
         {
-            stringToMap(PlayerPrefs.GetString("TempLevel"));
-            //mapSizeX = 5;
-            //mapSizeY = 10;
-            //stringToMap(debugGuestString);
-            displayLevel();
-            //foreach(string e in debugEntityStrings)
-            //{
-            //    StringToEntity(e);
-            //}
+            //stringToMap(PlayerPrefs.GetString("TempLevel"));
+            Debug.Log("BLAH"+mapString);
+            if (mapString != "")
+            {
+                stringToMap(mapString);
+                //mapSizeX = 5;
+                //mapSizeY = 10;
+                //stringToMap(debugGuestString);
+                displayLevel();
+                //foreach(string e in debugEntityStrings)
+                //{
+                //    StringToEntity(e);
+                //}
+            }
         }
     }
 
@@ -581,6 +595,19 @@ public List<string> GetHostMapString()
                 if (r.model) Destroy(r.model);
             }
             map.Clear();
+        }
+    }
+
+    public void DestroyEntities()
+    {
+        if (entities.Count > 0)
+        {
+            foreach (Entity e in entities)
+            {
+                if (e.collider) Destroy(e.collider);
+                if (e.sr) Destroy(e.sr);
+            }
+            entities.Clear();
         }
     }
 
