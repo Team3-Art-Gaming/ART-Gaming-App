@@ -28,7 +28,7 @@ class Room
     public bool visible = false;
 }
 
-class Entity
+public class Entity
 {
     public int owner;
     public int type;
@@ -51,7 +51,8 @@ public class MasterARScript : MonoBehaviour
 
     GameObject[] meshes;
     List<Room> map;
-    List<Entity> entities; 
+    List<Entity> entities;
+    List<Entity> heroes;
 
     const float scale = 0.002f;
     const float offset = 0.315f;
@@ -67,7 +68,6 @@ public class MasterARScript : MonoBehaviour
 
     private Sprite[] heroSprites;
     private Sprite[] monsterSprites;
-    static readonly int[] heroes = { 0, 1 };
     static readonly int[] monsters = {0,4,5,19,23,24,25,26,28,30,46,52};
     
     Color[] colors = { Color.black, Color.white };
@@ -105,15 +105,17 @@ public class MasterARScript : MonoBehaviour
     [SerializeField]
     SpriteRenderer monster;
 
-
+    //string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
     //string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
     //string[] debugEntityStrings = { "0t0x-0.9750006z0.06999996r354", "0t1x-0.275001z0.295r354" };
 
     void Start()
     {
         mapString = "";
+        
         map = new List<Room>();
         entities = new List<Entity>();
+        heroes = new List<Entity>();
         meshes = Resources.LoadAll<GameObject>("Sets/Dungeon") as GameObject[];
         heroSprites = Resources.LoadAll<Sprite>("Characters/AR_Heroes");
         monsterSprites = Resources.LoadAll<Sprite>("Characters/AR_Monsters");
@@ -133,6 +135,12 @@ public class MasterARScript : MonoBehaviour
         selectedMonster = 0;
         pointingAtMonster = -1;
 
+        //DEBUG
+        mapSizeX = 5;
+        mapSizeY = 10;
+        mapString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
+
+
         pointer.SendMessage("SetMonster", monsterSprites[monsters[selectedMonster]]);
         StartCoroutine(checkDB());
     }
@@ -141,23 +149,12 @@ public class MasterARScript : MonoBehaviour
     {
         while(true)
         {
-            //SET mapString
-            //SET entities
-            DestroyLevel();
-            DestroyEntities();
-            mapString = GetHostMapString();
-            List<string> ents = GetEntitiesString();
-            FoundTarget();
-            foreach (string e in ents)
-            {
-                StringToEntity(e);
-            }
-            Debug.Log("HELLO");
-            yield return new WaitForSeconds(10f);
+            RefreshAR();
+            yield return new WaitForSeconds(60f);
         }
     }
 
-    public List<string> GetEntitiesString()
+    public List<string> GetEntitiesString(string entType)
     {
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
@@ -165,7 +162,7 @@ public class MasterARScript : MonoBehaviour
         List<string> Entities = new List<string>();
         string CurrentSession = PlayerPrefs.GetString("CurrentSession");
 
-        FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/Entites/").GetValueAsync().ContinueWithOnMainThread(task => {
+        FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/" + entType +"/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
                 Debug.Log("BLARG");
@@ -330,7 +327,7 @@ public string GetHostMapString()
             Debug.Log(hostMap);
 
 
-            FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession).Child("hostMap").SetValueAsync(hostMap);
+            FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession).Child("MapString").SetValueAsync(hostMap);
             //FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/").Child(SessionName).SetValueAsync(SessionName);
 
             string guestMap = mapToString(Math.Abs(mapPosY), Math.Abs(mapPosX), 10, 5);
@@ -344,13 +341,25 @@ public string GetHostMapString()
                 string concat = EntityToString(ent);
                 ents.Add(concat);
             }
-
             int i = 0;
             foreach (string str in ents)
 			{
                 FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Entities").Child("entities" + i.ToString()).SetValueAsync(str);
                 i++;
 			}
+
+            List<string> hero = new List<string>();
+            foreach (Entity ent in heroes)
+            {
+                string concat = EntityToString(ent);
+                hero.Add(concat);
+            }
+            i = 0;
+            foreach (string str in hero)
+            {
+                FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Heroes").Child("entities" + i.ToString()).SetValueAsync(str);
+                i++;
+            }
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton7) == true)
         {
@@ -440,6 +449,32 @@ public string GetHostMapString()
         selectedCellY = icoPosY - mapPosY;
     }
 
+    public void RefreshAR()
+    {
+        //mapString = GetHostMapString();
+        List<string> ents = GetEntitiesString("Entities");
+        List<string> hero = GetEntitiesString("Heroes");
+
+        DestroyLevel();
+        DestroyEntities(ref entities);
+        DestroyEntities(ref heroes);
+
+        stringToMap(mapString);
+        displayLevel();
+
+        foreach (string e in ents)
+        {
+            Entity ent = StringToEntity(e);
+            entities.Add(ent);
+        }
+        foreach (string h in hero)
+        {
+            Entity ent = StringToEntity(h);
+            heroes.Add(ent);
+        }
+    }
+
+    /*
     public void FoundTarget()
     {
         if (PlayerPrefs.HasKey("TempLevel"))
@@ -460,6 +495,7 @@ public string GetHostMapString()
             }
         }
     }
+    */
 
     private void highlighEntity(int ent)
     {
@@ -561,9 +597,10 @@ public string GetHostMapString()
         ent.sr.transform.localPosition = new Vector3(ent.startX, floor, ent.startZ);
         ent.sr.transform.rotation = Quaternion.Euler(0,0,ent.startRot);
         ent.collider = ent.sr.GetComponent<Collider>();
-        entities.Add(ent);
         return ent;
     }
+
+
 
     private void displayLevel()
     {
@@ -598,16 +635,16 @@ public string GetHostMapString()
         }
     }
 
-    public void DestroyEntities()
+    public void DestroyEntities(ref List<Entity> ents)
     {
-        if (entities.Count > 0)
+        if (ents.Count > 0)
         {
-            foreach (Entity e in entities)
+            foreach (Entity e in ents)
             {
                 if (e.collider) Destroy(e.collider);
                 if (e.sr) Destroy(e.sr);
             }
-            entities.Clear();
+            ents.Clear();
         }
     }
 
