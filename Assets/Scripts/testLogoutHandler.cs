@@ -15,7 +15,8 @@ public class testLogoutHandler : MonoBehaviour
     { 
         Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.GetAuth(Firebase.FirebaseApp.DefaultInstance);
         Firebase.Auth.FirebaseUser user = auth.CurrentUser;
-        Debug.LogFormat("User: " + PlayerPrefs.GetString("Username") + " with email: " + user.Email + " signing out");
+        //Debug.LogFormat("User: " + PlayerPrefs.GetString("Username") + " with email: " + user.Email + " signing out");
+        Debug.LogFormat("User: " + PlayerPrefs.GetString("Username") + " signing out");
         auth.SignOut();
         PlayerPrefs.SetString("Username", "");
         PlayerPrefs.Save();
