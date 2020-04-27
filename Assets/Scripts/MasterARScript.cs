@@ -2,6 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using Firebase.Unity.Editor;
+using Firebase.Database;
+using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.UI;
+using Firebase;
+using Firebase.Extensions;
+using Firebase.Auth;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using System.Threading;
+
 
 class Room
 {
@@ -58,6 +72,8 @@ public class MasterARScript : MonoBehaviour
     
     Color[] colors = { Color.black, Color.white };
 
+    string mapString;
+
     int mapSizeX;
     int mapSizeY;
 
@@ -90,11 +106,12 @@ public class MasterARScript : MonoBehaviour
     SpriteRenderer monster;
 
 
-    string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
-    string[] debugEntityStrings = { "0t0x-0.9750006z0.06999996r354", "0t1x-0.275001z0.295r354" };
+    //string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
+    //string[] debugEntityStrings = { "0t0x-0.9750006z0.06999996r354", "0t1x-0.275001z0.295r354" };
 
     void Start()
     {
+        mapString = "";
         map = new List<Room>();
         entities = new List<Entity>();
         meshes = Resources.LoadAll<GameObject>("Sets/Dungeon") as GameObject[];
@@ -117,6 +134,148 @@ public class MasterARScript : MonoBehaviour
         pointingAtMonster = -1;
 
         pointer.SendMessage("SetMonster", monsterSprites[monsters[selectedMonster]]);
+        StartCoroutine(checkDB());
+    }
+
+    IEnumerator checkDB()
+    {
+        while(true)
+        {
+            //SET mapString
+            //SET entities
+            DestroyLevel();
+            DestroyEntities();
+            mapString = GetHostMapString();
+            List<string> ents = GetEntitiesString();
+            FoundTarget();
+            foreach (string e in ents)
+            {
+                StringToEntity(e);
+            }
+            Debug.Log("HELLO");
+            yield return new WaitForSeconds(10f);
+        }
+    }
+
+    public List<string> GetEntitiesString()
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        List<string> Entities = new List<string>();
+        string CurrentSession = PlayerPrefs.GetString("CurrentSession");
+
+        FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/Entites/").GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                Debug.Log("BLARG");
+                return null;
+            }
+            else if (task.IsCompleted)
+            {
+
+                DataSnapshot snapshot = task.Result;
+
+                foreach (var child in snapshot.Children)
+                {
+                    //Debug.Log(child.Key + ": " + child.Value);
+
+                    Entities.Add(child.Value.ToString());
+                }
+
+                return Entities;
+            }
+            else
+            {
+                Debug.Log("ELSE");
+                return null;
+            }
+        });
+
+        int milliseconds = 2000;
+        Thread.Sleep(milliseconds);
+        return Entities;
+    }
+
+public string GetGuestMapString()
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        List<string> GuestMap = new List<string>();
+        string CurrentSession = PlayerPrefs.GetString("CurrentSession");
+
+        FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/guestMap/").GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                Debug.Log("BLARG");
+                return null;
+            }
+            else if (task.IsCompleted)
+            {
+
+                DataSnapshot snapshot = task.Result;
+                string data = snapshot.ToString();
+
+                GuestMap.Add(data);
+
+                return GuestMap;
+            }
+            else
+            {
+                Debug.Log("ELSE");
+                return null;
+            }
+        });
+
+        int milliseconds = 2000;
+        Thread.Sleep(milliseconds);
+        return GuestMap[0];
+    }
+
+public string GetHostMapString()
+	{
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        List<string> HostMap = new List<string>();
+        string CurrentSession = PlayerPrefs.GetString("CurrentSession");
+
+        FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/MapString/").GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                Debug.Log("BLARG");
+                return null;
+            }
+            else if (task.IsCompleted)
+            {
+                
+                DataSnapshot snapshot = task.Result;
+                string data = snapshot.ToString();
+                Debug.Log("TEST " + data);
+                HostMap.Add(data);
+
+                return HostMap;
+            }
+            else
+            {
+                Debug.Log("ELSE");
+                return null;
+            }
+        });
+        
+        int milliseconds = 2000;
+        Thread.Sleep(milliseconds);
+        return HostMap[0];
+    }
+
+    public void PushData(string path, string data)
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        DBreference.Child(path).SetValueAsync(data);
+        //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child("blip").SetValueAsync(data);
     }
 
     private void Update()
@@ -165,11 +324,19 @@ public class MasterARScript : MonoBehaviour
         {
             Debug.Log("D");
 
+            string CurrentSession = PlayerPrefs.GetString("CurrentSession");
+
             string hostMap = mapToString(0, 0, mapSizeY, mapSizeX);
             Debug.Log(hostMap);
 
+
+            FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession).Child("hostMap").SetValueAsync(hostMap);
+            //FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/").Child(SessionName).SetValueAsync(SessionName);
+
             string guestMap = mapToString(Math.Abs(mapPosY), Math.Abs(mapPosX), 10, 5);
             Debug.Log(guestMap);
+
+            FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession).Child("guestMap").SetValueAsync(guestMap);
 
             List<string> ents = new List<string>();
             foreach (Entity ent in entities)
@@ -177,6 +344,13 @@ public class MasterARScript : MonoBehaviour
                 string concat = EntityToString(ent);
                 ents.Add(concat);
             }
+
+            int i = 0;
+            foreach (string str in ents)
+			{
+                FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Entities").Child("entities" + i.ToString()).SetValueAsync(str);
+                i++;
+			}
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton7) == true)
         {
@@ -270,14 +444,19 @@ public class MasterARScript : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("TempLevel"))
         {
-            stringToMap(PlayerPrefs.GetString("TempLevel"));
-            //mapSizeX = 5;
-            //mapSizeY = 10;
-            //stringToMap(debugGuestString);
-            displayLevel();
-            foreach(string e in debugEntityStrings)
+            //stringToMap(PlayerPrefs.GetString("TempLevel"));
+            Debug.Log("BLAH"+mapString);
+            if (mapString != "")
             {
-                StringToEntity(e);
+                stringToMap(mapString);
+                //mapSizeX = 5;
+                //mapSizeY = 10;
+                //stringToMap(debugGuestString);
+                displayLevel();
+                //foreach(string e in debugEntityStrings)
+                //{
+                //    StringToEntity(e);
+                //}
             }
         }
     }
@@ -416,6 +595,19 @@ public class MasterARScript : MonoBehaviour
                 if (r.model) Destroy(r.model);
             }
             map.Clear();
+        }
+    }
+
+    public void DestroyEntities()
+    {
+        if (entities.Count > 0)
+        {
+            foreach (Entity e in entities)
+            {
+                if (e.collider) Destroy(e.collider);
+                if (e.sr) Destroy(e.sr);
+            }
+            entities.Clear();
         }
     }
 
