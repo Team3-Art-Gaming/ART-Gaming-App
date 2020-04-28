@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,7 +13,8 @@ using Firebase.Auth;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using System.Threading;
-
+//using System.Diagnostics;
+//using System.Diagnostics;
 
 class Room
 {
@@ -72,7 +71,7 @@ public class MasterARScript : MonoBehaviour
     
     Color[] colors = { Color.black, Color.white };
 
-    string mapString;
+    public string mapString;
 
     int mapSizeX;
     int mapSizeY;
@@ -105,14 +104,16 @@ public class MasterARScript : MonoBehaviour
     [SerializeField]
     SpriteRenderer monster;
 
+    private MasterARRequest getRequests;
+
     //string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
     //string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
     //string[] debugEntityStrings = { "0t0x-0.9750006z0.06999996r354", "0t1x-0.275001z0.295r354" };
 
     void Start()
     {
-        mapString = "";
-        
+        this.mapString = "";
+        this.getRequests = GameObject.Find("SceneryHolder").GetComponent<MasterARRequest>() as MasterARRequest;
         map = new List<Room>();
         entities = new List<Entity>();
         heroes = new List<Entity>();
@@ -121,6 +122,7 @@ public class MasterARScript : MonoBehaviour
         monsterSprites = Resources.LoadAll<Sprite>("Characters/AR_Monsters");
         pointerCollider = GameObject.Find("PointerStick").GetComponent<Collider>();
 
+        this.mapString = this.getRequests.GetHostMapString();
 
         selectedCellX = 0;
         selectedCellY = 0;
@@ -152,150 +154,6 @@ public class MasterARScript : MonoBehaviour
             RefreshAR();
             yield return new WaitForSeconds(60f);
         }
-    }
-
-    IEnumerator LoadData(List<string> ents, List<string>hero)
-    {
-        yield return new WaitForSeconds(1f);
-
-        DestroyLevel();
-        DestroyEntities(ref entities);
-        DestroyEntities(ref heroes);
-
-        stringToMap(mapString);
-        displayLevel();
-
-        foreach (string e in ents)
-        {
-            Entity ent = StringToEntity(e);
-            entities.Add(ent);
-        }
-        foreach (string h in hero)
-        {
-            Entity ent = StringToEntity(h);
-            heroes.Add(ent);
-        }
-    }
-
-    public List<string> GetEntitiesString(string entType)
-    {
-        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
-        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
-
-        List<string> Entities = new List<string>();
-        string CurrentSession = PlayerPrefs.GetString("CurrentSession");
-
-        FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/" + entType +"/").GetValueAsync().ContinueWithOnMainThread(task => {
-            if (task.IsFaulted)
-            {
-                Debug.Log("BLARG");
-                return null;
-            }
-            else if (task.IsCompleted)
-            {
-
-                DataSnapshot snapshot = task.Result;
-
-                foreach (var child in snapshot.Children)
-                {
-                    //Debug.Log(child.Key + ": " + child.Value);
-
-                    Entities.Add(child.Value.ToString());
-                }
-
-                return Entities;
-            }
-            else
-            {
-                Debug.Log("ELSE");
-                return null;
-            }
-        });
-
-        int milliseconds = 2000;
-        Thread.Sleep(milliseconds);
-        return Entities;
-    }
-
-public string GetGuestMapString()
-    {
-        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
-        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
-
-        List<string> GuestMap = new List<string>();
-        string CurrentSession = PlayerPrefs.GetString("CurrentSession");
-
-        FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/guestMap/").GetValueAsync().ContinueWithOnMainThread(task => {
-            if (task.IsFaulted)
-            {
-                Debug.Log("BLARG");
-                return null;
-            }
-            else if (task.IsCompleted)
-            {
-
-                DataSnapshot snapshot = task.Result;
-                string data = snapshot.ToString();
-
-                GuestMap.Add(data);
-
-                return GuestMap;
-            }
-            else
-            {
-                Debug.Log("ELSE");
-                return null;
-            }
-        });
-
-        int milliseconds = 2000;
-        Thread.Sleep(milliseconds);
-        return GuestMap[0];
-    }
-
-public string GetHostMapString()
-	{
-        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
-        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
-
-        List<string> HostMap = new List<string>();
-        string CurrentSession = PlayerPrefs.GetString("CurrentSession");
-
-        FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/MapString/").GetValueAsync().ContinueWithOnMainThread(task => {
-            if (task.IsFaulted)
-            {
-                Debug.Log("BLARG");
-                return null;
-            }
-            else if (task.IsCompleted)
-            {
-                
-                DataSnapshot snapshot = task.Result;
-                //string data = snapshot.ToString();
-                Debug.Log("TEST " + snapshot.Value);
-                //HostMap.Add(data);
-
-                return HostMap[0];
-            }
-            else
-            {
-                Debug.Log("ELSE");
-                return null;
-            }
-        });
-        
-        int milliseconds = 2000;
-        Thread.Sleep(milliseconds);
-        return HostMap[0];
-    }
-
-    public void PushData(string path, string data)
-    {
-        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
-        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
-
-        DBreference.Child(path).SetValueAsync(data);
-        //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child("blip").SetValueAsync(data);
     }
 
     private void Update()
@@ -474,14 +332,30 @@ public string GetHostMapString()
 
     public void RefreshAR()
     {
-        mapString = GetHostMapString();
-        List<string> ents = GetEntitiesString("Entities");
-        List<string> hero = GetEntitiesString("Heroes");
-
-        StartCoroutine(LoadData(ents, hero));
+        this.mapString = this.getRequests.GetHostMapString();
+        List<string> ents = getRequests.GetEntitiesString("Entities");
+        List<string> hero = getRequests.GetEntitiesString("Heroes");
+        ProceedLoad(ents, hero);
     }
 
+    IEnumerator ProceedLoad(List<string> ents, List<string> hero)
+    {
+        yield return new WaitForSeconds(1f);
+        DestroyLevel();
+        DestroyEntities(ref entities);
+        DestroyEntities(ref heroes);
 
+        foreach (string e in ents)
+        {
+            Entity ent = StringToEntity(e);
+            entities.Add(ent);
+        }
+        foreach (string h in hero)
+        {
+            Entity ent = StringToEntity(h);
+            heroes.Add(ent);
+        }
+    }
 
     /*
     public void FoundTarget()
