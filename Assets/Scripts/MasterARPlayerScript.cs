@@ -142,7 +142,7 @@ public class MasterARPlayerScript : MonoBehaviour
         List<string> Entities = new List<string>();
         string CurrentSession = PlayerPrefs.GetString("CurrentSession");
 
-        FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/" + entType +"/").GetValueAsync().ContinueWithOnMainThread(task => {
+        FirebaseDatabase.DefaultInstance.GetReference("ActiveGames/" + CurrentSession + "/" + entType +"/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
                 //Debug.Log("BLARG");
@@ -182,7 +182,7 @@ public string GetGuestMapString()
         List<string> GuestMap = new List<string>();
         string CurrentSession = PlayerPrefs.GetString("CurrentSession");
 
-        FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/guestMap/").GetValueAsync().ContinueWithOnMainThread(task => {
+        FirebaseDatabase.DefaultInstance.GetReference("ActiveGames/" + CurrentSession + "/guestMap/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
                 //Debug.Log("BLARG");

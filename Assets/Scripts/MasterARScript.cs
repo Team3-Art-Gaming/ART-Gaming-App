@@ -345,6 +345,9 @@ public class MasterARScript : MonoBehaviour
         DestroyEntities(ref entities);
         DestroyEntities(ref heroes);
 
+        Debug.Log("MAP IS " + mapString);
+        displayLevel();
+
         foreach (string e in ents)
         {
             Entity ent = StringToEntity(e);

@@ -11,7 +11,7 @@ using Firebase.Auth;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using System.Threading;
-
+//using System.Diagnostics;
 
 public class CreateUserFB : MonoBehaviour
 {
@@ -78,7 +78,7 @@ public class CreateUserFB : MonoBehaviour
 
         foreach (Friends friend in friendslist)
         {
-            Debug.Log(friend.Name+": "+friend.Status);
+            Debug.Log(friend.Name + ": " + friend.Status);
             if (friend.Status == "Friend")
             {
                 setFriend(friend.Name);
@@ -126,7 +126,7 @@ public class CreateUserFB : MonoBehaviour
         string currentUser = PlayerPrefs.GetString("Username");
         List<Friends> friendslist = new List<Friends>();
 
-        FirebaseDatabase.DefaultInstance.GetReference("users/"+currentUser+"/friends/").GetValueAsync().ContinueWithOnMainThread(task => {
+        FirebaseDatabase.DefaultInstance.GetReference("users/" + currentUser + "/friends/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
                 Debug.Log("BLARG");
@@ -137,11 +137,11 @@ public class CreateUserFB : MonoBehaviour
                 //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
                 DataSnapshot snapshot = task.Result;
                 //string data = snapshot.Children;
-              
-                foreach ( var child in snapshot.Children)
-                { 
+
+                foreach (var child in snapshot.Children)
+                {
                     //Debug.Log(child.Key + ": " + child.Value);
-                    
+
                     friendslist.Add(new Friends(child.Key.ToString(), child.Value.ToString()));
                 }
                 return friendslist;
@@ -156,6 +156,62 @@ public class CreateUserFB : MonoBehaviour
         int milliseconds = 2000;
         Thread.Sleep(milliseconds);*/
         return friendslist;
+    }
+
+    public void setProfile(string num, string name, string race, string height, string weight, string age)
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        string MyName = PlayerPrefs.GetString("Username");
+        PushData("/users/" + MyName + "/Profile/Picture/", num);
+        PushData("/users/" + MyName + "/Profile/CharName/", name);
+        PushData("/users/" + MyName + "/Profile/Race/", race);
+        PushData("/users/" + MyName + "/Profile/Height/", height);
+        PushData("/users/" + MyName + "/Profile/Weight/", weight);
+        PushData("/users/" + MyName + "/Profile/Age/", age);
+    }
+
+    public Dictionary<string, string> getProfile()
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        string currentUser = PlayerPrefs.GetString("Username");
+        Dictionary<string, string> profile = new Dictionary<string, string>();
+
+        FirebaseDatabase.DefaultInstance.GetReference("users/" + currentUser + "/Profile/").GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                Debug.Log("BLARG");
+                return profile;
+            }
+            else if (task.IsCompleted)
+            {
+                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
+                DataSnapshot snapshot = task.Result;
+                //string data = snapshot.Children;
+                foreach (var child in snapshot.Children)
+                {
+                    //Debug.Log("Child: " + child.Key.ToString() + ": " + child.Value.ToString());
+                    profile.Add(child.Key.ToString(), child.Value.ToString());
+                }
+
+                /*
+                foreach (var child in profile)
+                {
+                    Debug.Log("Child: " + child.Key.ToString() + ": " + child.Value.ToString());
+                    //profile.Add(child.Key, child.Value);
+                }*/
+                return profile;
+            }
+            else
+            {
+                Debug.Log("ELSE");
+                return profile;
+            }
+        });
+        return profile;
     }
 
     public string GetData(string path)
