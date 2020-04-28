@@ -16,30 +16,7 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using System.Threading;
 
-
-class Room
-{
-    public GameObject model;
-    public int cat = -1;
-    public int itm = -1;
-    public int rot = -1;
-    public float xPos = 0.0f;
-    public float yPos = 0.0f; 
-    public bool visible = false;
-}
-
-public class Entity
-{
-    public int owner;
-    public int type;
-    public float startX;
-    public float startZ;
-    public int startRot;
-    public Collider collider;
-    public SpriteRenderer sr;
-}
-
-public class MasterARScript : MonoBehaviour
+public class MasterARPlayerScript : MonoBehaviour
 {
 
     Quaternion[] quats = {Quaternion.LookRotation(Vector3.right,Vector3.up),
@@ -54,13 +31,14 @@ public class MasterARScript : MonoBehaviour
     List<Entity> entities;
     List<Entity> heroes;
 
+    int myIndexNum;
+
     const float scale = 0.002f;
     const float offset = 0.315f;
     const float floor = 0.05f;
     const float pointerHeight = 0.32f;
     
     const int descriptorSize = 8;
-    const int numOfIcons = 3;
     
     const float baseX = 5 * -offset;
     const float baseY = 2 * -offset;
@@ -77,71 +55,35 @@ public class MasterARScript : MonoBehaviour
     int mapSizeX;
     int mapSizeY;
 
-    int mapPosX;
-    int mapPosY;
+    bool rotatePlayerEnabled;
 
-    int icoPosX;
-    int icoPosY;
-
-    int selectedCellX;
-    int selectedCellY;
-
-    int selectedIcon;
-
-    int interval;
-
-    int selectedMonster;
-    int pointingAtMonster;
-    [SerializeField]
-    Transform target;
-    Vector3 targetPos;
-    Quaternion targetRot;
-
-    [SerializeField]
-    GameObject pointer;
-    Collider pointerCollider;
     [SerializeField]
     Transform entityHolder;
     [SerializeField]
     SpriteRenderer monster;
 
-    //string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
-    //string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
-    //string[] debugEntityStrings = { "0t0x-0.9750006z0.06999996r354", "0t1x-0.275001z0.295r354" };
+    string debugGuestString = "0030020100300231NNN00300211003000010030023100300301NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
+    string[] debugEntityStrings = { "0t0x-0.9750006z0.06999996r354", "0t1x-0.275001z0.295r354" };
+    string[] debugHeroStrings = { "0t5x0z0r0", "1t3x1z1r90" };
 
     void Start()
     {
         mapString = "";
-        
+
         map = new List<Room>();
         entities = new List<Entity>();
         heroes = new List<Entity>();
         meshes = Resources.LoadAll<GameObject>("Sets/Dungeon") as GameObject[];
         heroSprites = Resources.LoadAll<Sprite>("Characters/AR_Heroes");
         monsterSprites = Resources.LoadAll<Sprite>("Characters/AR_Monsters");
-        pointerCollider = GameObject.Find("PointerStick").GetComponent<Collider>();
 
+        mapSizeX = 5;
+        mapSizeY = 10;
 
-        selectedCellX = 0;
-        selectedCellY = 0;
-        selectedIcon = 0;
-        interval = 0;
-        mapSizeX = 128;
-        mapSizeY = 128;
-        mapPosX = 0;
-        mapPosY = 0;
-        icoPosX = 0;
-        icoPosY = 0;
-        selectedMonster = 0;
-        pointingAtMonster = -1;
+        rotatePlayerEnabled = false;
 
-        //DEBUG
-        //mapSizeX = 5;
-        //mapSizeY = 10;
-        //mapString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
+        transform.localPosition = new Vector3(baseX, 0.0f, baseY);
 
-
-        pointer.SendMessage("SetMonster", monsterSprites[monsters[selectedMonster]]);
         StartCoroutine(checkDB());
     }
 
@@ -149,30 +91,45 @@ public class MasterARScript : MonoBehaviour
     {
         while(true)
         {
+            Debug.Log("In While Loop");
             RefreshAR();
-            yield return new WaitForSeconds(60f);
+            yield return new WaitForSeconds(10f);
         }
     }
 
-    IEnumerator LoadData(List<string> ents, List<string>hero)
+    public void RefreshAR()
     {
+        //mapString = GetGuestMapString();
+        //DEBUG
+        mapString = debugGuestString;
+        List<string> ents = GetEntitiesString("Entities");
+        List<string> hero = GetEntitiesString("Heroes");
+
+        StartCoroutine(LoadData(ents, hero));
+    }
+    IEnumerator LoadData(List<string> ents,List<string>hero)
+    {
+        Debug.Log("Entered LoadData");
         yield return new WaitForSeconds(1f);
+        Debug.Log("Waited 1 second");
 
         DestroyLevel();
         DestroyEntities(ref entities);
         DestroyEntities(ref heroes);
 
+        mapString = debugGuestString; //DEBUG
         stringToMap(mapString);
+        
         displayLevel();
 
-        foreach (string e in ents)
+        foreach (string e in debugEntityStrings)  //DEBUG
         {
             Entity ent = StringToEntity(e);
             entities.Add(ent);
         }
-        foreach (string h in hero)
+        foreach (string h in debugHeroStrings)  //DEBUG
         {
-            Entity ent = StringToEntity(h);
+            Entity ent = StringToEntity(h,true);
             heroes.Add(ent);
         }
     }
@@ -188,7 +145,7 @@ public class MasterARScript : MonoBehaviour
         FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/" + entType +"/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
-                Debug.Log("BLARG");
+                //Debug.Log("BLARG");
                 return null;
             }
             else if (task.IsCompleted)
@@ -207,7 +164,7 @@ public class MasterARScript : MonoBehaviour
             }
             else
             {
-                Debug.Log("ELSE");
+                //Debug.Log("ELSE");
                 return null;
             }
         });
@@ -228,7 +185,7 @@ public string GetGuestMapString()
         FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/guestMap/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
-                Debug.Log("BLARG");
+                //Debug.Log("BLARG");
                 return null;
             }
             else if (task.IsCompleted)
@@ -239,11 +196,11 @@ public string GetGuestMapString()
 
                 GuestMap.Add(data);
 
-                return GuestMap;
+                return GuestMap[0];
             }
             else
             {
-                Debug.Log("ELSE");
+                //Debug.Log("ELSE");
                 return null;
             }
         });
@@ -251,42 +208,6 @@ public string GetGuestMapString()
         int milliseconds = 2000;
         Thread.Sleep(milliseconds);
         return GuestMap[0];
-    }
-
-public string GetHostMapString()
-	{
-        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
-        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
-
-        List<string> HostMap = new List<string>();
-        string CurrentSession = PlayerPrefs.GetString("CurrentSession");
-
-        FirebaseDatabase.DefaultInstance.GetReference("ActivesGames/" + CurrentSession + "/MapString/").GetValueAsync().ContinueWithOnMainThread(task => {
-            if (task.IsFaulted)
-            {
-                Debug.Log("BLARG");
-                return null;
-            }
-            else if (task.IsCompleted)
-            {
-                
-                DataSnapshot snapshot = task.Result;
-                //string data = snapshot.ToString();
-                Debug.Log("TEST " + snapshot.Value);
-                //HostMap.Add(data);
-
-                return HostMap[0];
-            }
-            else
-            {
-                Debug.Log("ELSE");
-                return null;
-            }
-        });
-        
-        int milliseconds = 2000;
-        Thread.Sleep(milliseconds);
-        return HostMap[0];
     }
 
     public void PushData(string path, string data)
@@ -303,36 +224,12 @@ public string GetHostMapString()
         if (Input.GetKeyDown(KeyCode.JoystickButton1) == true)
         {
             Debug.Log("A");
-            if(selectedIcon == 1)
-            {
-                Room r = map[selectedCellX * mapSizeX + selectedCellY];
-                r.visible = !r.visible;
-                setMeshColor(r.model, Convert.ToInt32(r.visible));
-            }
-            else if(selectedIcon == 2)
-            {
-                Entity ent = new Entity();
-                Vector3 vec = pointer.transform.localPosition;
-                vec.y = floor;
-                SpriteRenderer sr = Instantiate<SpriteRenderer>(monster,entityHolder.transform);
-                sr.sprite = monsterSprites[monsters[selectedMonster]];
-                sr.transform.localPosition = vec;
-                ent.sr = sr;
-                ent.collider = sr.GetComponent<Collider>();
-                ent.type = selectedMonster;
-                entities.Add(ent);
-            }
+            rotatePlayerEnabled = !rotatePlayerEnabled;
         }
 
         if (Input.GetKeyDown(KeyCode.JoystickButton0) == true)
         {
             Debug.Log("C");
-            if (pointingAtMonster >= 0)
-            {
-                if (selectedIcon == 2) selectedIcon = 3;
-                else if (selectedIcon == 3) selectedIcon = 4;
-                else if (selectedIcon == 4) selectedIcon = 2;
-            }
         }
 
         if (Input.GetKeyDown(KeyCode.JoystickButton3) == true)
@@ -346,171 +243,44 @@ public string GetHostMapString()
 
             string CurrentSession = PlayerPrefs.GetString("CurrentSession");
 
-            string hostMap = mapToString(0, 0, mapSizeY, mapSizeX);
-            Debug.Log(hostMap);
-
-
-            FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession).Child("MapString").SetValueAsync(hostMap);
-            //FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/").Child(SessionName).SetValueAsync(SessionName);
-
-            string guestMap = mapToString(Math.Abs(mapPosY), Math.Abs(mapPosX), 10, 5);
-            Debug.Log(guestMap);
-
-            FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession).Child("guestMap").SetValueAsync(guestMap);
-
-            List<string> ents = new List<string>();
-            foreach (Entity ent in entities)
-            {
-                string concat = EntityToString(ent);
-                ents.Add(concat);
-            }
-            int i = 0;
-            foreach (string str in ents)
-			{
-                FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Entities").Child("entities" + i.ToString()).SetValueAsync(str);
-                i++;
-			}
-
-            List<string> hero = new List<string>();
-            foreach (Entity ent in heroes)
-            {
-                string concat = EntityToString(ent);
-                hero.Add(concat);
-            }
-            i = 0;
-            foreach (string str in hero)
-            {
-                FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Heroes").Child("entities" + i.ToString()).SetValueAsync(str);
-                i++;
-            }
+            string concat = EntityToString(heroes[myIndexNum]);
+            FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Heroes").Child("entities" + myIndexNum.ToString()).SetValueAsync(concat);
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton7) == true)
         {
             Debug.Log("T1");
-            ToggleActiveIcon(1);
         }
 
         if (Input.GetKeyDown(KeyCode.JoystickButton6) == true)
         {
             Debug.Log("T2");
-            if (selectedIcon == 2)
-            {
-                selectedMonster++;
-                if (selectedMonster > monsters.Length) selectedMonster = 0; 
-                pointer.SendMessage("SetMonster", monsterSprites[monsters[selectedMonster]]);
-            }
         }
     }
 
     void FixedUpdate()
     {
-        if (interval >= 0) interval--; 
         float horizontal = Input.GetAxis("Axis 1");
         int digitalH = AnalogToDigital(horizontal);
 
         float vertical = -Input.GetAxis("Axis 2");
         int digitalV = AnalogToDigital(vertical);
+     
         if ((digitalH != 0 || digitalV != 0))
         {
-            if (selectedIcon == 0 && interval < 0) //World
+            if (!rotatePlayerEnabled)
             {
-                interval = 10;
-                mapPosX += digitalH;
-                mapPosY += digitalV;
-
-                if (mapPosX > 0) mapPosX = 0;
-                if (mapPosY > 0) mapPosY = 0;
-
-
-                transform.localPosition = new Vector3(baseX + offset * mapPosX, 0.0f, baseY + offset * mapPosY);
-            }
-            else if (selectedIcon == 1 && interval < 0) //Light
-            {
-                interval = 10;
-                icoPosX += digitalH;
-                icoPosY += digitalV;
-                pointer.transform.localPosition = new Vector3(baseX + offset * icoPosX, pointerHeight, baseY + offset * icoPosY);
-            }
-            else if (selectedIcon >= 2)  //Monster
-            {
-                Vector3 proposedMove = pointer.transform.localPosition;
+                Vector3 proposedMove = heroes[myIndexNum].sr.transform.localPosition;
                 proposedMove += new Vector3(digitalH * speed * Time.deltaTime, 0, 0);
                 proposedMove += new Vector3(0, 0, digitalV * speed * Time.deltaTime);
-                if (isInBounds(proposedMove) && selectedIcon != 4) pointer.transform.localPosition = proposedMove;
-                if (selectedIcon == 2)
-                {
-                    int count = 0;
-                    bool foundMonster = false;
-                    foreach (Entity entity in entities)
-                    {
-                        if (entity.collider.bounds.Intersects(pointerCollider.bounds))
-                        {
-                            highlighEntity(count);
-                            pointingAtMonster = count;
-                            foundMonster = true;
-                            break;
-                        }
-                        count++;
-                    }
-                    if (!foundMonster)
-                    {
-                        highlighEntity(-1);
-                        pointingAtMonster = -1;
-                    }
-                }
-                else if (selectedIcon == 3)
-                {
-                    entities[pointingAtMonster].sr.transform.localPosition = new Vector3(proposedMove.x, floor, proposedMove.z);
-                }
-                else if (selectedIcon == 4)
-                {
-                    entities[pointingAtMonster].sr.transform.Rotate(new Vector3(0, 0, digitalH * speed));
-                }
+                if (isInBounds(proposedMove)) heroes[myIndexNum].sr.transform.localPosition = proposedMove;
             }
-        }
-        selectedCellX = icoPosX - mapPosX;
-        selectedCellY = icoPosY - mapPosY;
-    }
-
-    public void RefreshAR()
-    {
-        mapString = GetHostMapString();
-        List<string> ents = GetEntitiesString("Entities");
-        List<string> hero = GetEntitiesString("Heroes");
-
-        StartCoroutine(LoadData(ents, hero));
-    }
-
-
-
-    /*
-    public void FoundTarget()
-    {
-        if (PlayerPrefs.HasKey("TempLevel"))
-        {
-            //stringToMap(PlayerPrefs.GetString("TempLevel"));
-            Debug.Log("BLAH"+mapString);
-            if (mapString != "")
+            else
             {
-                stringToMap(mapString);
-                //mapSizeX = 5;
-                //mapSizeY = 10;
-                //stringToMap(debugGuestString);
-                displayLevel();
-                //foreach(string e in debugEntityStrings)
-                //{
-                //    StringToEntity(e);
-                //}
+                heroes[myIndexNum].sr.transform.Rotate(new Vector3(0, 0, digitalH * speed));
             }
         }
     }
-    */
 
-    private void highlighEntity(int ent)
-    {
-        if(pointingAtMonster >= 0) entities[pointingAtMonster].sr.color = Color.white;
-        if(ent >= 0) entities[ent].sr.color = Color.red;
-    }
 
     private bool isInBounds(Vector3 vec)
     {
@@ -544,6 +314,7 @@ public string GetHostMapString()
                 string selHex = descriptor.Substring(3, 3);
                 room.itm = int.Parse(selHex, System.Globalization.NumberStyles.HexNumber);
                 room.rot = int.Parse(descriptor.Substring(6, 1));
+                if (descriptor.Substring(7, 1) == "1") room.visible = true;
                 map.Add(room);
             }
         }
@@ -587,24 +358,22 @@ public string GetHostMapString()
         return concat;
     }
 
-    private Entity StringToEntity(string entityString)
+    private Entity StringToEntity(string entityString, bool isHero = false)
     {
         Entity ent = new Entity();
         char[] keys = { 't', 'x', 'z', 'r' };
         string[] info = entityString.Split(keys);
-        foreach(string s in info)
-        {
-            Debug.Log(s);
-        }
         ent.owner = Convert.ToInt32(info[0]);
         ent.type = Convert.ToInt32(info[1]);
         ent.startX = Convert.ToSingle(info[2]);
         ent.startZ = Convert.ToSingle(info[3]);
         ent.startRot = Convert.ToInt32(info[4]);
+        
         ent.sr = Instantiate<SpriteRenderer>(monster, entityHolder.transform);
-        ent.sr.sprite = monsterSprites[monsters[ent.type]];
+        if (isHero) ent.sr.sprite = heroSprites[monsters[ent.type]];
+        else ent.sr.sprite = monsterSprites[monsters[ent.type]];
         ent.sr.transform.localPosition = new Vector3(ent.startX, floor, ent.startZ);
-        ent.sr.transform.rotation = Quaternion.Euler(0,0,ent.startRot);
+        ent.sr.transform.localRotation = Quaternion.Euler(0,0,0);
         ent.collider = ent.sr.GetComponent<Collider>();
         return ent;
     }
@@ -618,7 +387,7 @@ public string GetHostMapString()
             for(int y = 0; y < mapSizeY; ++y)
             {
                 Room room = map[y * mapSizeX + x];
-                if(room.cat >= 0)
+                if(room.cat >= 0 && room.visible)
                 {
                     GameObject go = Instantiate(meshes[room.itm], this.transform);
                     go.transform.localScale = new Vector3(scale, scale, scale);
@@ -628,8 +397,7 @@ public string GetHostMapString()
                 }
             }
         }
-        transform.localPosition = new Vector3(baseX + offset * mapPosX, 0, baseY + offset * mapPosY);
-        pointer.transform.localPosition = new Vector3(baseX, pointerHeight, baseY);
+        
     }
 
     public void DestroyLevel()
@@ -673,13 +441,5 @@ public string GetHostMapString()
         if (inp > 0.1) analog = 1;
         else if (inp < -0.1) analog = -1;
         return analog;
-    }
-
-    private void ToggleActiveIcon(int toggledir)
-    {
-        selectedIcon += toggledir;
-        if (selectedIcon >= numOfIcons) selectedIcon = 0;
-        else if (selectedIcon < 0) selectedIcon = numOfIcons - 1;
-        pointer.SendMessage("SetIcon", selectedIcon);
     }
 }
