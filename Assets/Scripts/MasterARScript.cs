@@ -138,9 +138,9 @@ public class MasterARScript : MonoBehaviour
         pointingAtMonster = -1;
 
         //DEBUG
-        mapSizeX = 5;
-        mapSizeY = 10;
-        mapString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
+        //mapSizeX = 5;
+        //mapSizeY = 10;
+        //mapString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
 
 
         pointer.SendMessage("SetMonster", monsterSprites[monsters[selectedMonster]]);
@@ -155,8 +155,6 @@ public class MasterARScript : MonoBehaviour
             yield return new WaitForSeconds(60f);
         }
     }
-
-    
 
     private void Update()
     {
@@ -347,9 +345,6 @@ public class MasterARScript : MonoBehaviour
         DestroyEntities(ref entities);
         DestroyEntities(ref heroes);
 
-        stringToMap(mapString);
-        displayLevel();
-
         foreach (string e in ents)
         {
             Entity ent = StringToEntity(e);
@@ -361,6 +356,7 @@ public class MasterARScript : MonoBehaviour
             heroes.Add(ent);
         }
     }
+
     /*
     public void FoundTarget()
     {
