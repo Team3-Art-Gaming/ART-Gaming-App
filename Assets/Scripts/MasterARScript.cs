@@ -107,7 +107,7 @@ public class MasterARScript : MonoBehaviour
     [SerializeField]
     SpriteRenderer monster;
 
-    private MasterARRequest getRequests;
+    //private MasterARRequest getRequests;
 
     //string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
     //string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
@@ -116,7 +116,7 @@ public class MasterARScript : MonoBehaviour
     void Start()
     {
         this.hostMapString = "";
-        this.getRequests = GameObject.Find("SceneryHolder").GetComponent<MasterARRequest>() as MasterARRequest;
+        //this.getRequests = GameObject.Find("SceneryHolder").GetComponent<MasterARRequest>() as MasterARRequest;
         map = new List<Room>();
         entities = new List<Entity>();
         heroes = new List<Entity>();
@@ -149,9 +149,10 @@ public class MasterARScript : MonoBehaviour
 
         Debug.Log("Finished Start");
         pointer.SendMessage("SetMonster", monsterSprites[monsters[selectedMonster]]);
-        StartCoroutine(checkDB());
+        pointer.transform.localPosition = new Vector3(baseX, pointerHeight, baseY);
+        //StartCoroutine(checkDB());
     }
-
+    /*
     IEnumerator checkDB()
     {
         while(true)
@@ -161,10 +162,14 @@ public class MasterARScript : MonoBehaviour
             yield return new WaitForSeconds(5f);
         }
     }
-
+    */
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton1) == true)
+        if (Input.GetKeyDown(KeyCode.JoystickButton3) && Input.GetKeyDown(KeyCode.JoystickButton3))
+        {
+            //END SESSION AND RETURN TO HOME SCREEN
+        }
+        if (Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.Z)) //Activate
         {
             Debug.Log("A");
             if(selectedIcon == 1)
@@ -188,7 +193,7 @@ public class MasterARScript : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.JoystickButton0) == true)
+        if (Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.X)) //Change Control
         {
             Debug.Log("C");
             if (pointingAtMonster >= 0)
@@ -199,12 +204,12 @@ public class MasterARScript : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.JoystickButton3) == true)
+        if (Input.GetKeyDown(KeyCode.JoystickButton3) || Input.GetKeyDown(KeyCode.C)) //Get Latest Info
         {
             Debug.Log("B");
-            
+            RefreshAR();      
         }
-        if (Input.GetKeyDown(KeyCode.JoystickButton4) == true)
+        if (Input.GetKeyDown(KeyCode.JoystickButton4) || Input.GetKeyDown(KeyCode.V)) //Push Latest Info
         {
             Debug.Log("D");
 
@@ -248,13 +253,13 @@ public class MasterARScript : MonoBehaviour
                 i++;
             }
         }
-        if (Input.GetKeyDown(KeyCode.JoystickButton7) == true)
+        if (Input.GetKeyDown(KeyCode.JoystickButton7) || Input.GetKeyDown(KeyCode.Q)) //Toggle Input Type
         {
             Debug.Log("T1");
             ToggleActiveIcon(1);
         }
 
-        if (Input.GetKeyDown(KeyCode.JoystickButton6) == true)
+        if (Input.GetKeyDown(KeyCode.JoystickButton6) || Input.GetKeyDown(KeyCode.E)) //Toggle Monster
         {
             Debug.Log("T2");
             if (selectedIcon == 2)
@@ -274,6 +279,12 @@ public class MasterARScript : MonoBehaviour
 
         float vertical = -Input.GetAxis("Axis 2");
         int digitalV = AnalogToDigital(vertical);
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) digitalV = 1;
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) digitalH = -1;
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) digitalV = -1;
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) digitalH = 1;
+
         if ((digitalH != 0 || digitalV != 0))
         {
             if (selectedIcon == 0 && interval < 0) //World
@@ -571,7 +582,6 @@ public class MasterARScript : MonoBehaviour
             }
         }
         transform.localPosition = new Vector3(baseX + offset * mapPosX, 0, baseY + offset * mapPosY);
-        pointer.transform.localPosition = new Vector3(baseX, pointerHeight, baseY);
     }
 
     public void DestroyLevel()
@@ -611,10 +621,10 @@ public class MasterARScript : MonoBehaviour
 
     private int AnalogToDigital(float inp)
     {
-        int analog = 0;
-        if (inp > 0.1) analog = 1;
-        else if (inp < -0.1) analog = -1;
-        return analog;
+        int digital = 0;
+        if (inp > 0.1) digital = 1;
+        else if (inp < -0.1) digital = -1;
+        return digital;
     }
 
     private void ToggleActiveIcon(int toggledir)
