@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +13,8 @@ using Firebase.Auth;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using System.Threading;
+//using System.Diagnostics;
+//using System.Diagnostics;
 
 public class MasterARPlayerScript : MonoBehaviour
 {
@@ -31,30 +31,38 @@ public class MasterARPlayerScript : MonoBehaviour
     List<Entity> entities;
     List<Entity> heroes;
 
-    int myIndexNum;
-
     const float scale = 0.002f;
     const float offset = 0.315f;
     const float floor = 0.05f;
-    const float pointerHeight = 0.32f;
-    
+
     const int descriptorSize = 8;
-    
+
     const float baseX = 5 * -offset;
     const float baseY = 2 * -offset;
     const float speed = 1.25f;
 
     private Sprite[] heroSprites;
     private Sprite[] monsterSprites;
-    static readonly int[] monsters = {0,4,5,19,23,24,25,26,28,30,46,52};
-    
+    static readonly int[] monsters = { 0, 4, 5, 19, 23, 24, 25, 26, 28, 30, 46, 52 };
+
     Color[] colors = { Color.black, Color.white };
 
-    string mapString;
+    string hostMapString;
+    string guestMapString;
+    List<string> heroStrings;
+    List<string> enemyStrings;
 
+
+    string mapString;
     int mapSizeX;
     int mapSizeY;
 
+    int mapPosX;
+    int mapPosY;
+
+    int interval;
+
+    int myIndexNum;
     bool rotatePlayerEnabled;
 
     [SerializeField]
@@ -62,91 +70,197 @@ public class MasterARPlayerScript : MonoBehaviour
     [SerializeField]
     SpriteRenderer monster;
 
-    string debugGuestString = "0030020100300231NNN00300211003000010030023100300301NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
-    string[] debugEntityStrings = { "0t0x-0.9750006z0.06999996r354", "0t1x-0.275001z0.295r354" };
-    string[] debugHeroStrings = { "0t5x0z0r0", "1t3x1z1r90" };
+    //private MasterARRequest getRequests;
+
+    //string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
+    //string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
+    string debugEntityString = "0t0x-0.9750006z0.06999996r354";
 
     void Start()
     {
         mapString = "";
-
+        //this.getRequests = GameObject.Find("SceneryHolder").GetComponent<MasterARRequest>() as MasterARRequest;
         map = new List<Room>();
         entities = new List<Entity>();
         heroes = new List<Entity>();
+        heroStrings = new List<string>();
+        heroStrings.Add(debugEntityString);
+        enemyStrings = new List<string>();
         meshes = Resources.LoadAll<GameObject>("Sets/Dungeon") as GameObject[];
         heroSprites = Resources.LoadAll<Sprite>("Characters/AR_Heroes");
         monsterSprites = Resources.LoadAll<Sprite>("Characters/AR_Monsters");
 
+        populateMapString();
+
+        interval = 0;
         mapSizeX = 5;
         mapSizeY = 10;
+        mapPosX = 0;
+        mapPosY = 0;
 
+        myIndexNum = 0;
         rotatePlayerEnabled = false;
-
-        transform.localPosition = new Vector3(baseX, 0.0f, baseY);
-
-        StartCoroutine(checkDB());
     }
 
-    IEnumerator checkDB()
+    private void Update()
     {
-        while(true)
+        if (Input.GetKeyDown(KeyCode.JoystickButton3) && Input.GetKeyDown(KeyCode.JoystickButton3))
         {
-            Debug.Log("In While Loop");
+            //END SESSION AND RETURN TO HOME SCREEN
+        }
+        if (Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.Z)) //Activate
+        {
+            Debug.Log("A");
+            rotatePlayerEnabled = !rotatePlayerEnabled;
+        }
+
+        if (Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.X)) //Change Control
+        {
+            Debug.Log("C");
+        }
+
+        if (Input.GetKeyDown(KeyCode.JoystickButton3) || Input.GetKeyDown(KeyCode.C)) //Get Latest Info
+        {
+            Debug.Log("B");
             RefreshAR();
-            yield return new WaitForSeconds(10f);
         }
-    }
-
-    public void RefreshAR()
-    {
-        //mapString = GetGuestMapString();
-        //DEBUG
-        mapString = debugGuestString;
-        List<string> ents = GetEntitiesString("Entities");
-        List<string> hero = GetEntitiesString("Heroes");
-
-        StartCoroutine(LoadData(ents, hero));
-    }
-    IEnumerator LoadData(List<string> ents,List<string>hero)
-    {
-        Debug.Log("Entered LoadData");
-        yield return new WaitForSeconds(1f);
-        Debug.Log("Waited 1 second");
-
-        DestroyLevel();
-        DestroyEntities(ref entities);
-        DestroyEntities(ref heroes);
-
-        mapString = debugGuestString; //DEBUG
-        stringToMap(mapString);
-        
-        displayLevel();
-
-        foreach (string e in debugEntityStrings)  //DEBUG
+        if (Input.GetKeyDown(KeyCode.JoystickButton4) || Input.GetKeyDown(KeyCode.V)) //Push Latest Info
         {
-            Entity ent = StringToEntity(e);
-            entities.Add(ent);
+            Debug.Log("D");
+
+            string CurrentSession = PlayerPrefs.GetString("CurrentSession");
+
+            string hostMap = mapToString(0, 0, mapSizeY, mapSizeX);
+            Debug.Log(hostMap);
+
+
+            FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession).Child("MapString").SetValueAsync(hostMap);
+            //FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/").Child(SessionName).SetValueAsync(SessionName);
+
+            string guestMap = mapToString(Math.Abs(mapPosY), Math.Abs(mapPosX), 10, 5);
+            Debug.Log(guestMap);
+
+            FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession).Child("guestMap").SetValueAsync(guestMap);
+
+            List<string> ents = new List<string>();
+            foreach (Entity ent in entities)
+            {
+                string concat = EntityToString(ent);
+                ents.Add(concat);
+            }
+            int i = 0;
+            foreach (string str in ents)
+            {
+                FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Entities").Child("entities" + i.ToString()).SetValueAsync(str);
+                i++;
+            }
+
+            List<string> hero = new List<string>();
+            foreach (Entity ent in heroes)
+            {
+                string concat = EntityToString(ent);
+                hero.Add(concat);
+            }
+            i = 0;
+            foreach (string str in hero)
+            {
+                FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Heroes").Child("entities" + i.ToString()).SetValueAsync(str);
+                i++;
+            }
         }
-        foreach (string h in debugHeroStrings)  //DEBUG
+        if (Input.GetKeyDown(KeyCode.JoystickButton7) || Input.GetKeyDown(KeyCode.Q)) //Toggle Input Type
         {
-            Entity ent = StringToEntity(h,true);
-            heroes.Add(ent);
+            Debug.Log("T1");
+        }
+
+        if (Input.GetKeyDown(KeyCode.JoystickButton6) || Input.GetKeyDown(KeyCode.E)) //Toggle Monster
+        {
+            Debug.Log("T2");
         }
     }
 
-    public List<string> GetEntitiesString(string entType)
+    void FixedUpdate()
+    {
+        if (interval >= 0) interval--;
+        float horizontal = Input.GetAxis("Axis 1");
+        int digitalH = AnalogToDigital(horizontal);
+
+        float vertical = -Input.GetAxis("Axis 2");
+        int digitalV = AnalogToDigital(vertical);
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) digitalV = 1;
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) digitalH = -1;
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) digitalV = -1;
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) digitalH = 1;
+
+        if ((digitalH != 0 || digitalV != 0))
+        {
+            if (rotatePlayerEnabled)
+            {
+                entities[pointingAtMonster].sr.transform.Rotate(new Vector3(0, 0, digitalH * speed));
+            }
+            else
+            {
+                Vector3 proposedMove = heroes[myIndexNum].sr.transform.localPosition;
+                proposedMove += new Vector3(digitalH * speed * Time.deltaTime, 0, 0);
+                proposedMove += new Vector3(0, 0, digitalV * speed * Time.deltaTime);
+                if (isInBounds(proposedMove)) heroes[myIndexNum].sr.transform.localPosition = proposedMove;
+            }
+        }
+    }
+    public void populateMapString()
     {
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
 
-        List<string> Entities = new List<string>();
+        //string mapstring = "";
         string CurrentSession = PlayerPrefs.GetString("CurrentSession");
 
-        FirebaseDatabase.DefaultInstance.GetReference("ActiveGames/" + CurrentSession + "/" + entType +"/").GetValueAsync().ContinueWithOnMainThread(task => {
+        FirebaseDatabase.DefaultInstance.GetReference("ActiveGames/" + CurrentSession + "/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
-                //Debug.Log("BLARG");
-                return null;
+                Debug.Log("BLARG");
+                return "ERROR";
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                foreach (var child in snapshot.Children)
+                {
+                    if (child.Key.ToString() == "MapString")
+                    {
+                        hostMapString = child.Value.ToString();
+                        Debug.Log("CONGRATS MapString" + hostMapString);
+                    }
+                    else if (child.Key.ToString() == "guestMap")
+                    {
+                        guestMapString = child.Value.ToString();
+                    }
+                }
+                return "ERROR";
+            }
+            else
+            {
+                Debug.Log("ELSE");
+                return "ERROR";
+            }
+        });
+    }
+
+    public void populateEntitiyStrings(string entType)
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        //List<string> Entities = new List<string>();
+        if (entType == "Entities") enemyStrings.Clear();
+        else heroStrings.Clear();
+        string CurrentSession = PlayerPrefs.GetString("CurrentSession");
+
+        FirebaseDatabase.DefaultInstance.GetReference("ActiveGames/" + CurrentSession + "/" + entType + "/").GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                Debug.Log("BLARG");
             }
             else if (task.IsCompleted)
             {
@@ -156,60 +270,47 @@ public class MasterARPlayerScript : MonoBehaviour
                 foreach (var child in snapshot.Children)
                 {
                     //Debug.Log(child.Key + ": " + child.Value);
-
-                    Entities.Add(child.Value.ToString());
+                    if (entType == "Entities") enemyStrings.Add(child.Value.ToString());
+                    else heroStrings.Add(child.Value.ToString());
                 }
-
-                return Entities;
             }
             else
             {
-                //Debug.Log("ELSE");
-                return null;
+                Debug.Log("ELSE");
             }
         });
-
-        int milliseconds = 2000;
-        Thread.Sleep(milliseconds);
-        return Entities;
     }
 
-public string GetGuestMapString()
+    public void RefreshAR()
     {
-        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
-        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
-
-        List<string> GuestMap = new List<string>();
-        string CurrentSession = PlayerPrefs.GetString("CurrentSession");
-
-        FirebaseDatabase.DefaultInstance.GetReference("ActiveGames/" + CurrentSession + "/guestMap/").GetValueAsync().ContinueWithOnMainThread(task => {
-            if (task.IsFaulted)
-            {
-                //Debug.Log("BLARG");
-                return null;
-            }
-            else if (task.IsCompleted)
-            {
-
-                DataSnapshot snapshot = task.Result;
-                string data = snapshot.ToString();
-
-                GuestMap.Add(data);
-
-                return GuestMap[0];
-            }
-            else
-            {
-                //Debug.Log("ELSE");
-                return null;
-            }
-        });
-
-        int milliseconds = 2000;
-        Thread.Sleep(milliseconds);
-        return GuestMap[0];
+        string test = "";
+        populateMapString();
+        populateEntitiyStrings("Entities");
+        populateEntitiyStrings("Heroes");
+        StartCoroutine(ProceedLoad());
     }
 
+    IEnumerator ProceedLoad()
+    {
+        yield return new WaitForSeconds(1f);
+        DestroyLevel();
+        DestroyEntities(ref entities);
+        DestroyEntities(ref heroes);
+
+        stringToMap(hostMapString);
+        displayLevel();
+
+        foreach (string e in enemyStrings)
+        {
+            Entity ent = StringToEntity(e);
+            entities.Add(ent);
+        }
+        foreach (string h in heroStrings)
+        {
+            Entity ent = StringToEntity(h);
+            heroes.Add(ent);
+        }
+    }
     public void PushData(string path, string data)
     {
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
@@ -218,69 +319,6 @@ public string GetGuestMapString()
         DBreference.Child(path).SetValueAsync(data);
         //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child("blip").SetValueAsync(data);
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.JoystickButton1) == true)
-        {
-            Debug.Log("A");
-            rotatePlayerEnabled = !rotatePlayerEnabled;
-        }
-
-        if (Input.GetKeyDown(KeyCode.JoystickButton0) == true)
-        {
-            Debug.Log("C");
-        }
-
-        if (Input.GetKeyDown(KeyCode.JoystickButton3) == true)
-        {
-            Debug.Log("B");
-            
-        }
-        if (Input.GetKeyDown(KeyCode.JoystickButton4) == true)
-        {
-            Debug.Log("D");
-
-            string CurrentSession = PlayerPrefs.GetString("CurrentSession");
-
-            string concat = EntityToString(heroes[myIndexNum]);
-            FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Heroes").Child("entities" + myIndexNum.ToString()).SetValueAsync(concat);
-        }
-        if (Input.GetKeyDown(KeyCode.JoystickButton7) == true)
-        {
-            Debug.Log("T1");
-        }
-
-        if (Input.GetKeyDown(KeyCode.JoystickButton6) == true)
-        {
-            Debug.Log("T2");
-        }
-    }
-
-    void FixedUpdate()
-    {
-        float horizontal = Input.GetAxis("Axis 1");
-        int digitalH = AnalogToDigital(horizontal);
-
-        float vertical = -Input.GetAxis("Axis 2");
-        int digitalV = AnalogToDigital(vertical);
-     
-        if ((digitalH != 0 || digitalV != 0))
-        {
-            if (!rotatePlayerEnabled)
-            {
-                Vector3 proposedMove = heroes[myIndexNum].sr.transform.localPosition;
-                proposedMove += new Vector3(digitalH * speed * Time.deltaTime, 0, 0);
-                proposedMove += new Vector3(0, 0, digitalV * speed * Time.deltaTime);
-                if (isInBounds(proposedMove)) heroes[myIndexNum].sr.transform.localPosition = proposedMove;
-            }
-            else
-            {
-                heroes[myIndexNum].sr.transform.Rotate(new Vector3(0, 0, digitalH * speed));
-            }
-        }
-    }
-
 
     private bool isInBounds(Vector3 vec)
     {
@@ -310,7 +348,7 @@ public string GetGuestMapString()
                 stringMarker += descriptorSize;
                 string selCatHex = descriptor.Substring(0, 3);
                 room.cat = int.Parse(selCatHex, System.Globalization.NumberStyles.HexNumber);
-                 
+
                 string selHex = descriptor.Substring(3, 3);
                 room.itm = int.Parse(selHex, System.Globalization.NumberStyles.HexNumber);
                 room.rot = int.Parse(descriptor.Substring(6, 1));
@@ -358,37 +396,38 @@ public string GetGuestMapString()
         return concat;
     }
 
-    private Entity StringToEntity(string entityString, bool isHero = false)
+    private Entity StringToEntity(string entityString)
     {
         Entity ent = new Entity();
         char[] keys = { 't', 'x', 'z', 'r' };
         string[] info = entityString.Split(keys);
+        foreach (string s in info)
+        {
+            Debug.Log(s);
+        }
         ent.owner = Convert.ToInt32(info[0]);
         ent.type = Convert.ToInt32(info[1]);
         ent.startX = Convert.ToSingle(info[2]);
         ent.startZ = Convert.ToSingle(info[3]);
         ent.startRot = Convert.ToInt32(info[4]);
-        
         ent.sr = Instantiate<SpriteRenderer>(monster, entityHolder.transform);
-        if (isHero) ent.sr.sprite = heroSprites[monsters[ent.type]];
-        else ent.sr.sprite = monsterSprites[monsters[ent.type]];
+        ent.sr.sprite = monsterSprites[monsters[ent.type]];
         ent.sr.transform.localPosition = new Vector3(ent.startX, floor, ent.startZ);
-        ent.sr.transform.localRotation = Quaternion.Euler(0,0,0);
+        ent.sr.transform.rotation = Quaternion.Euler(0, 0, ent.startRot);
         ent.collider = ent.sr.GetComponent<Collider>();
         return ent;
     }
 
-
-
     private void displayLevel()
     {
-        for(int x = 0; x < mapSizeX; ++x)
+        for (int x = 0; x < mapSizeX; ++x)
         {
-            for(int y = 0; y < mapSizeY; ++y)
+            for (int y = 0; y < mapSizeY; ++y)
             {
                 Room room = map[y * mapSizeX + x];
-                if(room.cat >= 0 && room.visible)
+                if (room.cat >= 0 && room.visible)
                 {
+                    Debug.Log("X: " + x + " Y: " + y + " L: " + y * mapSizeX + x);
                     GameObject go = Instantiate(meshes[room.itm], this.transform);
                     go.transform.localScale = new Vector3(scale, scale, scale);
                     go.transform.localPosition = new Vector3(y * offset, 0, x * offset);
@@ -397,7 +436,7 @@ public string GetGuestMapString()
                 }
             }
         }
-        
+        transform.localPosition = new Vector3(baseX + offset * mapPosX, 0, baseY + offset * mapPosY);
     }
 
     public void DestroyLevel()
@@ -437,9 +476,9 @@ public string GetGuestMapString()
 
     private int AnalogToDigital(float inp)
     {
-        int analog = 0;
-        if (inp > 0.1) analog = 1;
-        else if (inp < -0.1) analog = -1;
-        return analog;
+        int digital = 0;
+        if (inp > 0.1) digital = 1;
+        else if (inp < -0.1) digital = -1;
+        return digital;
     }
 }
