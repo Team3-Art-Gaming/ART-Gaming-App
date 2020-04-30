@@ -197,7 +197,7 @@ public class MasterARPlayerScript : MonoBehaviour
         {
             if (rotatePlayerEnabled)
             {
-                entities[pointingAtMonster].sr.transform.Rotate(new Vector3(0, 0, digitalH * speed));
+                heroes[myIndexNum].sr.transform.Rotate(new Vector3(0, 0, digitalH * speed));
             }
             else
             {

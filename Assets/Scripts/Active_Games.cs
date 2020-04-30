@@ -21,6 +21,10 @@ public class Active_Games : MonoBehaviour
     private GamesManager gamesScript;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        Screen.orientation = ScreenOrientation.Portrait;
+    }
     void Start()
     {
         joinArenaPrefab = Instantiate(popUp, new Vector3(540, 960, 0), Quaternion.identity, parent.transform);
