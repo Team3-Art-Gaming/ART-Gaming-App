@@ -448,7 +448,7 @@ public class MasterARScript : MonoBehaviour
         }
         foreach (string h in heroStrings)
         {
-            Entity ent = StringToEntity(h);
+            Entity ent = StringToEntity(h, true);
             heroes.Add(ent);
         }
     }
@@ -542,7 +542,7 @@ public class MasterARScript : MonoBehaviour
         return concat;
     }
 
-    private Entity StringToEntity(string entityString)
+    private Entity StringToEntity(string entityString, bool isHero = false)
     {
         Entity ent = new Entity();
         string[] info = entityString.Split(parseChar);
@@ -556,6 +556,8 @@ public class MasterARScript : MonoBehaviour
         ent.startZ = Convert.ToSingle(info[3]);
         ent.startRot = Convert.ToInt32(info[4]);
         ent.sr = Instantiate<SpriteRenderer>(monster, entityHolder.transform);
+        if(isHero) ent.sr.sprite = heroSprites[ent.type];
+        else ent.sr.sprite = heroSprites[monsters[ent.type]];
         ent.sr.sprite = monsterSprites[monsters[ent.type]];
         ent.sr.transform.localPosition = new Vector3(ent.startX, floor, ent.startZ);
         ent.sr.transform.rotation = Quaternion.Euler(0,0,ent.startRot);
