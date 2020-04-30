@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AR-DM.unity
     guid: a7faa0cf40a678d40abffe60534936e0
+  - enabled: 1
+    path: Assets/Scenes/AR-Player.unity
+    guid: e709ec50fd5d5694f95a229581c0c19e
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8bc4d8859351c9149b25e3c99faa5609,
       type: 2}

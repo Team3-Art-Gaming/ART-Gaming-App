@@ -11,6 +11,7 @@ using Firebase.Auth;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using System.Threading;
+//using System.Diagnostics;
 
 public class GamesManager : MonoBehaviour
 {
@@ -32,9 +33,34 @@ public class GamesManager : MonoBehaviour
         PushData("/ActiveGames/" + SessionName + "/MapName/", MapName);
         PushData("/ActiveGames/" + SessionName + "/MapString/", MapString);
 
-        foreach(string child in friends)
+        foreach (string child in friends)
         {
             PushData("/ActiveGames/" + SessionName + "/Players/" + child, "Invited");
+        }
+
+        int i = 0;
+        foreach (string child in friends)
+        {
+            FirebaseDatabase.DefaultInstance.GetReference("/users/"+child+"/Profile/Picture/").GetValueAsync().ContinueWithOnMainThread(task => {
+                if (task.IsFaulted)
+                {
+                    Debug.Log("BLARG");
+                    return;
+                }
+                else if (task.IsCompleted)
+                {
+                    DataSnapshot snapshot = task.Result;
+                    Debug.Log("Profile Num: " + snapshot.Key.ToString() + ": " + snapshot.Value.ToString());
+                    string profile_pic = snapshot.Value.ToString();
+                    PushData("/ActiveGames/" + SessionName + "/Heroes/" + i.ToString(), child + "%" + profile_pic + "%0%0%0");
+                    i++;
+                }
+                else
+                {
+                    Debug.Log("ELSE");
+                    return;
+                }
+            });
         }
     }
 
@@ -94,7 +120,6 @@ public class GamesManager : MonoBehaviour
         int milliseconds = 4000;
         Thread.Sleep(milliseconds);*/
         return GamesList;
-
     }
 
     public string getHostName(string SessionName)
@@ -117,8 +142,8 @@ public class GamesManager : MonoBehaviour
                 {
                     if (child.Value.ToString() == "Host")
                     {
-                        //Debug.Log(child.Key + ": " + child.Value);
-                        return child.Value.ToString();
+                        Debug.Log(child.Key + ": " + child.Value);
+                        return child.Key.ToString();
                     }
 
                 }
@@ -229,28 +254,23 @@ public class GamesManager : MonoBehaviour
 	{
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
-
-        string currentUser = PlayerPrefs.GetString("Username");
-        string data = "null";
-
+        string data = "0";
         FirebaseDatabase.DefaultInstance.GetReference(path).GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
                 Debug.Log("BLARG");
-                FirebaseDatabase.DefaultInstance.GetReference("/1Test/").Child("blarg").SetValueAsync("faultError");
                 return null;
             }
             else if (task.IsCompleted)
             {
                 //FirebaseDatabase.DefaultInstance.GetReference("/1Test/").Child("blarg").SetValueAsync("completed");
                 DataSnapshot snapshot = task.Result;
-                data = (snapshot.GetRawJsonValue().ToString());
-                FirebaseDatabase.DefaultInstance.GetReference("/1Test/").Child("blarg").SetValueAsync(data);
+                Debug.Log("Profile Num: " + snapshot.Key.ToString() + ": " + snapshot.Value.ToString());
+                data = snapshot.Value.ToString();
                 return data;
             }
             else
             {
-                FirebaseDatabase.DefaultInstance.GetReference("/1Test/").Child("blarg").SetValueAsync("elseError");
                 Debug.Log("ELSE");
                 return null;
             }

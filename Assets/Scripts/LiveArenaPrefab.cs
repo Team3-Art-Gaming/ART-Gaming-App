@@ -24,7 +24,7 @@ public class LiveArenaPrefab : MonoBehaviour
 
     public void ok_Click()
     {
-        SceneManager.LoadScene(8);
+        SceneManager.LoadScene(9);
     }
 
     public void cancel_Click()
