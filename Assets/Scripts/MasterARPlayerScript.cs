@@ -41,6 +41,8 @@ public class MasterARPlayerScript : MonoBehaviour
     const float baseY = 2 * -offset;
     const float speed = 1.25f;
 
+    const char parseChar = '%';
+
     private Sprite[] heroSprites;
     private Sprite[] monsterSprites;
     static readonly int[] monsters = { 0, 4, 5, 19, 23, 24, 25, 26, 28, 30, 46, 52 };
@@ -90,8 +92,6 @@ public class MasterARPlayerScript : MonoBehaviour
         heroSprites = Resources.LoadAll<Sprite>("Characters/AR_Heroes");
         monsterSprites = Resources.LoadAll<Sprite>("Characters/AR_Monsters");
 
-        populateMapString();
-
         interval = 0;
         mapSizeX = 5;
         mapSizeY = 10;
@@ -100,6 +100,8 @@ public class MasterARPlayerScript : MonoBehaviour
 
         myIndexNum = 0;
         rotatePlayerEnabled = false;
+
+        RefreshAR();
     }
 
     private void Update()
@@ -309,6 +311,7 @@ public class MasterARPlayerScript : MonoBehaviour
         {
             Entity ent = StringToEntity(h);
             heroes.Add(ent);
+            if (ent.owner == PlayerPrefs.GetString("Username")) myIndexNum = heroes.Count - 1;
         }
     }
     public void PushData(string path, string data)
@@ -388,10 +391,10 @@ public class MasterARPlayerScript : MonoBehaviour
     {
         string concat = "";
         concat += ent.owner;
-        concat += "t" + ent.type;
-        concat += "x" + ent.sr.transform.localPosition.x;
-        concat += "z" + ent.sr.transform.localPosition.z;
-        concat += "r" + Math.Floor(ent.sr.transform.rotation.eulerAngles.z);
+        concat += parseChar + ent.type;
+        concat += parseChar + ent.sr.transform.localPosition.x;
+        concat += parseChar + ent.sr.transform.localPosition.z;
+        concat += parseChar + Math.Floor(ent.sr.transform.rotation.eulerAngles.z);
         Debug.Log(concat);
         return concat;
     }
@@ -399,13 +402,12 @@ public class MasterARPlayerScript : MonoBehaviour
     private Entity StringToEntity(string entityString)
     {
         Entity ent = new Entity();
-        char[] keys = { 't', 'x', 'z', 'r' };
-        string[] info = entityString.Split(keys);
+        string[] info = entityString.Split(parseChar);
         foreach (string s in info)
         {
             Debug.Log(s);
         }
-        ent.owner = Convert.ToInt32(info[0]);
+        ent.owner = info[0];
         ent.type = Convert.ToInt32(info[1]);
         ent.startX = Convert.ToSingle(info[2]);
         ent.startZ = Convert.ToSingle(info[3]);
