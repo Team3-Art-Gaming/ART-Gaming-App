@@ -183,6 +183,7 @@ public class MasterARScript : MonoBehaviour
             else if(selectedIcon == 2)
             {
                 Entity ent = new Entity();
+                ent.owner = "HOST";
                 Vector3 vec = pointer.transform.localPosition;
                 vec.y = floor;
                 SpriteRenderer sr = Instantiate<SpriteRenderer>(monster,entityHolder.transform);
@@ -533,10 +534,10 @@ public class MasterARScript : MonoBehaviour
     {
         string concat = "";
         concat += ent.owner;
-        concat += parseChar + ent.type;
-        concat += parseChar + ent.sr.transform.localPosition.x;
-        concat += parseChar + ent.sr.transform.localPosition.z;
-        concat += parseChar + Math.Floor(ent.sr.transform.rotation.eulerAngles.z);
+        concat += parseChar.ToString() + ent.type;
+        concat += parseChar.ToString() + ent.sr.transform.localPosition.x;
+        concat += parseChar.ToString() + ent.sr.transform.localPosition.z;
+        concat += parseChar.ToString() + Math.Floor(ent.sr.transform.rotation.eulerAngles.z);
         Debug.Log(concat);
         return concat;
     }
@@ -547,7 +548,7 @@ public class MasterARScript : MonoBehaviour
         string[] info = entityString.Split(parseChar);
         foreach(string s in info)
         {
-            Debug.Log(s);
+            Debug.Log("PARSE: " + s);
         }
         ent.owner = info[0];
         ent.type = Convert.ToInt32(info[1]);

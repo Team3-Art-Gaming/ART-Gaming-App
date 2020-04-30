@@ -391,10 +391,10 @@ public class MasterARPlayerScript : MonoBehaviour
     {
         string concat = "";
         concat += ent.owner;
-        concat += parseChar + ent.type;
-        concat += parseChar + ent.sr.transform.localPosition.x;
-        concat += parseChar + ent.sr.transform.localPosition.z;
-        concat += parseChar + Math.Floor(ent.sr.transform.rotation.eulerAngles.z);
+        concat += parseChar.ToString() + ent.type;
+        concat += parseChar.ToString() + ent.sr.transform.localPosition.x;
+        concat += parseChar.ToString() + ent.sr.transform.localPosition.z;
+        concat += parseChar.ToString() + Math.Floor(ent.sr.transform.rotation.eulerAngles.z);
         Debug.Log(concat);
         return concat;
     }
