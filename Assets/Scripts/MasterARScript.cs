@@ -29,7 +29,7 @@ class Room
 
 public class Entity
 {
-    public int owner;
+    public string owner;
     public int type;
     public float startX;
     public float startZ;
@@ -64,6 +64,8 @@ public class MasterARScript : MonoBehaviour
     const float baseX = 5 * -offset;
     const float baseY = 2 * -offset;
     const float speed = 1.25f;
+
+    const char parseChar = '%';
 
     private Sprite[] heroSprites;
     private Sprite[] monsterSprites;
@@ -181,6 +183,7 @@ public class MasterARScript : MonoBehaviour
             else if(selectedIcon == 2)
             {
                 Entity ent = new Entity();
+                ent.owner = "HOST";
                 Vector3 vec = pointer.transform.localPosition;
                 vec.y = floor;
                 SpriteRenderer sr = Instantiate<SpriteRenderer>(monster,entityHolder.transform);
@@ -531,10 +534,10 @@ public class MasterARScript : MonoBehaviour
     {
         string concat = "";
         concat += ent.owner;
-        concat += "t" + ent.type;
-        concat += "x" + ent.sr.transform.localPosition.x;
-        concat += "z" + ent.sr.transform.localPosition.z;
-        concat += "r" + Math.Floor(ent.sr.transform.rotation.eulerAngles.z);
+        concat += parseChar.ToString() + ent.type;
+        concat += parseChar.ToString() + ent.sr.transform.localPosition.x;
+        concat += parseChar.ToString() + ent.sr.transform.localPosition.z;
+        concat += parseChar.ToString() + Math.Floor(ent.sr.transform.rotation.eulerAngles.z);
         Debug.Log(concat);
         return concat;
     }
@@ -542,13 +545,12 @@ public class MasterARScript : MonoBehaviour
     private Entity StringToEntity(string entityString)
     {
         Entity ent = new Entity();
-        char[] keys = { 't', 'x', 'z', 'r' };
-        string[] info = entityString.Split(keys);
+        string[] info = entityString.Split(parseChar);
         foreach(string s in info)
         {
-            Debug.Log(s);
+            Debug.Log("PARSE: " + s);
         }
-        ent.owner = Convert.ToInt32(info[0]);
+        ent.owner = info[0];
         ent.type = Convert.ToInt32(info[1]);
         ent.startX = Convert.ToSingle(info[2]);
         ent.startZ = Convert.ToSingle(info[3]);
