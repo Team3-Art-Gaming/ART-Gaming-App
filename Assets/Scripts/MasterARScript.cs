@@ -242,7 +242,7 @@ public class MasterARScript : MonoBehaviour
                 FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Entities").Child("entities" + i.ToString()).SetValueAsync(str);
                 i++;
 			}
-
+            /*
             List<string> hero = new List<string>();
             foreach (Entity ent in heroes)
             {
@@ -255,6 +255,7 @@ public class MasterARScript : MonoBehaviour
                 FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Heroes").Child("entities" + i.ToString()).SetValueAsync(str);
                 i++;
             }
+            */
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton7) || Input.GetKeyDown(KeyCode.Q)) //Toggle Input Type
         {

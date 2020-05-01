@@ -127,19 +127,7 @@ public class MasterARPlayerScript : MonoBehaviour
 
             string CurrentSession = PlayerPrefs.GetString("CurrentSession");
 
-            List<string> ents = new List<string>();
-            foreach (Entity ent in entities)
-            {
-                string concat = EntityToString(ent);
-                ents.Add(concat);
-            }
-            int i = 0;
-            foreach (string str in ents)
-            {
-                FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Entities").Child("entities" + i.ToString()).SetValueAsync(str);
-                i++;
-            }
-
+            /*
             List<string> hero = new List<string>();
             foreach (Entity ent in heroes)
             {
@@ -152,6 +140,10 @@ public class MasterARPlayerScript : MonoBehaviour
                 FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Heroes").Child("entities" + i.ToString()).SetValueAsync(str);
                 i++;
             }
+            */
+            string concat = EntityToString(heroes[myIndexNum]);
+            FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Heroes").Child(myIndexNum.ToString()).SetValueAsync(concat);
+
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton7) || Input.GetKeyDown(KeyCode.Q)) //Toggle Input Type
         {
@@ -401,7 +393,7 @@ public class MasterARPlayerScript : MonoBehaviour
         if(isHero) ent.sr.sprite = heroSprites[ent.type];
         else ent.sr.sprite = monsterSprites[monsters[ent.type]];
         ent.sr.transform.localPosition = new Vector3(ent.startX, floor, ent.startZ);
-        ent.sr.transform.rotation = Quaternion.Euler(0, 0, ent.startRot);
+        ent.sr.transform.localRotation = Quaternion.Euler(90,0, ent.startRot);
         ent.collider = ent.sr.GetComponent<Collider>();
         return ent;
     }
@@ -424,7 +416,7 @@ public class MasterARPlayerScript : MonoBehaviour
                 }
             }
         }
-        transform.localPosition = new Vector3(baseX + offset, 0, baseY + offset);
+        transform.localPosition = new Vector3(baseX, 0, baseY);
     }
 
     public void DestroyLevel()
