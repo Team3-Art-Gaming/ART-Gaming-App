@@ -500,6 +500,7 @@ public class MasterARScript : MonoBehaviour
                 string selHex = descriptor.Substring(3, 3);
                 room.itm = int.Parse(selHex, System.Globalization.NumberStyles.HexNumber);
                 room.rot = int.Parse(descriptor.Substring(6, 1));
+                if (descriptor.Substring(7, 1) == "1") room.visible = true;
                 map.Add(room);
             }
         }
@@ -560,7 +561,7 @@ public class MasterARScript : MonoBehaviour
         if(isHero) ent.sr.sprite = heroSprites[ent.type];
         else ent.sr.sprite = ent.sr.sprite = monsterSprites[monsters[ent.type]];
         ent.sr.transform.localPosition = new Vector3(ent.startX, floor, ent.startZ);
-        ent.sr.transform.rotation = Quaternion.Euler(0,0,ent.startRot);
+        ent.sr.transform.localRotation = Quaternion.Euler(90, 0, ent.startRot);
         ent.collider = ent.sr.GetComponent<Collider>();
         return ent;
     }
@@ -581,6 +582,8 @@ public class MasterARScript : MonoBehaviour
                     go.transform.localScale = new Vector3(scale, scale, scale);
                     go.transform.localPosition = new Vector3(y * offset, 0, x * offset);
                     go.transform.localRotation = quats[room.rot];
+                    if (room.visible) setMeshColor(go, 1);
+                    else setMeshColor(go, 0);
                     room.model = go;
                 }
             }
