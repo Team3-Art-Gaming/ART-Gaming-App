@@ -59,9 +59,6 @@ public class MasterARPlayerScript : MonoBehaviour
     int mapSizeX;
     int mapSizeY;
 
-    int mapPosX;
-    int mapPosY;
-
     int interval;
 
     int myIndexNum;
@@ -95,8 +92,6 @@ public class MasterARPlayerScript : MonoBehaviour
         interval = 0;
         mapSizeX = 5;
         mapSizeY = 10;
-        mapPosX = 0;
-        mapPosY = 0;
 
         myIndexNum = 0;
         rotatePlayerEnabled = false;
@@ -131,18 +126,6 @@ public class MasterARPlayerScript : MonoBehaviour
             Debug.Log("D");
 
             string CurrentSession = PlayerPrefs.GetString("CurrentSession");
-
-            string hostMap = mapToString(0, 0, mapSizeY, mapSizeX);
-            Debug.Log(hostMap);
-
-
-            FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession).Child("MapString").SetValueAsync(hostMap);
-            //FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/").Child(SessionName).SetValueAsync(SessionName);
-
-            string guestMap = mapToString(Math.Abs(mapPosY), Math.Abs(mapPosX), 10, 5);
-            Debug.Log(guestMap);
-
-            FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession).Child("guestMap").SetValueAsync(guestMap);
 
             List<string> ents = new List<string>();
             foreach (Entity ent in entities)
@@ -217,6 +200,7 @@ public class MasterARPlayerScript : MonoBehaviour
 
         //string mapstring = "";
         string CurrentSession = PlayerPrefs.GetString("CurrentSession");
+        Debug.Log("CS: " + CurrentSession);
 
         FirebaseDatabase.DefaultInstance.GetReference("ActiveGames/" + CurrentSession + "/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
@@ -236,7 +220,8 @@ public class MasterARPlayerScript : MonoBehaviour
                     }
                     else if (child.Key.ToString() == "guestMap")
                     {
-                        guestMapString = child.Value.ToString();
+                        if(child.Value.ToString() != "") guestMapString = child.Value.ToString();
+                        Debug.Log("MINI MapString" + guestMapString);
                     }
                 }
                 return "ERROR";
@@ -299,7 +284,7 @@ public class MasterARPlayerScript : MonoBehaviour
         DestroyEntities(ref entities);
         DestroyEntities(ref heroes);
 
-        stringToMap(hostMapString);
+        stringToMap(guestMapString);
         displayLevel();
 
         foreach (string e in enemyStrings)
@@ -309,7 +294,7 @@ public class MasterARPlayerScript : MonoBehaviour
         }
         foreach (string h in heroStrings)
         {
-            Entity ent = StringToEntity(h);
+            Entity ent = StringToEntity(h, true);
             heroes.Add(ent);
             if (ent.owner == PlayerPrefs.GetString("Username")) myIndexNum = heroes.Count - 1;
         }
@@ -439,7 +424,7 @@ public class MasterARPlayerScript : MonoBehaviour
                 }
             }
         }
-        transform.localPosition = new Vector3(baseX + offset * mapPosX, 0, baseY + offset * mapPosY);
+        transform.localPosition = new Vector3(baseX + offset, 0, baseY + offset);
     }
 
     public void DestroyLevel()

@@ -375,7 +375,7 @@ public class MasterARScript : MonoBehaviour
                     }
                     else if(child.Key.ToString() == "guestMap")
                     {
-                        guestMapString = child.Value.ToString();
+                        if(child.Value.ToString()!="") guestMapString = child.Value.ToString();
                     }
                 }
                 return "ERROR";
@@ -557,8 +557,7 @@ public class MasterARScript : MonoBehaviour
         ent.startRot = Convert.ToInt32(info[4]);
         ent.sr = Instantiate<SpriteRenderer>(monster, entityHolder.transform);
         if(isHero) ent.sr.sprite = heroSprites[ent.type];
-        else ent.sr.sprite = heroSprites[monsters[ent.type]];
-        ent.sr.sprite = monsterSprites[monsters[ent.type]];
+        else ent.sr.sprite = ent.sr.sprite = monsterSprites[monsters[ent.type]];
         ent.sr.transform.localPosition = new Vector3(ent.startX, floor, ent.startZ);
         ent.sr.transform.rotation = Quaternion.Euler(0,0,ent.startRot);
         ent.collider = ent.sr.GetComponent<Collider>();

@@ -34,5 +34,7 @@ public class ActiveGamePrefab : MonoBehaviour
     {
         this.popUp = GameObject.Find("LIVE_Arena(Clone)");
         this.popUp.SendMessage("activateLiveArena");
+        PlayerPrefs.SetString("CurrentSession", this.SessionName.text);
+        PlayerPrefs.Save();
     }
 }
