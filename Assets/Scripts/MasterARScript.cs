@@ -1,20 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using Firebase.Unity.Editor;
 using Firebase.Database;
-using System.Threading.Tasks;
-using UnityEngine;
-using UnityEngine.UI;
 using Firebase;
 using Firebase.Extensions;
-using Firebase.Auth;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
-using System.Threading;
-//using System.Diagnostics;
-//using System.Diagnostics;
 
 class Room
 {
@@ -57,7 +49,9 @@ public class MasterARScript : MonoBehaviour
     const float offset = 0.315f;
     const float floor = 0.05f;
     const float pointerHeight = 0.32f;
-    
+
+    const int mapSizeX = 128;
+    const int mapSizeY = 128;
     const int descriptorSize = 8;
     const int numOfIcons = 3;
     
@@ -78,8 +72,7 @@ public class MasterARScript : MonoBehaviour
     List<string> heroStrings;
     List<string> enemyStrings;
 
-    int mapSizeX;
-    int mapSizeY;
+
 
     int mapPosX;
     int mapPosY;
@@ -109,16 +102,9 @@ public class MasterARScript : MonoBehaviour
     [SerializeField]
     SpriteRenderer monster;
 
-    //private MasterARRequest getRequests;
-
-    //string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
-    //string debugGuestString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
-    //string[] debugEntityStrings = { "0t0x-0.9750006z0.06999996r354", "0t1x-0.275001z0.295r354" };
 
     void Start()
     {
-        this.hostMapString = "";
-        //this.getRequests = GameObject.Find("SceneryHolder").GetComponent<MasterARRequest>() as MasterARRequest;
         map = new List<Room>();
         entities = new List<Entity>();
         heroes = new List<Entity>();
@@ -135,8 +121,6 @@ public class MasterARScript : MonoBehaviour
         selectedCellY = 0;
         selectedIcon = 0;
         interval = 0;
-        mapSizeX = 128;
-        mapSizeY = 128;
         mapPosX = 0;
         mapPosY = 0;
         icoPosX = 0;
@@ -144,32 +128,17 @@ public class MasterARScript : MonoBehaviour
         selectedMonster = 0;
         pointingAtMonster = -1;
 
-        //DEBUG
-        //mapSizeX = 5;
-        //mapSizeY = 10;
-        //mapString = "0030020000300230NNN00300210003000000030023000300300NN0030021000300A0000300A0000300B10NN0030010000300B0000300400NN0030010000300B0000300410NN0030010000300B00NNN00300C3000300C00NNNNNNNNNNNNNNNN";
-
-        Debug.Log("Finished Start");
         pointer.SendMessage("SetMonster", monsterSprites[monsters[selectedMonster]]);
         pointer.transform.localPosition = new Vector3(baseX, pointerHeight, baseY);
-        //StartCoroutine(checkDB());
     }
-    /*
-    IEnumerator checkDB()
-    {
-        while(true)
-        {
-            Debug.Log("CHECKDB Fired");
-            RefreshAR();
-            yield return new WaitForSeconds(5f);
-        }
-    }
-    */
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton3) && Input.GetKeyDown(KeyCode.JoystickButton3))
+        if ((Input.GetKey(KeyCode.JoystickButton3) && Input.GetKey(KeyCode.JoystickButton4))
+            || (Input.GetKey(KeyCode.C) && Input.GetKey(KeyCode.V)))
         {
             //END SESSION AND RETURN TO HOME SCREEN
+            SceneManager.LoadScene(2);
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.Z)) //Activate
         {
@@ -219,14 +188,11 @@ public class MasterARScript : MonoBehaviour
             string CurrentSession = PlayerPrefs.GetString("CurrentSession");
 
             string hostMap = mapToString(0, 0, mapSizeY, mapSizeX);
-            Debug.Log(hostMap);
 
 
             FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession).Child("MapString").SetValueAsync(hostMap);
-            //FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/").Child(SessionName).SetValueAsync(SessionName);
 
             string guestMap = mapToString(Math.Abs(mapPosY), Math.Abs(mapPosX), 10, 5);
-            Debug.Log(guestMap);
 
             FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession).Child("guestMap").SetValueAsync(guestMap);
 
@@ -242,20 +208,6 @@ public class MasterARScript : MonoBehaviour
                 FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Entities").Child("entities" + i.ToString()).SetValueAsync(str);
                 i++;
 			}
-            /*
-            List<string> hero = new List<string>();
-            foreach (Entity ent in heroes)
-            {
-                string concat = EntityToString(ent);
-                hero.Add(concat);
-            }
-            i = 0;
-            foreach (string str in hero)
-            {
-                FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + CurrentSession + "/Heroes").Child("entities" + i.ToString()).SetValueAsync(str);
-                i++;
-            }
-            */
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton7) || Input.GetKeyDown(KeyCode.Q)) //Toggle Input Type
         {
@@ -361,7 +313,6 @@ public class MasterARScript : MonoBehaviour
         FirebaseDatabase.DefaultInstance.GetReference("ActiveGames/" + CurrentSession + "/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
-                Debug.Log("BLARG");
                 return "ERROR";
             }
             else if (task.IsCompleted)
@@ -372,7 +323,6 @@ public class MasterARScript : MonoBehaviour
                     if (child.Key.ToString() == "MapString")
                     {
                         hostMapString = child.Value.ToString();
-                        Debug.Log("CONGRATS MapString" + hostMapString);
                     }
                     else if(child.Key.ToString() == "guestMap")
                     {
@@ -394,7 +344,6 @@ public class MasterARScript : MonoBehaviour
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
 
-        //List<string> Entities = new List<string>();
         if (entType == "Entities") enemyStrings.Clear();
         else heroStrings.Clear();
         string CurrentSession = PlayerPrefs.GetString("CurrentSession");
@@ -402,7 +351,7 @@ public class MasterARScript : MonoBehaviour
         FirebaseDatabase.DefaultInstance.GetReference("ActiveGames/" + CurrentSession + "/" + entType + "/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
-                Debug.Log("BLARG");
+
             }
             else if (task.IsCompleted)
             {
@@ -411,7 +360,6 @@ public class MasterARScript : MonoBehaviour
 
                 foreach (var child in snapshot.Children)
                 {
-                    //Debug.Log(child.Key + ": " + child.Value);
                     if (entType == "Entities") enemyStrings.Add(child.Value.ToString());
                     else heroStrings.Add(child.Value.ToString());
                 }
@@ -425,7 +373,6 @@ public class MasterARScript : MonoBehaviour
 
     public void RefreshAR()
     {
-        string test = "";
         GetHostMapString();
         GetEntitiesString("Entities");
         GetEntitiesString("Heroes");
@@ -459,7 +406,6 @@ public class MasterARScript : MonoBehaviour
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
 
         DBreference.Child(path).SetValueAsync(data);
-        //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child("blip").SetValueAsync(data);
     }
 
     private void highlighEntity(int ent)
@@ -540,7 +486,6 @@ public class MasterARScript : MonoBehaviour
         concat += parseChar.ToString() + ent.sr.transform.localPosition.x;
         concat += parseChar.ToString() + ent.sr.transform.localPosition.z;
         concat += parseChar.ToString() + Math.Floor(ent.sr.transform.rotation.eulerAngles.z);
-        Debug.Log(concat);
         return concat;
     }
 
@@ -548,10 +493,6 @@ public class MasterARScript : MonoBehaviour
     {
         Entity ent = new Entity();
         string[] info = entityString.Split(parseChar);
-        foreach(string s in info)
-        {
-            Debug.Log("PARSE: " + s);
-        }
         ent.owner = info[0];
         ent.type = Convert.ToInt32(info[1]);
         ent.startX = Convert.ToSingle(info[2]);
@@ -577,7 +518,6 @@ public class MasterARScript : MonoBehaviour
                 Room room = map[y * mapSizeX + x];
                 if(room.cat >= 0)
                 {
-                    Debug.Log("X: " + x + " Y: " + y + " L: " + y * mapSizeX + x);
                     GameObject go = Instantiate(meshes[room.itm], this.transform);
                     go.transform.localScale = new Vector3(scale, scale, scale);
                     go.transform.localPosition = new Vector3(y * offset, 0, x * offset);

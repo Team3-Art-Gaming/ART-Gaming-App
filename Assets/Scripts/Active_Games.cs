@@ -1,78 +1,69 @@
-﻿using System.Collections;
+﻿//This script is used in the Home Screen to request any active games the user is invited to and display them
+
+using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
 
 public class Active_Games : MonoBehaviour
 {
     [SerializeField]
-    Image ActiveGamesPrefab;
+    Image ActiveGamesPrefab;            //A prefabricated piece to display an game name and accept and reject buttons
     [SerializeField]
-    Image Grid;
+    Image Grid;                         //A vertical layout grid for holding a created ActiveGamesPrefabs
 
-    public List<Games> games;
-    public List<Image> entries;
+    public List<Games> games;           //These games the user is invited to
+    public List<Image> entries;         //The instaniated ActiveGamesPrefab peices
 
-    public GameObject popUp;
-    public GameObject joinArenaPrefab;
-    public GameObject parent;
-    private GamesManager gamesScript;
+    public GameObject popUp;            //A popup to give players options
+    public GameObject joinArenaPrefab;  //A popup for jpining a game
+    public GameObject parent;           //The owner of the object this script is attached to
+    private GamesManager gamesScript;   //A instance of the gamemanager class
 
-    // Start is called before the first frame update
+    //Called as soon as the object holding this this script is in a scene
     private void Awake()
     {
-        Screen.orientation = ScreenOrientation.Portrait;
+        Screen.orientation = ScreenOrientation.Portrait; //Force phones screen into portrait mode for this scene
     }
+
+    //Called as soon and the scene containing this is done building.
     void Start()
     {
+        //Create the join arean popup and set deactive to have ready later
         joinArenaPrefab = Instantiate(popUp, new Vector3(540, 960, 0), Quaternion.identity, parent.transform);
         joinArenaPrefab.SendMessage("deactivateLiveArena");
 
+        //Initialize the GamesMananger and the list to hold games
         this.gamesScript = GameObject.Find("SceneManager").GetComponent<GamesManager>() as GamesManager;
         this.games = new List<Games>();
 
-        StartCoroutine(Test(1));
+        //Call DB for active games.
+        RequetActivGames();
     }
 
-    IEnumerator Test(int seconds)
+    //Request all active games for this user from DB, wait n seconds, then call display 
+    public void RequetActivGames()
     {
+        Destroy_Entries();
         this.games = gamesScript.GetGamesList();
         foreach(Games child in this.games)
         {
             Debug.Log(child.SessionName + ": " + child.Status + ": " + child.HostName);
         }
+        StartCoroutine(WaitBeforeDisplay(1));
+    }
+
+    IEnumerator WaitBeforeDisplay(int seconds)
+    {
         yield return new WaitForSeconds(seconds);
-
-        this.showActiveGames();
+        this.ShowActiveGames();
     }
 
-    // Update is called once per frame
-    void Update()
+    //Create the visual display of games for users to select from
+    public void ShowActiveGames()
     {
-        
-    }
-
-    public void showActiveGames()
-    {
-        Destroy_Entries();
-        /*
-        Image I = Instantiate(ActiveGamesPrefab, Grid.transform);
-        I.SendMessage("setSessionName", "Example Session Name");
-        I.SendMessage("setHostName", "Some Random Jackass");
-        entries.Add(I);
-
-        I = Instantiate(ActiveGamesPrefab, Grid.transform);
-        I.SendMessage("setSessionName", "Example Session Name2");
-        I.SendMessage("setHostName", "Some Random Asshole");
-        entries.Add(I);
-        */
-        //Debug.Log("Constructing Prefabs");
-        
         foreach (Games child in this.games)
         {
-            //Debug.Log(child.mapName + ": " + child.mapString);
             Image I = Instantiate(ActiveGamesPrefab, Grid.transform);
             I.SendMessage("setSessionName", child.SessionName);
             I.SendMessage("setHostName", child.HostName);

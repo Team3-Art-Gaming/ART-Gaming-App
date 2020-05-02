@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Firebase;
 using Firebase.Extensions;
-using Firebase.Auth;
 using Firebase.Database;
 using Firebase.Unity.Editor;
 using UnityEngine.SceneManagement;
@@ -20,7 +18,6 @@ public class requestHandler : MonoBehaviour
     {
         popUp = GameObject.Find("Pop-Up(Clone)");
         requestListOfNames(name, email, pass);
-        //authenticateRegistration(name, email, pass);
     }
 
     public void authLogin(string email, string pass)
@@ -31,7 +28,6 @@ public class requestHandler : MonoBehaviour
 
     private void authenticateRegistration(string name, string email, string pass)
     {
-        //Debug.Log("Firebase Auth here");
         Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.GetAuth(Firebase.FirebaseApp.DefaultInstance);
         auth.CreateUserWithEmailAndPasswordAsync(email, pass).ContinueWithOnMainThread(task =>
         {
@@ -70,7 +66,6 @@ public class requestHandler : MonoBehaviour
             else if (task.IsCompleted)
             {
                 DataSnapshot snapshot = task.Result;
-                //Debug.Log(snapshot.Child(name).Value);
                 if (snapshot.Child(name).Value == null)
                 {
                     authenticateRegistration(name, email, pass);
@@ -136,7 +131,6 @@ public class requestHandler : MonoBehaviour
             {
                 Debug.Log("Email is verified!!");
 
-                if (registerThisUser) Debug.Log("Valid");
                 PlayerPrefs.SetString("Username", name);
                 PlayerPrefs.Save();
                 PushData("users/" + name + "/Status/", "Active");
@@ -165,7 +159,6 @@ public class requestHandler : MonoBehaviour
         FirebaseDatabase.DefaultInstance.GetReference("users/" + name + "/CreatedMaps/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
-                Debug.Log("BLARG");
                 return;
             }
             else if (task.IsCompleted)
@@ -184,7 +177,6 @@ public class requestHandler : MonoBehaviour
             }
             else
             {
-                Debug.Log("ELSE");
                 return;
             }
         });
@@ -205,26 +197,20 @@ public class requestHandler : MonoBehaviour
         FirebaseDatabase.DefaultInstance.GetReference("users/" + currentUser + "/friends/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
-                Debug.Log("BLARG");
                 return null;
             }
             else if (task.IsCompleted)
             {
-                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
                 DataSnapshot snapshot = task.Result;
-                //string data = snapshot.Children;
 
                 foreach (var child in snapshot.Children)
                 {
-                    //Debug.Log(child.Key + ": " + child.Value);
-
                     friendslist.Add(new Friends(child.Key.ToString(), child.Value.ToString()));
                 }
                 return friendslist;
             }
             else
             {
-                Debug.Log("ELSE");
                 return null;
             }
         });
@@ -239,7 +225,6 @@ public class requestHandler : MonoBehaviour
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
 
         DBreference.Child(path).SetValueAsync(data);
-        //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child("blip").SetValueAsync(data);
     }
 
     private void preLoginRequest(string name, string password)
@@ -250,13 +235,11 @@ public class requestHandler : MonoBehaviour
         {
             if (task.IsFaulted)
             {
-                Debug.Log("Error");
                 return;
             }
             else if (task.IsCompleted)
             {
                 DataSnapshot snapshot = task.Result;
-                //Debug.Log(snapshot.Child(name).Value);
                 if (snapshot.Child(name).Value == null)
                 {
                     Debug.Log("No Valid Username");
@@ -283,10 +266,7 @@ public class requestHandler : MonoBehaviour
 
         string jsonDataBlock = JsonUtility.ToJson(user);
         Debug.Log("user: "+user.FriendsList);
-        //string jsonFriendsList = JsonUtility.ToJson(user.FriendsList);
-        //Debug.Log("json: "+jsonFriendsList);
         DBreference.Child("users").Child(user.getUsername()).SetRawJsonValueAsync(jsonDataBlock);
-        //DBreference.Child("FriendsList").SetRawJsonValueAsync(jsonFriendsList);
     }
 
     public void updateUserProfile(Firebase.Auth.FirebaseUser user, string name, string photoUrl)
@@ -334,7 +314,6 @@ public class requestHandler : MonoBehaviour
             }
 
             DataSnapshot snapshot = task.Result;
-            //Debug.Log(snapshot.Child("user"));
             string data = snapshot.GetRawJsonValue().ToString();
             Debug.Log(data);
 

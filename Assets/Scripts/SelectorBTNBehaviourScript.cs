@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class SelectorBTNBehaviourScript : MonoBehaviour
 {
     private MasterBehaviourScript master;
-    // Start is called before the first frame update
     void Start()
     {
         master = GetComponentInParent<MasterBehaviourScript>();

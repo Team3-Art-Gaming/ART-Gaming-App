@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Friends
+﻿public class Friends
 {
     public string Name;
     public string Status;

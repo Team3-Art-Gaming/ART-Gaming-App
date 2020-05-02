@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -59,7 +58,6 @@ public class LaunchSessionNamePopUp : MonoBehaviour
         switch (s)
         {
             case "OK":
-                Debug.Log("OK");
                 if (inputBox.text != "")
                 {
                     launchScript.createInvitedSessionUsers(friends, this.inputBox.text.ToString());
@@ -71,7 +69,6 @@ public class LaunchSessionNamePopUp : MonoBehaviour
                 this.deactivatePopUp();
                 break;
             case "Cancel":
-                Debug.Log("Cancel");
                 this.deactivatePopUp();
                 break;
             default:

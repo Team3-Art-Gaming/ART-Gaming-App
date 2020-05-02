@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class testRegHandler : MonoBehaviour
@@ -30,7 +27,6 @@ public class testRegHandler : MonoBehaviour
         
         if (checkInputs())
         {
-            //Debug.Log("check thread here");
             registerReq = new requestHandler();
             registerReq.authRegister(username.text, email.text, password0.text);
         }
@@ -40,7 +36,6 @@ public class testRegHandler : MonoBehaviour
     {
         if (checkEmail() && checkUsername() && checkPasswords())
         {
-            //Debug.Log("Registration Successful part0 init");
             return true;
         }
         else

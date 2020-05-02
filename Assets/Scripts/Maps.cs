@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Maps
+﻿public class Maps
 {
     public string mapName;
     public string mapString;

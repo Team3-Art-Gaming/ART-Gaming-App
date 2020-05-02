@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
 using Firebase.Unity.Editor;
 using Firebase.Database;
-using System.Threading.Tasks;
 using Firebase;
-using Firebase.Extensions;
-using Firebase.Auth;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class MasterBehaviourScript : MonoBehaviour
 {
@@ -31,8 +24,6 @@ public class MasterBehaviourScript : MonoBehaviour
 
     private const int mapSize = 128;
     string blankMap = "";
-
-    private Text readout;
 
     string ppMapNameKey = "SelectedMap";
     string ppMapDataKey = "SelectedMapData";
@@ -238,7 +229,6 @@ public class MasterBehaviourScript : MonoBehaviour
         if(PlayerPrefs.HasKey("TempLevel"))
         {
             string level = PlayerPrefs.GetString("TempLevel");
-            Debug.Log("Loaded: " + level);
             BuildLevel(level);
         }
         */

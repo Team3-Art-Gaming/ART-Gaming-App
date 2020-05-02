@@ -33,9 +33,6 @@ public class CreateUserFB : MonoBehaviour
 
         return t.ToString();
     }
-    //var myTask = Task.Run(() => {return GetData(path));
-    //string result = await myTask;
-    //return result;
 
     public void PushData(string path, string data)
     {
@@ -78,7 +75,6 @@ public class CreateUserFB : MonoBehaviour
 
         foreach (Friends friend in friendslist)
         {
-            Debug.Log(friend.Name + ": " + friend.Status);
             if (friend.Status == "Friend")
             {
                 setFriend(friend.Name);
@@ -129,32 +125,23 @@ public class CreateUserFB : MonoBehaviour
         FirebaseDatabase.DefaultInstance.GetReference("users/" + currentUser + "/friends/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
-                Debug.Log("BLARG");
                 return null;
             }
             else if (task.IsCompleted)
             {
-                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
                 DataSnapshot snapshot = task.Result;
-                //string data = snapshot.Children;
 
                 foreach (var child in snapshot.Children)
-                {
-                    //Debug.Log(child.Key + ": " + child.Value);
-
+                { 
                     friendslist.Add(new Friends(child.Key.ToString(), child.Value.ToString()));
                 }
                 return friendslist;
             }
             else
             {
-                Debug.Log("ELSE");
                 return null;
             }
         });
-        /*
-        int milliseconds = 2000;
-        Thread.Sleep(milliseconds);*/
         return friendslist;
     }
 
@@ -183,31 +170,19 @@ public class CreateUserFB : MonoBehaviour
         FirebaseDatabase.DefaultInstance.GetReference("users/" + currentUser + "/Profile/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
-                Debug.Log("BLARG");
                 return profile;
             }
             else if (task.IsCompleted)
             {
-                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
                 DataSnapshot snapshot = task.Result;
-                //string data = snapshot.Children;
                 foreach (var child in snapshot.Children)
                 {
-                    //Debug.Log("Child: " + child.Key.ToString() + ": " + child.Value.ToString());
                     profile.Add(child.Key.ToString(), child.Value.ToString());
                 }
-
-                /*
-                foreach (var child in profile)
-                {
-                    Debug.Log("Child: " + child.Key.ToString() + ": " + child.Value.ToString());
-                    //profile.Add(child.Key, child.Value);
-                }*/
                 return profile;
             }
             else
             {
-                Debug.Log("ELSE");
                 return profile;
             }
         });
@@ -219,19 +194,16 @@ public class CreateUserFB : MonoBehaviour
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
 
-        //string GetPath = string.Concat("1Test/", path);
         string data = "error1";
 
         FirebaseDatabase.DefaultInstance.GetReference(path).GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
-                Debug.Log("BLARG");
                 return "error3";
             }
             else if (task.IsCompleted)
             {
                 task.Wait();
-                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
                 DataSnapshot snapshot = task.Result;
                 data = snapshot.GetRawJsonValue().ToString();
                 data = data.Remove(0, 1);
@@ -241,11 +213,9 @@ public class CreateUserFB : MonoBehaviour
             }
             else
             {
-                Debug.Log("ELSE");
                 return "error2";
             }
         });
-        //b.Wait();
         return "error1";
     }
 }

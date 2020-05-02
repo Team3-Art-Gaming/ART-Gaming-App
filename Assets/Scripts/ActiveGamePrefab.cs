@@ -1,17 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//Control active game prefabs with names along with the accept button for the homescreen
+
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class ActiveGamePrefab : MonoBehaviour
 {
     [SerializeField]
-    Text SessionName;
+    Text SessionName;               //The readout the display the session name
     [SerializeField]
-    Text HostName;
+    Text HostName;                  //The readout the display the host name
     [SerializeField]
-    Button joinActiveGameButton;
+    Button joinActiveGameButton;    //The button to join the game
 
     private string gameName;
     private string hostName;

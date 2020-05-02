@@ -4,14 +4,9 @@ using Firebase.Unity.Editor;
 using Firebase.Database;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UI;
 using Firebase;
 using Firebase.Extensions;
-using Firebase.Auth;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
-using System.Threading;
-//using System.Diagnostics;
+
 
 public class GamesManager : MonoBehaviour
 {
@@ -26,7 +21,6 @@ public class GamesManager : MonoBehaviour
 
         string name = PlayerPrefs.GetString("Username");
 
-        //PushData("/1Test/ActiveGames/" + SessionName, SessionName);
         FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/").Child(SessionName).SetValueAsync(SessionName);
         PushData("/ActiveGames/" + SessionName + "/Players/", "Players");
         PushData("/ActiveGames/" + SessionName + "/Players/" + name, "Host");
@@ -94,16 +88,13 @@ public class GamesManager : MonoBehaviour
             }
             else if (task.IsCompleted)
             {
-                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
                 DataSnapshot snapshot = task.Result;
-                //string data = snapshot.Children;
 
                 foreach (var child in snapshot.Children)
                 {
                     string hostName = getHostName(child.Key.ToString());
                     if(child.Value.ToString() == "Invited")
                     {
-                        //Debug.Log(child.Key + ": " + child.Value);
                         GamesList.Add(new Games(child.Key.ToString(), child.Value.ToString(), hostName));
                     }
                     
@@ -116,9 +107,6 @@ public class GamesManager : MonoBehaviour
                 return null;
             }
         });
-        /*
-        int milliseconds = 4000;
-        Thread.Sleep(milliseconds);*/
         return GamesList;
     }
 
@@ -134,9 +122,7 @@ public class GamesManager : MonoBehaviour
             }
             else if (task.IsCompleted)
             {
-                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
                 DataSnapshot snapshot = task.Result;
-                //string data = snapshot.Children;
 
                 foreach (var child in snapshot.Children)
                 {
@@ -165,7 +151,6 @@ public class GamesManager : MonoBehaviour
 
         string currentUser = PlayerPrefs.GetString("Username");
         List<Maps> cmList = new List<Maps>();
-        //Debug.Log("GetCreatedMapsList From: " + currentUser);
 
         FirebaseDatabase.DefaultInstance.GetReference("users/" + currentUser + "/CreatedMaps/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
@@ -175,22 +160,12 @@ public class GamesManager : MonoBehaviour
             }
             else if (task.IsCompleted)
             {
-                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
                 DataSnapshot snapshot = task.Result;
-                //string data = snapshot.Children;
-                //Debug.Log("taskCOmplete");
                 foreach (var child in snapshot.Children)
                 {
-                    //Debug.Log(child.Key + ": " + child.Value);
                     cmList.Add(new Maps(child.Key.ToString(), child.Value.ToString()));
-                    //Debug.Log("Map Name : " + child.Key.ToString());
-                }
 
-                /*
-                foreach (Maps child in cmList)
-                {
-                    Debug.Log(child.mapName + ": " + child.mapString);
-                }*/
+                }
 
                 return cmList;
             }
@@ -200,9 +175,6 @@ public class GamesManager : MonoBehaviour
                 return null;
             }
         });
-        /*
-        int milliseconds = 4000;
-        Thread.Sleep(milliseconds);*/
         return cmList;
     }
 
@@ -213,7 +185,6 @@ public class GamesManager : MonoBehaviour
 
         string currentUser = PlayerPrefs.GetString("Username");
         List<Friends> friendslist = new List<Friends>();
-        //Debug.Log("???????" + currentUser);
 
         FirebaseDatabase.DefaultInstance.GetReference("users/" + currentUser + "/friends/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
@@ -223,17 +194,12 @@ public class GamesManager : MonoBehaviour
             }
             else if (task.IsCompleted)
             {
-                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
                 DataSnapshot snapshot = task.Result;
-                //string data = snapshot.Children;
-                //Debug.Log("taskCOmplete");
                 foreach (var child in snapshot.Children)
                 {
-                    //Debug.Log(child.Key + ": " + child.Value);
                     if (child.Value.ToString() == "Friend")
                     {
                         friendslist.Add(new Friends(child.Key.ToString(), child.Value.ToString()));
-                        //Debug.Log("Friend Name : " + child.Key.ToString());
                     }
                 }
                 return friendslist;
@@ -244,9 +210,6 @@ public class GamesManager : MonoBehaviour
                 return null;
             }
         });
-        /*
-        int milliseconds = 2000;
-        Thread.Sleep(milliseconds);*/
         return friendslist;
     }
 
@@ -263,7 +226,6 @@ public class GamesManager : MonoBehaviour
             }
             else if (task.IsCompleted)
             {
-                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/").Child("blarg").SetValueAsync("completed");
                 DataSnapshot snapshot = task.Result;
                 Debug.Log("Profile Num: " + snapshot.Key.ToString() + ": " + snapshot.Value.ToString());
                 data = snapshot.Value.ToString();
@@ -295,7 +257,6 @@ public class GamesManager : MonoBehaviour
             }
             else if (task.IsCompleted)
             {
-                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/").Child("blarg").SetValueAsync("completed");
                 DataSnapshot snapshot = task.Result;
                 data.Add(snapshot.GetRawJsonValue().ToString());
                 FirebaseDatabase.DefaultInstance.GetReference("/1Test/").Child("blarg").SetValueAsync(data[0]);
@@ -348,7 +309,6 @@ public class GamesManager : MonoBehaviour
                 return;
             }
         });
-        //return;
     }
 
     public void PushData(string path, string data)
@@ -358,17 +318,6 @@ public class GamesManager : MonoBehaviour
 
         DBreference.Child(path).SetValueAsync(data);
         //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child("blip").SetValueAsync(data);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
 

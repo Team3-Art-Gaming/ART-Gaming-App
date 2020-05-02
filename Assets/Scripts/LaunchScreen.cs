@@ -42,12 +42,12 @@ public class LaunchScreen : MonoBehaviour
         this.friends = new List<Friends>();
         this.friends = gamesScript.GetFriendsList();
 
-        StartCoroutine(Test());
+        StartCoroutine(WaitToDisplay(1));
     }
 
-    IEnumerator Test()
+    IEnumerator WaitToDisplay(int seconds)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(seconds);
 
         this.ShowFriends();
     }

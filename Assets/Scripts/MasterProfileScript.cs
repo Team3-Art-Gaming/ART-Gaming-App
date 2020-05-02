@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-//using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +19,6 @@ public class MasterProfileScript : MonoBehaviour
     private CreateUserFB saveProfScript;
     private Dictionary<string, string> profile;
     private string username;
-    // Start is called before the first frame update
     void Start()
     {
         sprites = Resources.LoadAll<Sprite>("Characters/App_Heroes");
@@ -44,10 +41,6 @@ public class MasterProfileScript : MonoBehaviour
     IEnumerator Test()
     {
         yield return new WaitForSeconds(1);
-        foreach (var child in this.profile)
-        {
-            Debug.Log(child.Key + ": " + child.Value);
-        }
         if (this.profile == null)
         {
             profileSelected = 0;
@@ -90,18 +83,4 @@ public class MasterProfileScript : MonoBehaviour
         this.ageIN.text = age;
 
     }
-
-    //FUNCTION TO RETRIEVE INFO FROM DB
-    /*
-    {
-        usernameTF.text = "";
-        profileSelected = 0;
-        profileButton.image.sprite = sprites[profileSelected];
-        if(charnameExists) charnameIN.text = "";
-        if(raceExists) raceIN.text = "";
-        if(heightExists) heightIN.text = "";
-        if(weightExists) weightIN.text = "";
-        if(ageExists) ageIN.text = "";
-    }
-    */
 }
