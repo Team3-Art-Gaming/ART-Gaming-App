@@ -10,7 +10,10 @@ public class testLoginHandler : MonoBehaviour
     public GameObject popupprefab;
     public GameObject popUp;
     public GameObject parent;
-
+    private void Awake()
+    {
+        Screen.orientation = ScreenOrientation.Portrait;
+    }
     void Start()
     {
         if (PlayerPrefs.HasKey("Username") && PlayerPrefs.GetString("Username") != "") SceneManager.LoadScene(2); 

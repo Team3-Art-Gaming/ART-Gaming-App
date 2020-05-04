@@ -14,7 +14,10 @@ public class testRegHandler : MonoBehaviour
 
     private requestHandler registerReq;
 
-    
+    private void Awake()
+    {
+        Screen.orientation = ScreenOrientation.Portrait;
+    }
     void Start()
     {
         popUp = Instantiate(popupprefab, new Vector3(540,960,0), Quaternion.identity, parent.transform);

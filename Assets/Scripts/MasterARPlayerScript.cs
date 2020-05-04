@@ -59,7 +59,10 @@ public class MasterARPlayerScript : MonoBehaviour
     Transform entityHolder;
     [SerializeField]
     SpriteRenderer monster;
-
+    private void Awake()
+    {
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+    }
     void Start()
     {
         mapString = "";

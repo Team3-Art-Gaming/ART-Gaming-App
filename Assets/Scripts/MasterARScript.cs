@@ -102,6 +102,10 @@ public class MasterARScript : MonoBehaviour
     [SerializeField]
     SpriteRenderer monster;
 
+    private void Awake()
+    {
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+    }
 
     void Start()
     {
