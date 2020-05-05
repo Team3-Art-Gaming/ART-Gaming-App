@@ -50,7 +50,6 @@ public class FriendManager : MonoBehaviour
             else if (task.IsCompleted)
             {
                 DataSnapshot snapshot = task.Result;
-                //Debug.Log(snapshot.Child(name).Value);
                 if (snapshot.Child(name).Value == null)
                 {
                     Debug.Log("No Valid Username");

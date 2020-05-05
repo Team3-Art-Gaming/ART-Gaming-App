@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 
 
-
 public class Friend_List : MonoBehaviour
 {
     // Start is called before the first frame update

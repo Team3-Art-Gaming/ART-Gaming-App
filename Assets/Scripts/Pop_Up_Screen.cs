@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -24,7 +22,6 @@ public class Pop_Up_Screen : MonoBehaviour
 
     public void activatePopUp(string s)
     {
-        this.caller = caller;
         transform.position = new Vector3(540, 960, 0);
 
         textbox.text = s;
@@ -64,7 +61,6 @@ public class Pop_Up_Screen : MonoBehaviour
             case "AcceptRequesting":
                 ok_btn.onClick.RemoveListener(okay_Click);
                 ok_btn.onClick.AddListener(okay_Click_Request);
-                Debug.Log("Changing ok to accept: " + this.thisFriendRequest);
                 break;
             case "RemoveFromPending":
                 ok_btn.onClick.RemoveListener(okay_Click);
@@ -117,7 +113,6 @@ public class Pop_Up_Screen : MonoBehaviour
 
     public void okay_Click_Request()
     {
-        Debug.Log("POP_UP_RESPONSE = AcceptFromRequesting");
         this.caller.SendMessage("POP_UP_RESPONSE", "AcceptRequesting");
     }
 
@@ -136,11 +131,9 @@ public class Pop_Up_Screen : MonoBehaviour
         switch (s)
         {
             case "OK":
-                Debug.Log("OK");
                 deactivatePopUp();
                 break;
             case "Cancel":
-                Debug.Log("Cancel");
                 deactivatePopUp();
                 break;
             case "ChangeScene":

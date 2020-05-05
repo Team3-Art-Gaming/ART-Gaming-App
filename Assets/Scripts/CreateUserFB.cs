@@ -11,7 +11,7 @@ using Firebase.Auth;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using System.Threading;
-
+//using System.Diagnostics;
 
 public class CreateUserFB : MonoBehaviour
 {
@@ -33,9 +33,6 @@ public class CreateUserFB : MonoBehaviour
 
         return t.ToString();
     }
-    //var myTask = Task.Run(() => {return GetData(path));
-    //string result = await myTask;
-    //return result;
 
     public void PushData(string path, string data)
     {
@@ -78,7 +75,6 @@ public class CreateUserFB : MonoBehaviour
 
         foreach (Friends friend in friendslist)
         {
-            Debug.Log(friend.Name+": "+friend.Status);
             if (friend.Status == "Friend")
             {
                 setFriend(friend.Name);
@@ -126,36 +122,71 @@ public class CreateUserFB : MonoBehaviour
         string currentUser = PlayerPrefs.GetString("Username");
         List<Friends> friendslist = new List<Friends>();
 
-        FirebaseDatabase.DefaultInstance.GetReference("users/"+currentUser+"/friends/").GetValueAsync().ContinueWithOnMainThread(task => {
+        FirebaseDatabase.DefaultInstance.GetReference("users/" + currentUser + "/friends/").GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
-                Debug.Log("BLARG");
                 return null;
             }
             else if (task.IsCompleted)
             {
-                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
                 DataSnapshot snapshot = task.Result;
-                //string data = snapshot.Children;
-              
-                foreach ( var child in snapshot.Children)
+
+                foreach (var child in snapshot.Children)
                 { 
-                    //Debug.Log(child.Key + ": " + child.Value);
-                    
                     friendslist.Add(new Friends(child.Key.ToString(), child.Value.ToString()));
                 }
                 return friendslist;
             }
             else
             {
-                Debug.Log("ELSE");
                 return null;
             }
         });
-        /*
-        int milliseconds = 2000;
-        Thread.Sleep(milliseconds);*/
         return friendslist;
+    }
+
+    public void setProfile(string num, string name, string race, string height, string weight, string age)
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        string MyName = PlayerPrefs.GetString("Username");
+        PushData("/users/" + MyName + "/Profile/Picture/", num);
+        PushData("/users/" + MyName + "/Profile/CharName/", name);
+        PushData("/users/" + MyName + "/Profile/Race/", race);
+        PushData("/users/" + MyName + "/Profile/Height/", height);
+        PushData("/users/" + MyName + "/Profile/Weight/", weight);
+        PushData("/users/" + MyName + "/Profile/Age/", age);
+    }
+
+    public Dictionary<string, string> getProfile()
+    {
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
+        DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        string currentUser = PlayerPrefs.GetString("Username");
+        Dictionary<string, string> profile = new Dictionary<string, string>();
+
+        FirebaseDatabase.DefaultInstance.GetReference("users/" + currentUser + "/Profile/").GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                return profile;
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                foreach (var child in snapshot.Children)
+                {
+                    profile.Add(child.Key.ToString(), child.Value.ToString());
+                }
+                return profile;
+            }
+            else
+            {
+                return profile;
+            }
+        });
+        return profile;
     }
 
     public string GetData(string path)
@@ -163,19 +194,16 @@ public class CreateUserFB : MonoBehaviour
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
 
-        //string GetPath = string.Concat("1Test/", path);
         string data = "error1";
 
         FirebaseDatabase.DefaultInstance.GetReference(path).GetValueAsync().ContinueWithOnMainThread(task => {
             if (task.IsFaulted)
             {
-                Debug.Log("BLARG");
                 return "error3";
             }
             else if (task.IsCompleted)
             {
                 task.Wait();
-                //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child(playerName).SetValueAsync("1");
                 DataSnapshot snapshot = task.Result;
                 data = snapshot.GetRawJsonValue().ToString();
                 data = data.Remove(0, 1);
@@ -185,11 +213,9 @@ public class CreateUserFB : MonoBehaviour
             }
             else
             {
-                Debug.Log("ELSE");
                 return "error2";
             }
         });
-        //b.Wait();
         return "error1";
     }
 }

@@ -5,15 +5,11 @@ using UnityEngine.UI;
 
 public class Launch_Entry : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField]
     Text Friend_Name;
     [SerializeField]
     Toggle toggleBTN;
 
-    //string Name;
-
-    //private string Name;
 
     void Start()
     {
@@ -23,7 +19,6 @@ public class Launch_Entry : MonoBehaviour
     public void SetName(string name)
     {
         this.name = name;
-        //this.Name = name;
         Friend_Name.text = name;
     }
 

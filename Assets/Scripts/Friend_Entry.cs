@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -77,7 +75,6 @@ public class Friend_Entry : MonoBehaviour
 
     private void c_btn_friend()
     {
-        Debug.Log("Friend Remove");
         cufbScript = GameObject.Find("SceneManager").GetComponent<CreateUserFB>() as CreateUserFB;
         cufbScript.deleteFriend(this.name);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -85,7 +82,6 @@ public class Friend_Entry : MonoBehaviour
 
     private void ok_btn_request()
     {
-        Debug.Log("Request Friend");
         cufbScript = GameObject.Find("SceneManager").GetComponent<CreateUserFB>() as CreateUserFB;
         cufbScript.setFriend(this.name);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -93,7 +89,6 @@ public class Friend_Entry : MonoBehaviour
 
     private void c_btn_request()
     {
-        Debug.Log("Request Delete");
         cufbScript = GameObject.Find("SceneManager").GetComponent<CreateUserFB>() as CreateUserFB;
         cufbScript.setFriend(this.name);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -106,48 +101,8 @@ public class Friend_Entry : MonoBehaviour
 
     private void c_btn_pending()
     {
-        Debug.Log("Pending Delete");
         cufbScript = GameObject.Find("SceneManager").GetComponent<CreateUserFB>() as CreateUserFB;
         cufbScript.deleteFriend(this.name);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
-
-
-    //Debug.Log("Hello " + this.name + ": " + this.status + " does not exist.");
-
-    /*
-    if (this.status == "Friend")
-    {
-        popUp = GameObject.Find("FriendPop");
-        Debug.Log(popUp.name);
-        //popUp.SendMessage("setPrefab", popUp);
-        popUp.SendMessage("setOkButton", "RemoveFromFriends");
-        popUp.SendMessage("setFriendRequestName", this.name);
-        popUp.SendMessage("activatePopUp", "Do you want to REMOVE this friend: " + this.name + "?");
-    }
-    else if (this.status == "Requesting")
-    {
-        popUp = GameObject.Find("RequestPop");
-        Debug.Log(popUp.name);
-        //popUp.SendMessage("setPrefab", popUp);
-        popUp.SendMessage("setFriendRequestName", this.name);
-        popUp.SendMessage("setOkButton", "AcceptRequesting");
-        popUp.SendMessage("setCancelButton", "RemoveRequesting");
-        popUp.SendMessage("activatePopUp", this.name + "Wants to be your friend. Click OK to ACCEPT or CANCEL to REMOVE.");
-    }
-    else if (this.status == "Pending")
-    {
-        popUp = GameObject.Find("PendingPop");
-        Debug.Log(popUp.name);
-        //popUp.SendMessage("setPrefab", popUp);
-        popUp.SendMessage("setOkButton", "RemoveFromPending");
-        popUp.SendMessage("setFriendRequestName", this.name);
-        popUp.SendMessage("activatePopUp", "Do you want to remove " + this.name + "'s pending friend request?");
-    }
-    else
-    { 
-        Debug.Log("Hello "+this.name + ": " + this.status + " does not exist.");
-    }
-    */
 }

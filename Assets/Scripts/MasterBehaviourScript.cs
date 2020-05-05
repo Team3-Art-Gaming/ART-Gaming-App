@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
 using Firebase.Unity.Editor;
 using Firebase.Database;
-using System.Threading.Tasks;
 using Firebase;
-using Firebase.Extensions;
-using Firebase.Auth;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class MasterBehaviourScript : MonoBehaviour
 {
@@ -32,12 +25,9 @@ public class MasterBehaviourScript : MonoBehaviour
     private const int mapSize = 128;
     string blankMap = "";
 
-    private Text readout;
-
     string ppMapNameKey = "SelectedMap";
     string ppMapDataKey = "SelectedMapData";
 
-    //private List<Button> mapButtons;
     private List<Button> selectorButtons;
 
     private int curCategory;
@@ -49,7 +39,7 @@ public class MasterBehaviourScript : MonoBehaviour
     private List<LE_MapElements> map;
 
     private void Awake()
-    { 
+    {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         for(int i = 0; i < mapSize * mapSize; ++i)
         {
@@ -76,33 +66,18 @@ public class MasterBehaviourScript : MonoBehaviour
         else
         {
             mapNameField.text = "Default Map";
-            //BuildLevel(blankMap);
         }
-
-        /*
-        if (PlayerPrefs.HasKey("Username"))
-        {
-            Debug.Log(PlayerPrefs.GetString("Username"));
-        }
-        else
-        {
-            Debug.Log("Nope");
-        }
-        */
     }
 
     private void BuildSelectorStructure()
     {
         categories = new List<LE_Category>();
         Sprite[] packages = Resources.LoadAll<Sprite>("Sets/_Cat");
-        //Debug.Log("Found " + packages.Length + " packages");
         for(int i = 0; i < packages.Length; ++i)
         {
             Sprite package = packages[i];
-            //Debug.Log(package.name);
             LE_Category tempCat = new LE_Category(i, package.name, Convert.ToString(i, 16).PadLeft(3,'0'), package);
             Sprite[] selectors = Resources.LoadAll<Sprite>("Sets/" + package.name);
-            //Debug.Log("Found " + selectors.Length + " selectors");
             for(int j = 0; j < selectors.Length; ++j)
             {
                 Sprite selector = selectors[j];
@@ -113,36 +88,6 @@ public class MasterBehaviourScript : MonoBehaviour
         }
     }
 
-    /*
-    private void BuildSelectorStructure()
-    {
-        categories = new List<LE_Category>();
-        string pathToSets = Application.dataPath + "/Resources/Sets";
-        DirectoryInfo dir = new DirectoryInfo(pathToSets);
-        if (dir.Exists) readout.text = "YAY";
-        else readout.text = "BOOO";
-        DirectoryInfo[] dirs = dir.GetDirectories();
-        int catCount = 0;
-        foreach (DirectoryInfo di in dirs)
-        {
-            string category = di.Name;
-            Debug.Log("Checking: " + pathToSets + "/" + category);
-            Sprite[] sprites = Resources.LoadAll<Sprite>("Sets/" + category);
-            int catID = catCount++;
-            string catName = category;
-            string catHex = sprites[0].name.Substring(1);
-            LE_Category lec = new LE_Category(catID, catName, catHex, sprites[0]);
-            for (int i = 1; i < sprites.Length; ++i)
-            {
-                LE_Selector les = new LE_Selector(i, sprites[i].name, Convert.ToString(i, 16).PadLeft(3,'0'), sprites[i]);
-                Debug.Log(les.hex);
-                lec.AddSelector(les);
-            }
-            categories.Add(lec);
-            Debug.Log("Check: " + lec.name);
-        }
-    }
-    */
     private void BuildSelectors(int cat)
     {
         selectorButtons = new List<Button>();
@@ -254,19 +199,10 @@ public class MasterBehaviourScript : MonoBehaviour
                 mapString += lem.catHex + lem.itmHex + lem.spriteRot + "0";
             }
         }
-        //Text t = GetComponentInChildren<Text>();
-        //readout.text = mapString;
-
-        //PlayerPrefs.SetString(ppMapDataKey, mapString);
-        //string mapName = mapNameField.text;
-        //PlayerPrefs.SetString(ppMapNameKey, mapName);
-        //PlayerPrefs.SetString("TempLevel", mapString);
-
         string Map = MapName.text;
         PlayerPrefs.SetString(Map, mapString);
 
         PlayerPrefs.Save();
-        Debug.Log(Map + " Saved: " + mapString);
         PushMap(mapString, Map);
 
     }
@@ -276,19 +212,11 @@ public class MasterBehaviourScript : MonoBehaviour
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://art-152.firebaseio.com/");
         DatabaseReference DBreference = FirebaseDatabase.DefaultInstance.RootReference;
 
-        //DBreference.Child(path).SetValueAsync(data);
-        //FirebaseDatabase.DefaultInstance.GetReference("/1Test/0Users/").Child("blip").SetValueAsync(data);
-
         string name = PlayerPrefs.GetString("Username");
         string path = "/users/";
         path = string.Concat(path, name);
         path = string.Concat(path, "/CreatedMaps/");
         FirebaseDatabase.DefaultInstance.GetReference(path).Child(MapName).SetValueAsync(map);
-
-
-        //DBreference.Child("/1Test/MAPS/map/").SetValueAsync(map);
-        //DBreference.Child("/1Test/MAPS/mapsize/").SetValueAsync(map.Length);
-        //DBreference.Child("/1Test/MAPS/user/").SetValueAsync(name);
 
         return;
     }
@@ -301,7 +229,6 @@ public class MasterBehaviourScript : MonoBehaviour
         if(PlayerPrefs.HasKey("TempLevel"))
         {
             string level = PlayerPrefs.GetString("TempLevel");
-            Debug.Log("Loaded: " + level);
             BuildLevel(level);
         }
         */
@@ -316,19 +243,16 @@ public class MasterBehaviourScript : MonoBehaviour
             char c = level[stringIndex];
             if(c == 'N')
             {
-                //Debug.Log("N");
                 stringIndex++;
                 map[i].BlankSprite();
             }
             else
             {
                 string piece = level.Substring(stringIndex,descriptorSize);
-                Debug.Log(piece);
                 
                 string catHex = piece.Substring(0,3);
                 string selHex = piece.Substring(3,3);
                 int rot = int.Parse(piece.Substring(6,1));
-                Debug.Log(selHex);
                 int index = -1;
                 int count = 0;
                 foreach(LE_Category cat in categories)
@@ -341,7 +265,6 @@ public class MasterBehaviourScript : MonoBehaviour
                     Sprite s = categories[index].GetSelector(selHex).sprite;
                     map[i].UpdateSprite(categories[index].hex, categories[index].GetSelector(selHex).hex, s);
                     map[i].RotateSprite(rot);
-                    Debug.Log("Rotating " + rot); 
                 }
                 stringIndex += descriptorSize; 
             }

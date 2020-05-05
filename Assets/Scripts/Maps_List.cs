@@ -25,12 +25,6 @@ public class Maps_List : MonoBehaviour
         this.maps = new List<Maps>();
         this.maps = mapScript.GetCreatedMapsList();
 
-        
-        /*Debug.Log("Youre in Maps_List.cs");
-        foreach(Maps child in this.maps)
-        {
-            Debug.Log(child.mapName + ": " + child.mapString);
-        }*/
 
         StartCoroutine(Test());
     }
@@ -56,7 +50,6 @@ public class Maps_List : MonoBehaviour
             Debug.Log(child.mapName + ": " + child.mapString);
             I = Instantiate(MapPrefab, Grid.transform);
             I.SendMessage("SetMap", child);
-            //I.SendMessage("SetData", child.mapString);
             this.entries.Add(I);
         }
     }
