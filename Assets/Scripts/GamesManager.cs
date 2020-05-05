@@ -92,12 +92,41 @@ public class GamesManager : MonoBehaviour
 
                 foreach (var child in snapshot.Children)
                 {
-                    string hostName = getHostName(child.Key.ToString());
-                    if(child.Value.ToString() == "Invited")
+                    string hostName = "";
+                    FirebaseDatabase.DefaultInstance.GetReference("/ActiveGames/" + child.Key.ToString() + "/Players/").GetValueAsync().ContinueWithOnMainThread(task1 => {
+                        if (task1.IsFaulted)
+                        {
+                            Debug.Log("BLARG");
+                            return;
+                        }
+                        else if (task1.IsCompleted)
+                        {
+                            DataSnapshot snapshot1 = task1.Result;
+
+                            foreach (var host in snapshot1.Children)
+                            {
+                                if (host.Value.ToString() == "Host")
+                                {
+                                    Debug.Log(host.Key + ": " + host.Value);
+                                    hostName = host.Key.ToString();
+                                    if (child.Value.ToString() == "Invited")
+                                    {
+                                        GamesList.Add(new Games(child.Key.ToString(), child.Value.ToString(), hostName));
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Debug.Log("ELSE");
+                            return;
+                        }
+                    });
+                    /*
+                    if (child.Value.ToString() == "Invited")
                     {
                         GamesList.Add(new Games(child.Key.ToString(), child.Value.ToString(), hostName));
-                    }
-                    
+                    }*/                    
                 }
                 return GamesList;
             }
