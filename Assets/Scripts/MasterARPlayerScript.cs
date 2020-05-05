@@ -358,11 +358,11 @@ public class MasterARPlayerScript : MonoBehaviour
 
     private void displayLevel()
     {
-        for (int x = 0; x < mapSizeX; ++x)
+        for (int y = 0; y < mapSizeX; ++y)
         {
-            for (int y = 0; y < mapSizeY; ++y)
+            for (int x = 0; x < mapSizeY; ++x)
             {
-                Room room = map[y * mapSizeX + x];
+                Room room = map[x * mapSizeX + y];
                 if (room.cat >= 0 && room.visible)
                 {
                     GameObject go = Instantiate(meshes[room.itm], this.transform);

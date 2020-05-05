@@ -147,13 +147,7 @@ public class MasterARScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.Z)) //Activate
         {
             Debug.Log("A");
-            if (pointingAtMonster >= 0)
-            {
-                entities[pointingAtMonster].collider.enabled = false;
-                entities[pointingAtMonster].sr.enabled = false;
-                entities[pointingAtMonster].owner = "NONE";
-            }
-            else if (selectedIcon == 1)
+            if (selectedIcon == 1)
             {
                 Room r = map[selectedCellX * mapSizeX + selectedCellY];
                 r.visible = !r.visible;
@@ -161,17 +155,26 @@ public class MasterARScript : MonoBehaviour
             }
             else if(selectedIcon == 2)
             {
-                Entity ent = new Entity();
-                ent.owner = "HOST";
-                Vector3 vec = pointer.transform.localPosition;
-                vec.y = floor;
-                SpriteRenderer sr = Instantiate<SpriteRenderer>(monster,entityHolder.transform);
-                sr.sprite = monsterSprites[monsters[selectedMonster]];
-                sr.transform.localPosition = vec;
-                ent.sr = sr;
-                ent.collider = sr.GetComponent<Collider>();
-                ent.type = selectedMonster;
-                entities.Add(ent);
+                if (pointingAtMonster >= 0)
+                {
+                    entities[pointingAtMonster].collider.enabled = false;
+                    entities[pointingAtMonster].sr.enabled = false;
+                    entities[pointingAtMonster].owner = "NONE";
+                }
+                else
+                {
+                    Entity ent = new Entity();
+                    ent.owner = "HOST";
+                    Vector3 vec = pointer.transform.localPosition;
+                    vec.y = floor;
+                    SpriteRenderer sr = Instantiate<SpriteRenderer>(monster, entityHolder.transform);
+                    sr.sprite = monsterSprites[monsters[selectedMonster]];
+                    sr.transform.localPosition = vec;
+                    ent.sr = sr;
+                    ent.collider = sr.GetComponent<Collider>();
+                    ent.type = selectedMonster;
+                    entities.Add(ent);
+                }
             }
         }
 
