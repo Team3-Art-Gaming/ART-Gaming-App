@@ -273,7 +273,6 @@ GameObject:
   - component: {fileID: 324730923}
   - component: {fileID: 324730922}
   - component: {fileID: 324730921}
-  - component: {fileID: 324730924}
   m_Layer: 5
   m_Name: LogoutBTN
   m_TagString: Untagged
@@ -343,7 +342,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 324730922}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 594230498}
+        m_MethodName: authSignOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &324730922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,34 +390,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324730919}
   m_CullTransparentMesh: 0
---- !u!114 &324730924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 324730919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 594230498}
-          m_MethodName: authSignOut
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &379054631
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,7 +708,6 @@ GameObject:
   - component: {fileID: 926275689}
   - component: {fileID: 926275688}
   - component: {fileID: 926275687}
-  - component: {fileID: 926275690}
   m_Layer: 5
   m_Name: ProfileBTN
   m_TagString: Untagged
@@ -796,7 +777,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 926275688}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 594230496}
+        m_MethodName: sceneLoader
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &926275688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,34 +825,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926275685}
   m_CullTransparentMesh: 0
---- !u!114 &926275690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 926275685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 594230496}
-          m_MethodName: sceneLoader
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 5
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &968449641
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,7 +914,6 @@ GameObject:
   - component: {fileID: 980145532}
   - component: {fileID: 980145531}
   - component: {fileID: 980145530}
-  - component: {fileID: 980145533}
   m_Layer: 5
   m_Name: MapsBTN
   m_TagString: Untagged
@@ -1020,7 +983,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 980145531}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 594230496}
+        m_MethodName: sceneLoader
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &980145531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1574,7 +1548,6 @@ GameObject:
   - component: {fileID: 1486883861}
   - component: {fileID: 1486883860}
   - component: {fileID: 1486883859}
-  - component: {fileID: 1486883862}
   m_Layer: 5
   m_Name: FriendsBTN
   m_TagString: Untagged
@@ -1644,7 +1617,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1486883860}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 594230496}
+        m_MethodName: sceneLoader
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1486883860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1681,34 +1665,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486883857}
   m_CullTransparentMesh: 0
---- !u!114 &1486883862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486883857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 594230496}
-          m_MethodName: sceneLoader
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 3
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1526466471
 GameObject:
   m_ObjectHideFlags: 0
