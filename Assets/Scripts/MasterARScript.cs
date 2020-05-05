@@ -147,7 +147,13 @@ public class MasterARScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.Z)) //Activate
         {
             Debug.Log("A");
-            if(selectedIcon == 1)
+            if (pointingAtMonster >= 0)
+            {
+                entities[pointingAtMonster].collider.enabled = false;
+                entities[pointingAtMonster].sr.enabled = false;
+                entities[pointingAtMonster].owner = "NONE";
+            }
+            else if (selectedIcon == 1)
             {
                 Room r = map[selectedCellX * mapSizeX + selectedCellY];
                 r.visible = !r.visible;
@@ -299,7 +305,7 @@ public class MasterARScript : MonoBehaviour
                 }
                 else if (selectedIcon == 4)
                 {
-                    entities[pointingAtMonster].sr.transform.Rotate(new Vector3(0, 0, digitalH * speed));
+                    entities[pointingAtMonster].sr.transform.Rotate(new Vector3(0, 0, digitalH * speed*2));
                 }
             }
         }
@@ -508,6 +514,11 @@ public class MasterARScript : MonoBehaviour
         ent.sr.transform.localPosition = new Vector3(ent.startX, floor, ent.startZ);
         ent.sr.transform.localRotation = Quaternion.Euler(90, 0, ent.startRot);
         ent.collider = ent.sr.GetComponent<Collider>();
+        if(ent.owner == "NONE")
+        {
+            ent.collider.enabled = false;
+            ent.sr.enabled = false;
+        }
         return ent;
     }
 

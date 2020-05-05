@@ -348,6 +348,11 @@ public class MasterARPlayerScript : MonoBehaviour
         ent.sr.transform.localPosition = new Vector3(ent.startX, floor, ent.startZ);
         ent.sr.transform.localRotation = Quaternion.Euler(90,0, ent.startRot);
         ent.collider = ent.sr.GetComponent<Collider>();
+        if (ent.owner == "NONE")
+        {
+            ent.collider.enabled = false;
+            ent.sr.enabled = false;
+        }
         return ent;
     }
 
