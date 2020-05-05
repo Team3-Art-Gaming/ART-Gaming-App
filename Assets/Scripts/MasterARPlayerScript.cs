@@ -358,11 +358,11 @@ public class MasterARPlayerScript : MonoBehaviour
 
     private void displayLevel()
     {
-        for (int y = 0; y < mapSizeX; ++y)
+        for (int x = 0; x < mapSizeX; ++x)
         {
-            for (int x = 0; x < mapSizeY; ++x)
+            for (int y = 0; y < mapSizeY; ++y)
             {
-                Room room = map[x * mapSizeX + y];
+                Room room = map[y * mapSizeX + x];
                 if (room.cat >= 0 && room.visible)
                 {
                     GameObject go = Instantiate(meshes[room.itm], this.transform);
@@ -373,7 +373,7 @@ public class MasterARPlayerScript : MonoBehaviour
                 }
             }
         }
-        transform.localPosition = new Vector3(baseX, 0, baseY);
+        transform.localPosition = new Vector3(baseY, 0, baseX);
     }
 
     public void DestroyLevel()
